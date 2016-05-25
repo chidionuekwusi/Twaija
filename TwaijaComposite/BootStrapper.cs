@@ -54,8 +54,8 @@ namespace TwaijaComposite
            catalog.AddModule(typeof(PictureViewerModule));
            catalog.AddModule(typeof(ColumnsManagerModule));
            catalog.AddModule(typeof(OptionsModule));
-           catalog.AddModule(typeof(ApplicationEngineModule));
            catalog.AddModule(typeof(LINQToTwitterAdapterModule));
+           catalog.AddModule(typeof(ApplicationEngineModule));
            return catalog;
        }
        

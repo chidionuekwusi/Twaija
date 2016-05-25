@@ -23,11 +23,14 @@ namespace TwaijaComposite.Modules.LINQToTwitterAdapter
             {
                 var auth = new PinAuthorizer()
                 {
-                    GetPin = () => { return oop; },
-                    CredentialStore = new InMemoryCredentialStore() { ConsumerKey = consumerkey, ConsumerSecret = consumerSecret },
-                    GoToTwitterAuthorization = (s) => { }
+                    CredentialStore = new InMemoryCredentialStore() { ConsumerKey = consumerkey, ConsumerSecret = consumerSecret, OAuthToken = requestToken },
+                    GoToTwitterAuthorization = (s) =>
+                    {
+                        Console.WriteLine(s);
+                    }
                 };
-                await  auth.AuthorizeAsync();
+               // auth.Parameters.Add(new KeyValuePair<string, string>("oauth_token", requestToken));
+                await  auth.CompleteAuthorizeAsync(oop);
                 token = new TwitterToken() { ConsumerKey = consumerkey, ConsumerSecret = consumerSecret, ScreenName = auth.CredentialStore.ScreenName, TokenKey = auth.CredentialStore.OAuthToken, TokenSecret = auth.CredentialStore.OAuthTokenSecret };
                 return new Tuple<bool, object>(!string.IsNullOrEmpty(auth.CredentialStore.OAuthToken) ? true : false, token);
             }
