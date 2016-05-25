@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="TwaijaComposite.Modules.Common.DialogTypes.YesNoDialogView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sdk="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+    mc:Ignorable="d" xmlns:local="clr-namespace:TwaijaComposite.Modules.Common"
+    d:DesignHeight="300" d:DesignWidth="400">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="0.773*"/>
+    		<RowDefinition Height="0.227*"/>
+    	</Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Grid.RowSpan="1" Grid.Row="1">
+            <Button HorizontalAlignment="Stretch"  Command="{Binding Path=YesCommand}" Margin="0.5,0" Style="{StaticResource TextButtonStyle}" Width="60" Height="30" VerticalAlignment="Bottom">ok</Button>
+            <Button Command="{Binding NoCommand}" Content="cancel" Margin="0.5,0" Style="{StaticResource TextButtonStyle}" Width="60" Height="30" VerticalAlignment="Bottom"/>
+        </StackPanel>
+        <TextBlock Margin="8" TextWrapping="Wrap" FontWeight="Thin"  Text="{Binding Text}" Foreground="#FFA7A7A7" FontFamily="Segoe UI" FontSize="14"/>
+    </Grid>
+</UserControl>

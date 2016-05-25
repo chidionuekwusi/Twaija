@@ -1,0 +1,20 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<SolidColorBrush x:Key="mainbackgroundbrushkey" Color="#FF272727"/>
+<SolidColorBrush x:Key="toolbarbackgroundkey" Color="#535C5C5C"/>
+<SolidColorBrush x:Key="mainborderbrushkey" Color="#FF1D1D1D"/>
+<SolidColorBrush x:Key="mainviewuserlistforegroundbrushkey" Color="White" />
+<SolidColorBrush x:Key="columnitemforegroundbrushkey" Color="#FFA7A7A7" />
+<SolidColorBrush x:Key="mainforegroundbrushkey" Color="LightGray" />
+<SolidColorBrush x:Key="columnworkspacebackgroundbrushkey" Color="#FF1D1D1D" />
+<SolidColorBrush x:Key="tweetbackgroundbrushkey" Color="#10272727" />
+<SolidColorBrush x:Key="mainbuttonbackgroundbrushkey" Color="DarkGray" />
+<SolidColorBrush x:Key="clipboardbackgroundbrushkey" Color="#FF1D1D1D" />
+<SolidColorBrush x:Key="clipboardmainforegroundbrushkey" Color="LightGray" />
+<SolidColorBrush x:Key="clipboardsecondaryforegroundbrushkey" Color="Orange" />
+<LinearGradientBrush x:Key="clipboardcounterforegroundbrushkey" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#653E3E3E" Offset="0.879" />
+        <GradientStop Color="#65FFFFFF" Offset="0" />
+ </LinearGradientBrush>
+</ResourceDictionary>

@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="TwaijaComposite.Modules.ColumnsManager.Views.DirectMessageViewmodelTemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:customcontrols="clr-namespace:TwaijaComposite.Modules.Controls;assembly=TwaijaComposite.Modules.Controls"
+             xmlns:behave0="clr-namespace:TwaijaComposite.Modules.Common.Behaviors;assembly=TwaijaComposite.Modules.Common"
+             xmlns:behave="clr-namespace:TwaijaComposite.Modules.ColumnsManager.Behaviors"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"      
+             xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" 
+             xmlns:local="clr-namespace:TwaijaComposite.Modules.ColumnsManager"
+             mc:Ignorable="d"  Padding="0" MinWidth="200" x:Name="userControl" 
+             d:DesignHeight="300" d:DesignWidth="300" Style="{DynamicResource TweetUserControlStyle}">
+    <UserControl.Resources>
+        <Storyboard x:Key="SlideIn">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="userControl">
+                <SplineDoubleKeyFrame KeyTime="0" Value="-10"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.25" Value="0" KeySpline="0,1,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="userControl">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.25" Value="0.995" KeySpline="0,1,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="FlashCallout" AutoReverse="True" >
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="userControl">
+                <EasingColorKeyFrame KeyTime="0" Value="#00000000"/>
+                <SplineColorKeyFrame KeyTime="0:0:6" Value="#64000000"/>
+                <DiscreteColorKeyFrame KeyTime="0:0:12" Value="#00000000"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform/>
+            <SkewTransform/>
+            <RotateTransform/>
+            <TranslateTransform/>
+        </TransformGroup>
+    </UserControl.RenderTransform>
+    <customcontrols:TimerEnabledUserControl x:Name="timerEnabledUserControl"  DateStringFormat="{Binding DateStringFormat}" FontFamily="Segoe UI SemiLight" FontSize="8.5" InitialDate="{Binding Message.CreatedDate}" Background="#00000000">
+        <Grid x:Name="grid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <DockPanel HorizontalAlignment="Stretch" Grid.Column="1" >
+                <TextBlock DockPanel.Dock="Left"  Text="{Binding Message.SenderScreenName}" FontSize="14" FontFamily="Segoe UI SemiLight"  VerticalAlignment="Bottom" TextOptions.TextFormattingMode="Display"></TextBlock>
+	            <customcontrols:PopupCommands DockPanel.Dock="Right" Host="{Binding ElementName=userControl}" Background="{DynamicResource MainBackgroundBrush}" BorderBrush="LightGray" BorderThickness="1"></customcontrols:PopupCommands>
+
+                <TextBlock VerticalAlignment="Bottom" Padding="2" Text="{Binding Message.Name,TargetNullValue={x:Static sys:String.Empty}}" FontFamily="Segoe UI SemiLight" FontStyle="Italic" FontSize="8" Margin="7,0,0,0"></TextBlock>
+            </DockPanel>
+            <!--<Rectangle RadiusX="5" RadiusY="5" Fill="Black" HorizontalAlignment="Center" VerticalAlignment="Top" Height="35" Width="35"/>-->
+            <Grid  VerticalAlignment="Top" Grid.RowSpan="2">
+                <Border Margin="0,5" Background="#FF252525" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <Image  Source="{Binding Message.SenderProfileImage}" Stretch="Fill" Height="36" Width="36"   HorizontalAlignment="Center" VerticalAlignment="top" />
+                </Border>
+                <ed:Callout x:Name="callout" Opacity="0" AnchorPoint="0.913,1.267"  CalloutStyle="Oval" FontSize="14.667" HorizontalAlignment="Left"  Stroke="#FF6E0505" Width="14.625" Foreground="#FFA70E07" StrokeThickness="0.25" Height="12.5" VerticalAlignment="Top" Margin="0" d:LayoutOverrides="GridBox" >
+                    <ed:Callout.Fill>
+                        <RadialGradientBrush Center="0.842,0.185" GradientOrigin="0.842,0.185">
+                            <GradientStop Color="#FF3F0202" Offset="1"/>
+                            <GradientStop Color="#FFFB3E3E" Offset="0.249"/>
+                            <GradientStop Color="#FFA50303" Offset="0.848"/>
+                        </RadialGradientBrush>
+                    </ed:Callout.Fill>
+                    <ed:RegularPolygon Height="7.375" InnerRadius="0.47211" PointCount="5" Stretch="Fill" StrokeThickness="0.2" Width="7.25">
+                        <ed:RegularPolygon.Stroke>
+                            <LinearGradientBrush EndPoint="0.876,0.136" StartPoint="0.109,0.906">
+                                <GradientStop Color="#FF160101" Offset="0.016"/>
+                                <GradientStop Color="#FF950505" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ed:RegularPolygon.Stroke>
+                        <ed:RegularPolygon.Fill>
+                            <LinearGradientBrush EndPoint="-0.02,0.452" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="#FFA50303" Offset="0.106"/>
+                                <GradientStop Color="#FF290202" Offset="0.437"/>
+                            </LinearGradientBrush>
+                        </ed:RegularPolygon.Fill>
+                    </ed:RegularPolygon>
+                </ed:Callout>
+            </Grid>
+            <TextBlock MaxWidth="260" FontSize="12" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Margin="2" Grid.Column="1" x:Name="tweettext" behave:TextBlockBehaviours.TweetText="{Binding Message.Text}"   TextWrapping="Wrap"  Style="{DynamicResource DefaultItemTextStyle}" MaxHeight="120"  Width="260" >
+            <!--<Run Text=", btw this is a Sample Tweet Yo dont take it too seriously.."/>-->
+            </TextBlock>
+
+        </Grid>
+    </customcontrols:TimerEnabledUserControl>
+
+</UserControl>

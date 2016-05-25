@@ -1,0 +1,395 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:controls="clr-namespace:TwaijaComposite.Modules.Controls;assembly=TwaijaComposite.Modules.Controls"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"         
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:behave="clr-namespace:TwaijaComposite.Modules.Common.Behaviors;assembly=TwaijaComposite.Modules.Common"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Name="userControl" 
+             x:Class="TwaijaComposite.Modules.ProfileViewer.Views.ProfileView"
+             Width="Auto"         
+             mc:Ignorable="d" Height="575" 
+             d:DesignHeight="300" d:DesignWidth="300" RenderTransformOrigin="0,0" Background="{x:Null}" OpacityMask="{x:Null}">
+	<UserControl.Resources>
+        <Style x:Key="TreeViewStyle1" TargetType="{x:Type TreeView}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TreeView}">
+                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ScrollViewer Template="{DynamicResource SlickScrollViewerTemplate}" x:Name="_tv_scrollviewer_" Background="{TemplateBinding Background}" CanContentScroll="false" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" >
+                                <ItemsPresenter/>
+                            </ScrollViewer>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="VirtualizingStackPanel.IsVirtualizing" Value="true">
+                                <Setter Property="CanContentScroll" TargetName="_tv_scrollviewer_" Value="true"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="VirtualizingStackPanel.IsVirtualizing" Value="true">
+                    <Setter Property="ItemsPanel">
+                        <Setter.Value>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel/>
+                            </ItemsPanelTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Storyboard x:Key="DeactivationStoryboard" >
+            <DoubleAnimation Duration="00:00:03" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="userControl"></DoubleAnimation>
+        </Storyboard>
+        <!--<Storyboard x:Key="Storyboard1">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="userControl">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.33166666666666667"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="0.995"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="userControl">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="5"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="30"/>
+        		<SplineDoubleKeyFrame KeyTime="0:0:0.9" Value="0" KeySpline="0,1,0,1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="userControl">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>-->
+		<!--<SolidColorBrush x:Key="TabControlNormalBorderBrush" Color="#008C8E94"/>
+		<SolidColorBrush x:Key="TabItemDisabledBackground" Color="#F4F4F4"/>
+		<SolidColorBrush x:Key="TabItemDisabledBorderBrush" Color="#FFC9C7BA"/>-->
+		<DataTemplate x:Key="TabControlContentDataTemplate">
+		            <Grid x:Name="grid">
+                <Grid.RowDefinitions>
+					<RowDefinition x:Name="top" Height="auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="35" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="30" />
+                </Grid.ColumnDefinitions>
+                    <!--<TextBlock  Grid.RowSpan="2" Foreground="#64000000" Text="{Binding Content.Count}" FontSize="96" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe WP Light"></TextBlock>-->
+                <controls:SlideInListBox Background="Transparent" MinHeight="235" Grid.ColumnSpan="2" x:Name="ContentListBox" Grid.Row="1"   HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"     BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Content}"    Style="{DynamicResource SlickListBox}" ItemContainerStyle="{DynamicResource SlickListBoxItemStyle}"  BorderBrush="{x:Null}"  RenderTransformOrigin="0.5,0.5">
+                    <controls:SlideInListBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </controls:SlideInListBox.RenderTransform>
+                    <controls:SlideInListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel Orientation="Vertical">
+                                <i:Interaction.Behaviors>
+                                    <ei:FluidMoveBehavior Duration="0:0:0.5" AppliesTo="Children">
+                                        <ei:FluidMoveBehavior.EaseY>
+                                            <PowerEase EasingMode="EaseOut" Power="10"/>
+                                        </ei:FluidMoveBehavior.EaseY>
+                                    </ei:FluidMoveBehavior>
+                                </i:Interaction.Behaviors>
+                            </VirtualizingStackPanel>
+                        </ItemsPanelTemplate>
+                    </controls:SlideInListBox.ItemsPanel>
+                </controls:SlideInListBox>
+                <!--<TreeView Background="Transparent" MinHeight="235" Grid.ColumnSpan="2" x:Name="ContentListBox" Grid.Row="1"   HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"     BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Content}" Style="{DynamicResource TreeViewStyle1}" >
+                    <TreeView.ItemContainerStyle>
+                        <Style TargetType="{x:Type TreeViewItem}">
+                            <Setter Property="Background" Value="{Binding tweetbackgroundbrushkey}"></Setter>
+                            <Setter Property="OverridesDefaultStyle" Value="True"></Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                                        <Grid Background="{TemplateBinding Background}">
+                                            <ContentPresenter ContentSource="Header" />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </TreeView.ItemContainerStyle>
+                    <TreeView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel Orientation="Vertical">
+                            </VirtualizingStackPanel>
+                        </ItemsPanelTemplate>
+                    </TreeView.ItemsPanel>
+                </TreeView>-->
+
+                <ListView Grid.Row="2" VerticalAlignment="Bottom"   ClipToBounds="True"  ItemTemplate="{DynamicResource PathButtonTemplate15x15ForegroundAware}" x:Name="Commands"   ItemsSource="{Binding Commands}" Background="#00000000" BorderThickness="0" ItemContainerStyle="{DynamicResource SlickListBoxItemStyle}" >
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
+              
+                <Grid x:Name="filter" Grid.ColumnSpan="2" VerticalAlignment="Top" Background="White" Height="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ContentControl Content="{Binding Filter}"  ClipToBounds="True"/>
+                        <StackPanel Orientation="Horizontal" Grid.Column="1">
+                            <Button Command="{Binding FilterCommand}" Template="{DynamicResource TextButtonControlTemplate}" Background="#FFFFFFFE" BorderBrush="White" Content="ok" />
+                            <Button Command="{Binding CancelFilterCommand}" Template="{DynamicResource TextButtonControlTemplate}" Background="White" BorderBrush="White" Content="cancel" />
+                        </StackPanel>
+                    </Grid>
+                        
+                <controls:TwoStateButton x:Name="button" Width="30" Height="30"  Cursor="Hand" ToolTip="Click to toggle options"   behave:AnimationBehaviors.StoryboardA="SlideUp" behave:AnimationBehaviors.StoryboardB="SlideDown"  Grid.Column="1" Grid.Row="2"   VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Stretch" Style="{DynamicResource TwoStateButtonStyle1}">
+                    <controls:TwoStateButton.Resources>
+                        <Storyboard x:Key="SlideUp" FillBehavior="HoldEnd" >
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Height" Storyboard.TargetName="filter">
+                                <SplineDoubleKeyFrame KeyTime="0:0:0.25" Value="0" KeySpline="0.5,0,0.5,1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="SlideDown" FillBehavior="HoldEnd" >
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Height" Storyboard.TargetName="filter">
+                                <SplineDoubleKeyFrame KeyTime="0:0:0.25" Value="35" KeySpline="0.5,0,0.5,1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </controls:TwoStateButton.Resources>
+                </controls:TwoStateButton>
+
+            </Grid>
+		</DataTemplate>
+		<Storyboard x:Key="Storyboard2">
+			<Rotation3DAnimationUsingKeyFrames Storyboard.TargetProperty="(Visual3D.Transform).(Transform3DGroup.Children)[2].(RotateTransform3D.Rotation)" Storyboard.TargetName="viewport2DVisual3D">
+				<EasingRotation3DKeyFrame KeyTime="0">
+					<EasingRotation3DKeyFrame.Value>
+						<AxisAngleRotation3D Axis="0,1,0" Angle="90"/>
+					</EasingRotation3DKeyFrame.Value>
+				</EasingRotation3DKeyFrame>
+				<SplineRotation3DKeyFrame KeyTime="0:0:1" KeySpline="0,1,1,1">
+					<SplineRotation3DKeyFrame.Value>
+						<AxisAngleRotation3D Axis="0,1,0" Angle="0"/>
+					</SplineRotation3DKeyFrame.Value>
+				</SplineRotation3DKeyFrame>
+			</Rotation3DAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Visual3D.Transform).(Transform3DGroup.Children)[4].(TranslateTransform3D.OffsetZ)" Storyboard.TargetName="viewport2DVisual3D">
+				<EasingDoubleKeyFrame KeyTime="0" Value="-3"/>
+				<SplineDoubleKeyFrame KeyTime="0:0:1" Value="0" KeySpline="0,1,1,1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Style x:Key="ListBoxItemStyle1" TargetType="{x:Type ListBoxItem}">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+			<Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+			<Setter Property="Padding" Value="2,0,0,0"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ListBoxItem}">
+						<Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsSelected" Value="true">
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+							</Trigger>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="IsSelected" Value="true"/>
+									<Condition Property="Selector.IsSelectionActive" Value="false"/>
+								</MultiTrigger.Conditions>
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+							</MultiTrigger>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="TwoStateButtonStyle1" TargetType="{x:Type controls:TwoStateButton}">
+			<Setter Property="FocusVisualStyle">
+				<Setter.Value>
+					<Style>
+						<Setter Property="Control.Template">
+							<Setter.Value>
+								<ControlTemplate>
+									<Rectangle Margin="2" SnapsToDevicePixels="True" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+								</ControlTemplate>
+							</Setter.Value>
+						</Setter>
+					</Style>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Background" Value="#3E000000"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource mainforegroundbrushkey}"/>
+			<Setter Property="Foreground" Value="{DynamicResource mainforegroundbrushkey}"/>
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type controls:TwoStateButton}">
+						<Grid x:Name="grid" RenderTransformOrigin="0.5,0.5">
+							<Grid.RenderTransform>
+								<TransformGroup>
+									<ScaleTransform/>
+									<SkewTransform/>
+									<RotateTransform/>
+									<TranslateTransform/>
+								</TransformGroup>
+							</Grid.RenderTransform>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="Looks">
+									<VisualState x:Name="StateB">
+										<Storyboard>
+											<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="grid">
+												<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="180"/>
+											</DoubleAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="StateA">
+                                        <Storyboard>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="grid">
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+								</VisualStateGroup>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed"/>
+									<VisualState x:Name="Disabled"/>
+								</VisualStateGroup>
+								<VisualStateGroup x:Name="FocusStates">
+									<VisualState x:Name="Focused"/>
+								</VisualStateGroup>
+								<VisualStateGroup x:Name="ValidationStates">
+									<VisualState x:Name="InvalidFocused"/>
+									<VisualState x:Name="InvalidUnfocused"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Ellipse x:Name="ellipse" Fill="#7E000000" HorizontalAlignment="Stretch" Height="Auto" Margin="0" Stroke="{DynamicResource mainforegroundbrushkey}" VerticalAlignment="Stretch" StrokeThickness="1"/>
+							<TextBlock HorizontalAlignment="Center"  Margin="0" TextWrapping="Wrap" Text="^" VerticalAlignment="Center" Width="auto" FontFamily="Segoe UI Bold" FontSize="14" FontWeight="Bold" Foreground="{DynamicResource mainforegroundbrushkey}"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Fill" TargetName="ellipse" Value="#7EFFFFFF"/>
+							</Trigger>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<!--<Storyboard x:Key="DeactivationStoryboard">
+			<Rotation3DAnimationUsingKeyFrames Storyboard.TargetProperty="(Visual3D.Transform).(Transform3DGroup.Children)[2].(RotateTransform3D.Rotation)" Storyboard.TargetName="viewport2DVisual3D">
+				<EasingRotation3DKeyFrame KeyTime="0">
+					<EasingRotation3DKeyFrame.Value>
+						<AxisAngleRotation3D Axis="0,1,0" Angle="0"/>
+					</EasingRotation3DKeyFrame.Value>
+				</EasingRotation3DKeyFrame>
+				<SplineRotation3DKeyFrame KeyTime="0:0:0.3" KeySpline="0.5,0,0.5,0.99">
+					<SplineRotation3DKeyFrame.Value>
+						<AxisAngleRotation3D Axis="0,-1,0" Angle="90"/>
+					</SplineRotation3DKeyFrame.Value>
+				</SplineRotation3DKeyFrame>
+			</Rotation3DAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Visual3D.Transform).(Transform3DGroup.Children)[4].(TranslateTransform3D.OffsetZ)" Storyboard.TargetName="viewport2DVisual3D">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="-3" KeySpline="0.5,0,0.5,1"/>
+			</DoubleAnimationUsingKeyFrames>
+			
+		</Storyboard>-->
+	</UserControl.Resources>
+	<!--<UserControl.Triggers>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource Storyboard2}"/>
+		</EventTrigger>
+	</UserControl.Triggers>-->
+	<UserControl.RenderTransform>
+		<TransformGroup>
+			<ScaleTransform/>
+			<SkewTransform AngleY="0"/>
+			<RotateTransform/>
+			<TranslateTransform/>
+		</TransformGroup>
+	</UserControl.RenderTransform>
+	<Grid Background="{DynamicResource columnworkspacebackgroundbrushkey}" MaxHeight="575" MinHeight="575" HorizontalAlignment="Center" VerticalAlignment="Center" UseLayoutRounding="True">
+		<Grid.RowDefinitions>
+			<RowDefinition x:Name="toprow" Height="*"/>
+            <RowDefinition x:Name="splitter" Height="5" />
+			<RowDefinition x:Name="bottomrow" MinHeight="300" Height="*"/>
+		</Grid.RowDefinitions>
+		<ContentControl Content="{Binding MainContent}" />
+        <GridSplitter Grid.Row="1" Width="auto" Height="5" HorizontalAlignment="Stretch" Background="#7E000000"></GridSplitter>
+		<TabControl Width="340"  Grid.Row="2"  VerticalAlignment="Stretch" SelectedItem="{Binding Selected}"  ItemsSource="{Binding SecondaryContent}"  Style="{DynamicResource ProfileTabControlStyle}" ItemContainerStyle="{DynamicResource SlickTabItemStyle}" Background="{x:Null}" ItemTemplate="{DynamicResource TabItemDataTemplate}" ContentTemplate="{DynamicResource TabControlContentDataTemplate}" BorderBrush="{x:Null}"/>		
+		<!--<Viewport3D x:Name="threed" >
+			<Viewport3D.Camera>
+				<PerspectiveCamera Position="0,0,7.65" LookDirection="0,0,-1"  />
+			</Viewport3D.Camera>
+			<ModelVisual3D>
+				<ModelVisual3D.Content>
+					<DirectionalLight></DirectionalLight>
+				</ModelVisual3D.Content>
+			</ModelVisual3D>
+			<Viewport2DVisual3D   x:Name="viewport2DVisual3D" >
+				<Viewport2DVisual3D.Transform>
+					<Transform3DGroup>
+						<TranslateTransform3D OffsetZ="0" OffsetX="0" OffsetY="5.5"/>
+						<ScaleTransform3D ScaleZ="1" ScaleY="1" ScaleX="1"/>
+						<RotateTransform3D d:EulerAngles="0,0,0">
+							<RotateTransform3D.Rotation>
+								<AxisAngleRotation3D Axis="0,1,0" Angle="0"/>
+							</RotateTransform3D.Rotation>
+						</RotateTransform3D>
+						<TranslateTransform3D OffsetZ="0" OffsetX="0" OffsetY="-5.5"/>
+						<TranslateTransform3D OffsetZ="0" OffsetX="0" OffsetY="0"/>
+					</Transform3DGroup>
+				</Viewport2DVisual3D.Transform>
+
+				<Viewport2DVisual3D.Geometry>
+					<MeshGeometry3D  Positions="-3.2,-5.4,0 -3.2,5.4,0 3.2,-5.4,0 3.2,5.4,0"
+TriangleIndices="0,2,1 2,3,1"
+TextureCoordinates="0,1 0,0 1,1 1,0"></MeshGeometry3D>
+				</Viewport2DVisual3D.Geometry>
+				<Viewport2DVisual3D.Material>
+					<DiffuseMaterial   >
+                        <DiffuseMaterial.Brush>
+                            <VisualBrush Visual="{Binding ElementName=panel}" AutoLayoutContent="False"></VisualBrush>
+                        </DiffuseMaterial.Brush>
+                    </DiffuseMaterial>
+				</Viewport2DVisual3D.Material>
+				<Viewport2DVisual3D.Visual >
+					<WrapPanel Orientation="Vertical" ClipToBounds="True" HorizontalAlignment="Center" VerticalAlignment="Center" UseLayoutRounding="True" Background="#3E000000">
+
+		<ContentControl Content="{Binding MainContent}" />
+        <controls:SlideInTabControl Width="335"  Height="380" VerticalAlignment="Top" SelectedItem="{Binding Selected}" Grid.Row="1" ItemsSource="{Binding SecondaryContent}"  Style="{DynamicResource SlickTabControlStyle}" ItemContainerStyle="{DynamicResource SlickTabItemStyle}" Background="{x:Null}" ItemTemplate="{DynamicResource TabItemDataTemplate}" ContentTemplate="{DynamicResource TabControlContentDataTemplate}">
+        </controls:SlideInTabControl>
+		
+		</WrapPanel>
+				</Viewport2DVisual3D.Visual>
+			</Viewport2DVisual3D>
+		</Viewport3D>-->
+		<!--<ContentControl MinHeight="200" Content="{Binding MainContent}" >
+        </ContentControl>
+        <controls:SlideInTabControl  SelectedItem="{Binding Selected}" Grid.Row="1" ItemsSource="{Binding SecondaryContent}"  Style="{DynamicResource SlickTabControlStyle}" Height="300" ItemContainerStyle="{DynamicResource SlickTabItemStyle}" Background="{x:Null}" ItemTemplate="{DynamicResource TabItemDataTemplate}" ContentTemplate="{DynamicResource TabControlContentDataTemplate}">
+        </controls:SlideInTabControl>-->
+	</Grid>
+</UserControl>

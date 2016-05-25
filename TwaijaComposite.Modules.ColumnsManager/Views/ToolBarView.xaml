@@ -1,0 +1,184 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="TwaijaComposite.Modules.ColumnsManager.Views.ToolBarView"
+             HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600">
+    <UserControl.Resources>
+    	<SolidColorBrush x:Key="Brush1" Color="White"/>
+        <Style x:Key="Enlarge" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    	<ControlTemplate.Resources>
+                    		<Storyboard x:Key="Storyboard1">
+                    			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.FontSize)" Storyboard.TargetName="Border">
+                    				<SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="18" KeySpline="0.5,0,0.5,1"/>
+                    			</DoubleAnimationUsingKeyFrames>
+                    		</Storyboard>
+                    		<Storyboard x:Key="Storyboard2">
+                    			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.FontSize)" Storyboard.TargetName="Border">
+                    				<SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="14" KeySpline="0.5,0,0.5,1"/>
+                    			</DoubleAnimationUsingKeyFrames>
+                    		</Storyboard>
+                    	</ControlTemplate.Resources>
+                        <Border x:Name="Border" BorderThickness="2" CornerRadius="3" Padding="1" RenderTransformOrigin="0.5,0.5" >
+                        	<Border.RenderTransform>
+                        		<TransformGroup>
+                        			<ScaleTransform/>
+                        			<SkewTransform/>
+                        			<RotateTransform/>
+                        			<TranslateTransform/>
+                        		</TransformGroup>
+                        	</Border.RenderTransform>
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                            	<Trigger.ExitActions>
+                            		<BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                            	</Trigger.ExitActions>
+                            	<Trigger.EnterActions>
+                            		<BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            	</Trigger.EnterActions>
+                                <!--<Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource HoverBorderBrush}"/>-->
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <!--<Setter TargetName="Border" Property="Background" Value="{StaticResource SelectedBackgroundBrush}"/>-->
+                                <Setter TargetName="Border" Property="TextBlock.Foreground" Value="{StaticResource Brush1}"/>
+                                <Setter Property="Background" TargetName="Border" Value="{x:Null}"/>
+                                <Setter Property="BorderBrush" TargetName="Border" Value="{x:Null}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    	<Style x:Key="TextBoxStyle1" BasedOn="{x:Null}" TargetType="{x:Type TextBox}">
+    		<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+    		<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+    		<Setter Property="BorderBrush" Value="{StaticResource TextBoxBorder}"/>
+    		<Setter Property="BorderThickness" Value="1"/>
+    		<Setter Property="Padding" Value="1"/>
+    		<Setter Property="AllowDrop" Value="true"/>
+    		<Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+    		<Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+    		<Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+    		<Setter Property="Template">
+    			<Setter.Value>
+    				<ControlTemplate TargetType="{x:Type TextBox}">
+    					<Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"   SnapsToDevicePixels="true">
+    						<ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+    					</Border>
+    					<ControlTemplate.Triggers>
+    						<Trigger Property="IsEnabled" Value="false">
+    							<Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+    							<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+    						</Trigger>
+    					</ControlTemplate.Triggers>
+    				</ControlTemplate>
+    			</Setter.Value>
+    		</Setter>
+    	</Style>
+    	<Style x:Key="ButtonFocusVisual">
+    		<Setter Property="Control.Template">
+    			<Setter.Value>
+    				<ControlTemplate>
+    					<Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="Black" StrokeThickness="1" StrokeDashArray="1 2"/>
+    				</ControlTemplate>
+    			</Setter.Value>
+    		</Setter>
+    	</Style>
+    	<LinearGradientBrush x:Key="ButtonNormalBackground" EndPoint="0,1" StartPoint="0,0">
+    		<GradientStop Color="#F3F3F3" Offset="0"/>
+    		<GradientStop Color="#EBEBEB" Offset="0.5"/>
+    		<GradientStop Color="#DDDDDD" Offset="0.5"/>
+    		<GradientStop Color="#CDCDCD" Offset="1"/>
+    	</LinearGradientBrush>
+    	<SolidColorBrush x:Key="ButtonNormalBorder" Color="#FF707070"/>
+    	<Style x:Key="SearchButtonStyle" TargetType="{x:Type Button}">
+    		<Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+    		<Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
+    		<Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
+    		<Setter Property="BorderThickness" Value="1"/>
+    		<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+    		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+    		<Setter Property="VerticalContentAlignment" Value="Center"/>
+    		<Setter Property="Padding" Value="1"/>
+    		<Setter Property="Template">
+    			<Setter.Value>
+    				<ControlTemplate TargetType="{x:Type Button}">
+    					<Grid Background="White">
+    						<Path Stretch="Fill" Name="path2995">
+    							<Path.Fill>
+    								<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+    									<GradientStop Color="#FF11E011" Offset="0"/>
+    									<GradientStop Color="#FF24A824" Offset="1"/>
+    								</LinearGradientBrush>
+    							</Path.Fill><Path.Data><PathGeometry Figures="m -1.3620071e-6 256 0 -256.00000037275987 256.0000013620071 0 256 0 L 512 256 l 0 256 -256 0 -256.0000013620071 0 0 -256 z M 128.39507 420.84661 c 2.63969 -1.3157 21.87257 -19.76849 53.88177 -51.69631 C 232.94126 318.61467 237 314.01159 237 307.088 c 0 -1.65191 1.59016 -4.13374 4.61858 -7.20839 l 4.61857 -4.68908 9.59013 4.92716 c 54.06946 27.77949 119.31245 8.53556 149.57286 -44.11769 5.18748 -9.02623 8.67058 -17.60378 11.77609 -29 2.04383 -7.50022 2.31052 -10.676 2.26733 -27 -0.0446 -16.873 -0.28615 -19.3774 -2.74611 -28.47652 -9.79051 -36.21399 -37.78006 -66.11432 -73.19745 -78.194464 -9.37471 -3.19753 -27.18962 -6.32902 -36.00548 -6.32902 -9.05633 0 -25.63071 2.97445 -35.98051 6.45708 -43.80953 14.741584 -74.17838 55.229674 -76.23139 101.632544 -1.08441 24.51022 4.86646 46.27723 18.38613 67.25252 l 4.41012 6.84215 -4.40786 4.40785 c -2.70734 2.70735 -5.32664 4.41633 -6.78943 4.42982 -6.91249 0.0638 -10.66989 3.37461 -61.03616 53.78246 -34.03886 34.06697 -50.340422 51.07228 -51.83542 54.07318 -4.471712 8.97606 -3.485238 19.87735 2.510011 27.73752 2.817296 3.69367 9.915649 8.23345 14.811969 9.47307 4.54706 1.15119 12.29945 0.13276 17.06309 -2.24158 z M 301.5 274.31606 c -41.5538 -3.61732 -73.12369 -42.41358 -67.54617 -83.00751 2.67571 -19.47413 11.72761 -36.21292 25.91851 -47.92855 12.74794 -10.52437 27.24337 -16.19965 43.66855 -17.0972 53.16106 -2.90498 91.5192 48.49213 73.9202 99.04767 -9.50008 27.29028 -35.85161 46.9791 -65.46109 48.90993 -3.575 0.23313 -8.3 0.26717 -10.5 0.0757 z" FillRule="NonZero"/></Path.Data></Path>
+						</Grid>
+    					<ControlTemplate.Triggers>
+    						<Trigger Property="IsMouseOver" Value="True">
+    							<Setter Property="Opacity" TargetName="path2995" Value="0.5"/>
+    						</Trigger>
+    						<Trigger Property="IsKeyboardFocused" Value="true"/>
+    						<Trigger Property="ToggleButton.IsChecked" Value="true"/>
+    						<Trigger Property="IsEnabled" Value="false">
+    							<Setter Property="Foreground" Value="#ADADAD"/>
+    						</Trigger>
+    					</ControlTemplate.Triggers>
+    				</ControlTemplate>
+    			</Setter.Value>
+    		</Setter>
+    	</Style>
+    </UserControl.Resources>
+    <Grid Background="Transparent" Height="auto" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ListBox Background="{x:Null}" ItemContainerStyle="{StaticResource Enlarge}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Commands}" BorderBrush="Transparent" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalAlignment="Stretch">
+        	<!--<ListBox.Background>
+        		<LinearGradientBrush EndPoint="0.947,1.01" StartPoint="0.061,1.007">
+        			<GradientStop Color="#80292929"/>
+        			<GradientStop Offset="0.5"/>
+        			<GradientStop Color="#80292929" Offset="1"/>
+        		</LinearGradientBrush>
+        	</ListBox.Background>-->
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                	<Button Command="{Binding BindsDirectlyToSource=true}">
+                		<Button.Style>
+                			<Style TargetType="{x:Type Button}">
+                				<Setter Property="Template">                					        				
+								<Setter.Value>
+                			<ControlTemplate TargetType="{x:Type Button}">
+                				<ContentPresenter />         			
+							</ControlTemplate> </Setter.Value></Setter></Style></Button.Style>
+                        <TextBlock x:Name="textBlock" Text="{Binding Hint}" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="{DynamicResource mainforegroundbrushkey}"/>
+                </Button>
+                	<DataTemplate.Triggers>
+                		<Trigger Property="IsMouseOver" Value="True" SourceName="textBlock">
+                            <Setter Property="Foreground" TargetName="textBlock" Value="{DynamicResource mainforegroundbrushkey}"/>
+                		</Trigger>
+                	</DataTemplate.Triggers>
+				</DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <DockPanel Grid.Column="1" HorizontalAlignment="Right" >
+            <ComboBox SelectedItem="{Binding SearchConsole.SelectedType}" ItemsSource="{Binding SearchConsole.SearchTypes}" Margin="5"  Width="100" Style="{DynamicResource SlickComboboxStyle}"/>
+			<StackPanel Orientation="Horizontal" Background="#651D1D1D">
+            <TextBox Foreground="{DynamicResource mainforegroundbrushkey}" VerticalAlignment="Center" Text="{Binding SearchConsole.Text}" Margin="0" Width="100" Background="{x:Null}" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{x:Null}"/>
+            <Button Cursor="Hand" Command="{Binding SearchConsole.SearchCommand}" Foreground="{DynamicResource mainforegroundbrushkey}" Margin="5,2" Width="25" Height="25" Background="{x:Null}" Style="{DynamicResource SearchButtonStyle}" />
+			</StackPanel>
+        </DockPanel>
+    </Grid>
+</UserControl>

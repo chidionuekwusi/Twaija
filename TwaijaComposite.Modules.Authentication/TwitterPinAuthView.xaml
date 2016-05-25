@@ -1,0 +1,32 @@
+﻿<UserControl xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" xmlns:ee="http://schemas.microsoft.com/expression/2010/effects" xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Name="userControl" x:Class="TwaijaComposite.Modules.Authentication.TwitterPinAuthView" 
+             mc:Ignorable="d" Height="auto" Width="280" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+             d:DesignHeight="300" d:DesignWidth="300" RenderTransformOrigin="0.5,0.5">
+	<UserControl.Resources>
+		<LinearGradientBrush x:Key="TextBoxBorder" EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+			<GradientStop Color="#ABADB3" Offset="0.05"/>
+			<GradientStop Color="#E2E3EA" Offset="0.07"/>
+			<GradientStop Color="#E3E9EF" Offset="1"/>
+		</LinearGradientBrush>
+	</UserControl.Resources>	
+    <Border CornerRadius="5" BorderThickness="1">
+        <Grid x:Name="grid" Margin="5" TextBlock.FontFamily="Segoe WP">
+            <Grid.RowDefinitions>
+            	<RowDefinition Height="auto"/>
+            	<RowDefinition Height="auto"/>
+            	<RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock  FontSize="18" Foreground="#FF680034" FontFamily="Segoe WP Light" FontWeight="Bold"><Run Text="Pin"/></TextBlock>
+        	<TextBox   Grid.Row="1" BorderBrush="{x:Null}" BorderThickness="2" Height="30" FontSize="15" VerticalAlignment="Top" Text="{Binding Pin, Mode=OneWayToSource,TargetNullValue={x:Static sys:String.Empty}}" Style="{DynamicResource PinTextBoxStyle}" Background="#FF680034" Foreground="{DynamicResource LightGrayHiglightBrush}" FontFamily="Segoe UI Light">
+				</TextBox>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Margin="3,3,3,0" Command="{Binding BuildAuthenticationUri}" Content="GO"    Style="{DynamicResource PurpleTextButtonStyle}" Height="20"  />
+                <Button Margin="3,3,3,0" Command="{Binding CompleteAuthenticationCommand}" Content="SEND" Style="{DynamicResource PurpleTextButtonStyle}" Height="20" />
+        </StackPanel>
+    </Grid>
+    </Border>
+</UserControl>

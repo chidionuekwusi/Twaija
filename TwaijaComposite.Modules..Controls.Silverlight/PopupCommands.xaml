@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="TwaijaComposite.Modules.Controls.PopupCommands"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    <UserControl.Resources>
+        <DataTemplate x:Key="DataTemplateCommand">
+            <Button Click="Button_Click" Command="{Binding BindsDirectlyToSource=True}" Cursor="Hand">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter  />
+                    </ControlTemplate>
+                </Button.Template>
+                <TextBlock Text="{Binding Hint}" Margin="2" TextAlignment="Center"  FontFamily="Segoe UI" FontWeight="Thin"/>
+            </Button>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown" Cursor="Hand">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="CommonStates">
+                <VisualState x:Name="Normal">
+                    <Storyboard FillBehavior="HoldEnd">
+                        <ColorAnimation Storyboard.TargetName="path" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" To="#6E000000" Duration="0:0:0.2"></ColorAnimation>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="MouseOver">
+                    <Storyboard>
+                        <ColorAnimation Storyboard.TargetName="path" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" To="#6EFFFFFF" Duration="0:0:0.2"></ColorAnimation>
+                     </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Pressed">
+                    <Storyboard>
+                        <ColorAnimation Storyboard.TargetName="path" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" To="#30000000" Duration="0:0:0.2"></ColorAnimation>
+                        <ColorAnimation Storyboard.TargetName="rect" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" To="Black" Duration="0:0:0.2"></ColorAnimation>
+                        <ColorAnimation Storyboard.TargetName="rect" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" To="Black" Duration="0:0:0.2"></ColorAnimation>
+                        <ColorAnimation Storyboard.TargetName="path" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" To="Black" Duration="0:0:0.2"></ColorAnimation>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Popup x:Name="popup" HorizontalAlignment="Left"  HorizontalOffset="-93" VerticalOffset="18">
+        	<Border BorderThickness="2" CornerRadius="2" BorderBrush="#33000000">
+                <ListBox Name="listbox" Width="100"  ItemsSource="{Binding Commands}" HorizontalContentAlignment="Center" Background="{StaticResource mainbackgroundbrushkey}" FontFamily="Segoe UI" FontWeight="Thin"  FontSize="11" BorderBrush="#61000000" BorderThickness="1" Foreground="{StaticResource mainforegroundbrushkey}" ItemTemplate="{StaticResource DataTemplateCommand}" />
+</Border>        </Popup>
+        <Rectangle Stroke="Transparent" RadiusX="3" Name="rect" RadiusY="3" Fill="#10000000" Opacity="0.3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Rectangle>
+        <Path x:Name="path" HorizontalAlignment="Stretch" Margin="0" Data="m 7.4716983 24.627441 c 0 -1.220611 -0.608898 -1.455584 -2.525436 -0.974564 -2.301421 0.57762 -2.469212 0.409829 -1.891592 -1.891592 0.48102 -1.916538 0.246047 -2.525436 -0.974564 -2.525436 -0.884625 0 -1.60840802 -0.675 -1.60840802 -1.5 0 -0.825 0.70328602 -1.5 1.56285802 -1.5 1.046774 0 1.459547 -0.742991 1.25 -2.25 -0.254379 -1.829432 0.10771 -2.191521 1.937142 -1.937142 1.507009 0.209547 2.25 -0.203226 2.25 -1.25 0 -0.8595717 0.675 -1.5628579 1.5 -1.5628579 0.825 0 1.4999997 0.7032862 1.4999997 1.5628579 0 1.046774 0.742991 1.459547 2.25 1.25 1.829432 -0.254379 2.191521 0.10771 1.937142 1.937142 -0.209547 1.507009 0.203226 2.25 1.25 2.25 0.859572 0 1.562858 0.675 1.562858 1.5 0 0.825 -0.723784 1.5 -1.608408 1.5 -1.220611 0 -1.455584 0.608898 -0.974564 2.525436 0.57762 2.301421 0.409829 2.469212 -1.891592 1.891592 -1.916538 -0.48102 -2.525436 -0.246047 -2.525436 0.974564 0 0.884624 -0.6749997 1.608408 -1.4999997 1.608408 -0.825 0 -1.5 -0.723784 -1.5 -1.608408 z m 3.9999997 -6.891592 c 0 -2 -0.5 -2.5 -2.4999997 -2.5 -2 0 -2.5 0.5 -2.5 2.5 0 2 0.5 2.5 2.5 2.5 1.9999997 0 2.4999997 -0.5 2.4999997 -2.5 z m 5.875 -4.8 c -0.06875 -0.385 -0.18125 -1.2625 -0.25 -1.95 -0.06875 -0.6875 -0.6875 -1.3062499 -1.375 -1.3749999 -2.49304 -0.249304 -2.630751 -0.3942489 -1.473794 -1.5512064 0.858922 -0.8589215 0.879843 -1.5333034 0.07756 -2.5 -1.094453 -1.3187298 -0.977147 -1.4614555 1.396234 -1.6987936 0.6875 -0.06875 1.30625 -0.6875 1.375 -1.375 0.237338 -2.37338054 0.380064 -2.49068684 1.698794 -1.3962383 0.966696 0.8022869 1.641078 0.7813662 2.5 -0.077555 1.156957 -1.15695754 1.301902 -1.01924614 1.551206 1.4737936 0.06875 0.6875 0.6875 1.30625 1.375 1.375 2.373381 0.2373381 2.490687 0.3800638 1.396238 1.6987936 -0.802287 0.9666966 -0.781366 1.6410785 0.07756 2.5 1.156953 1.1569575 1.019242 1.3019024 -1.473798 1.5512064 -0.6875 0.06875 -1.30625 0.6874996 -1.375 1.3749996 -0.237338 2.373381 -0.380064 2.490687 -1.698794 1.396238 -0.966696 -0.802287 -1.641078 -0.781366 -2.5 0.07756 -0.646913 0.646909 -1.232456 0.861202 -1.301206 0.476202 z M 21.35135 5.5908392 C 20.479919 4.5408283 19.876699 4.4847649 18.826688 5.3561966 17.776677 6.2276283 17.720614 6.830848 18.592046 7.880859 c 0.871431 1.0500109 1.474651 1.1060743 2.524662 0.2346426 1.050011 -0.8714317 1.106074 -1.4746514 0.234642 -2.5246624 z"  VerticalAlignment="Stretch" Fill="#6E000000" Stroke="Black" Height="16.236" Stretch="Fill" Width="16.23"/>
+    </Grid>
+</UserControl>

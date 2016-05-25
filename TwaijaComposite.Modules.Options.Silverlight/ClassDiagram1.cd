@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TwaijaComposite.Modules.Options.OptionsModule" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAQAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\OptionsModule.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.LayoutViewmodel" Collapsed="true">
+    <Position X="21.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAEAAAAAAACAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\LayoutViewmodel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Viewmodels.EditableUserFactoryRepository" Collapsed="true">
+    <Position X="21.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\AccountViewmodel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Viewmodels.TwitterEditableUser" BaseTypeListCollapsed="true">
+    <Position X="17.25" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQBIAAAhAAgQAAEgBIAAIQgAAABIBAAACAABAAEAAQ=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\AccountViewmodel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Viewmodels.TwitterEditableUserFactory" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\AccountViewmodel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Viewmodels.AccountViewmodel" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BAIAACAQQAAAAQIAgIAABIAgAIAAIIAAAIAAAAQAAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\AccountViewmodel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.138" Collapsed="true" />
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Viewmodels.AppearanceViewmodel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\AppearanceViewmodel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Viewmodels.GeneralViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAQAABAAAAAAwAAAAAAQgAAAAAAABAAgAAAAAAAAQA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\GeneralOptionsViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Viewmodels.NotificationsViewmodel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\NotificationsViewmodel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Viewmodels.ServicesViewmodel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\ServicesViewmodel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Viewmodels.TwitterOptionsViewmodel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAQAAAASAAAAQAAAAAAgAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\TwitterOptionsViewmodel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Views.AccountsView" Collapsed="true">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Views\AccountsView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Views.AppearanceView" Collapsed="true">
+    <Position X="17.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Views\AppearanceView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Views.GeneralView" Collapsed="true">
+    <Position X="14.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Views\GeneralView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Views.HeaderConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Layout.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Views.Layout" Collapsed="true">
+    <Position X="19.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Views\Layout.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Views.NotificationsView" Collapsed="true">
+    <Position X="14.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Views\NotificationsView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Views.ServicesView" Collapsed="true">
+    <Position X="19.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Views\ServicesView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Views.TwitterOptionsView" Collapsed="true">
+    <Position X="17.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Views\TwitterOptionsView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwaijaComposite.Modules.Options.Views.UserTemplate" Collapsed="true">
+    <Position X="21.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\UserTemplate.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TwaijaComposite.Modules.Options.IHeader" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\IHeader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TwaijaComposite.Modules.Options.Viewmodels.IEditableUser">
+    <Position X="14.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAgAAAAAAAAAAAIAAAAAAABAAEAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\AccountViewmodel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TwaijaComposite.Modules.Options.Viewmodels.IEditableUserFactory">
+    <Position X="16" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\AccountViewmodel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TwaijaComposite.Modules.Options.Viewmodels.IAccountViewmodel" Collapsed="true">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\IAccountViewmodel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TwaijaComposite.Modules.Options.Viewmodels.IAppearanceViewmodel" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\IAppearanceViewmodel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TwaijaComposite.Modules.Options.Viewmodels.IGeneralViewmodel" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\IGeneralViewmodel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TwaijaComposite.Modules.Options.Viewmodels.INotificationsViewmodel" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\INotificationsViewmodel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TwaijaComposite.Modules.Options.Viewmodels.IServicesViewmodel" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\IServicesViewmodel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TwaijaComposite.Modules.Options.Viewmodels.ITwitterOptionsViewmodel" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Onuekwusi Chidi\Desktop\TwaijaComposite\TwaijaComposite.Modules.Options\ViewModels\ITwitterOptionsViewmodel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

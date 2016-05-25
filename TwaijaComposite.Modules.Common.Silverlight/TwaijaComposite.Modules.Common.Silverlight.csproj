@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2019E2D8-7138-4AA0-B2EA-CA6DF64B1733}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TwaijaComposite.Modules.Common</RootNamespace>
+    <AssemblyName>TwaijaComposite.Modules.Common.Silverlight</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <TargetFrameworkProfile />
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.1.20402.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Drawing" />
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\Prism\Silverlight\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity">
+      <HintPath>..\Prism\Silverlight\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.UnityExtensions">
+      <HintPath>..\Prism\Silverlight\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.Unity.Silverlight">
+      <HintPath>..\Prism\Silverlight\Microsoft.Practices.Unity.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Controls, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Xml.Serialization, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Xml.Serialization.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\TwaijaComposite.Modules.Common\AggregateMessage.cs">
+      <Link>AggregateMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\AttributeTypes\FollowerPropertyLocatorAttribute.cs">
+      <Link>AttributeTypes\FollowerPropertyLocatorAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\AttributeTypes\FriendPropertyLocatorAttribute.cs">
+      <Link>AttributeTypes\FriendPropertyLocatorAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\AttributeTypes\IPropertyLocator.cs">
+      <Link>AttributeTypes\IPropertyLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\AttributeTypes\IWindow.cs">
+      <Link>AttributeTypes\IWindow.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\AttributeTypes\MethodImplemented.cs">
+      <Link>AttributeTypes\MethodImplemented.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\AttributeTypes\ScreenNamePropertyLocatorAttribute.cs">
+      <Link>AttributeTypes\ScreenNamePropertyLocatorAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\AttributeTypes\TextPropertyLocatorAttribute.cs">
+      <Link>AttributeTypes\TextPropertyLocatorAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Behaviors\AnimationBehaviors.cs">
+      <Link>Behaviors\AnimationBehaviors.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Behaviors\DialogActivationBehavior.cs">
+      <Link>Behaviors\DialogActivationBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Behaviors\DockBehaviors.cs">
+      <Link>Behaviors\DockBehaviors.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Behaviors\ExpansionBehavior.cs">
+      <Link>Behaviors\ExpansionBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Behaviors\NotificationActivationBehavior.cs">
+      <Link>Behaviors\NotificationActivationBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Behaviors\RegionAdapterLocator.cs">
+      <Link>Behaviors\RegionAdapterLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Behaviors\RegionPopupBehaviors.cs">
+      <Link>Behaviors\RegionPopupBehaviors.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Behaviors\ReturnCommandBehavior.cs">
+      <Link>Behaviors\ReturnCommandBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Behaviors\ReturnKey.cs">
+      <Link>Behaviors\ReturnKey.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Behaviors\WebBrowserBehaviours.cs">
+      <Link>Behaviors\WebBrowserBehaviours.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Behaviors\WebBrowserSourceUpdatedBehavior.cs">
+      <Link>Behaviors\WebBrowserSourceUpdatedBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\ButtonPathConverter.cs">
+      <Link>ButtonPathConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\ColumnParser.cs">
+      <Link>ColumnParser.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\CreateColumnCommandHelperBase.cs">
+      <Link>Commands\CreateColumnCommandHelperBase.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\CreateConversationCommandHelper.cs">
+      <Link>Commands\CreateConversationCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\CreateDirectMessagesCommandHelper.cs">
+      <Link>Commands\CreateDirectMessagesCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\CreateFavouritesCommandHelper.cs">
+      <Link>Commands\CreateFavouritesCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\CreateFollowersCommandHelper.cs">
+      <Link>Commands\CreateFollowersCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\CreateFriendsCommandHelper.cs">
+      <Link>Commands\CreateFriendsCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\CreateHomeTimelineCommand.cs">
+      <Link>Commands\CreateHomeTimelineCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\CreateMentionsCommandHelper.cs">
+      <Link>Commands\CreateMentionsCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\CreateTwitterProfileCommandHelper.cs">
+      <Link>Commands\CreateTwitterProfileCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\CreateUserSearchCommandHelper.cs">
+      <Link>Commands\CreateUserSearchCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\Factories\CommandFactories.cs">
+      <Link>Commands\Factories\CommandFactories.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\ICommandable.cs">
+      <Link>Commands\ICommandable.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\ICommandExecutor.cs">
+      <Link>Commands\ICommandExecutor.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\ICommandHelper.cs">
+      <Link>Commands\ICommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\ICommands.cs">
+      <Link>Commands\ICommands.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\IconifiedCommand.cs">
+      <Link>Commands\IconifiedCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\INetworkCommandFactory.cs">
+      <Link>Commands\INetworkCommandFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\IRelationshipCheckerCommand.cs">
+      <Link>Commands\IRelationshipCheckerCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\OpenConversationThreadCommand.cs">
+      <Link>Commands\OpenConversationThreadCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\OpenTwitterProfileCommandHelper.cs">
+      <Link>Commands\OpenTwitterProfileCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\ProfileCommandHelperBase.cs">
+      <Link>Commands\ProfileCommandHelperBase.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\StateBasedCommandFactoryEtc.cs">
+      <Link>Commands\StateBasedCommandFactoryEtc.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\TweetSearchCommandHelper.cs">
+      <Link>Commands\TweetSearchCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Commands\UserTimelineCommandHelper.cs">
+      <Link>Commands\UserTimelineCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\CommonModule.cs">
+      <Link>CommonModule.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Converters\BooleanToVisibiltyConverter.cs">
+      <Link>Converters\BooleanToVisibiltyConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Converters\RandomColorConverter.cs">
+      <Link>Converters\RandomColorConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Converters\UIStringConverter.cs">
+      <Link>Converters\UIStringConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DataInterfaces\IFacebookUser.cs">
+      <Link>DataInterfaces\IFacebookUser.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DataInterfaces\IMentionEntity.cs">
+      <Link>DataInterfaces\IMentionEntity.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DataInterfaces\ITrend.cs">
+      <Link>DataInterfaces\ITrend.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DataInterfaces\ITweet.cs">
+      <Link>DataInterfaces\ITweet.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DataInterfaces\ITweetSearchResult.cs">
+      <Link>DataInterfaces\ITweetSearchResult.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DataInterfaces\ITwitterDirectMessage.cs">
+      <Link>DataInterfaces\ITwitterDirectMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DataInterfaces\ITwitterProfile_Large.cs">
+      <Link>DataInterfaces\ITwitterProfile_Large.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DataInterfaces\ITwitterProfile_Small.cs">
+      <Link>DataInterfaces\ITwitterProfile_Small.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DataInterfaces\ITwitterUser.cs">
+      <Link>DataInterfaces\ITwitterUser.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DataInterfaces\IUrlEntity.cs">
+      <Link>DataInterfaces\IUrlEntity.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DataInterfaces\IUser.cs">
+      <Link>DataInterfaces\IUser.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DialogTypes\DecisionDialogViewmodel.cs">
+      <Link>DialogTypes\DecisionDialogViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DialogTypes\IClosableContent.cs">
+      <Link>DialogTypes\IClosableContent.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DialogTypes\IDecisionDialogViewmodel.cs">
+      <Link>DialogTypes\IDecisionDialogViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DialogTypes\IOkDialogViewmodel.cs">
+      <Link>DialogTypes\IOkDialogViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DialogTypes\IYesNoDialogViewmodel.cs">
+      <Link>DialogTypes\IYesNoDialogViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DialogTypes\LoadingDialogViewmodel.cs">
+      <Link>DialogTypes\LoadingDialogViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DialogTypes\OkDialogViewmodel.cs">
+      <Link>DialogTypes\OkDialogViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\DialogTypes\YesNoDialogViewmodel.cs">
+      <Link>DialogTypes\YesNoDialogViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Enums\Position.cs">
+      <Link>Enums\Position.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Enums\RequestNavigation.cs">
+      <Link>Enums\RequestNavigation.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Enums\TwitterRelationship.cs">
+      <Link>Enums\TwitterRelationship.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Events\ActivateViewEvent.cs">
+      <Link>Events\ActivateViewEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Events\ApplicationCloseEvent.cs">
+      <Link>Events\ApplicationCloseEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Events\CopyToClipboardEvent.cs">
+      <Link>Events\CopyToClipboardEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Events\CreateColumnEvent.cs">
+      <Link>Events\CreateColumnEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Events\NavigatingEvent.cs">
+      <Link>Events\NavigatingEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Events\OpenProfileEvent.cs">
+      <Link>Events\OpenProfileEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Events\SetClipboardOperationEvent.cs">
+      <Link>Events\SetClipboardOperationEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Events\ShellRequestEvent.cs">
+      <Link>Events\ShellRequestEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Events\UserResolutionDialogEvent.cs">
+      <Link>Events\UserResolutionDialogEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Events\ViewRequestedEvent.cs">
+      <Link>Events\ViewRequestedEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Events\ViewRequestedEventArgs.cs">
+      <Link>Events\ViewRequestedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Exceptions\WrongUserTypeException.cs">
+      <Link>Exceptions\WrongUserTypeException.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\IconLocator.cs">
+      <Link>IconLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\AuthenticationMethods\IAuthenticateMethod.cs">
+      <Link>Interfaces\AuthenticationMethods\IAuthenticateMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\AuthenticationMethods\IPinBuildMethod.cs">
+      <Link>Interfaces\AuthenticationMethods\IPinBuildMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\AuthenticationMethods\IRequestTokenBuilder.cs">
+      <Link>Interfaces\AuthenticationMethods\IRequestTokenBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\Clipboard\IClipboardOperation.cs">
+      <Link>Interfaces\Clipboard\IClipboardOperation.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\Clipboard\IPictureService.cs">
+      <Link>Interfaces\Clipboard\IPictureService.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\Clipboard\IPictureServicesRepository.cs">
+      <Link>Interfaces\Clipboard\IPictureServicesRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\Clipboard\IPostMessageService.cs">
+      <Link>Interfaces\Clipboard\IPostMessageService.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\Clipboard\IPostMessageServiceAware.cs">
+      <Link>Interfaces\Clipboard\IPostMessageServiceAware.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\Clipboard\IPostMessageServiceRepository.cs">
+      <Link>Interfaces\Clipboard\IPostMessageServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\Commands\CommandInterfaces.cs">
+      <Link>Interfaces\Commands\CommandInterfaces.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\GenericObjectRepository.cs">
+      <Link>Interfaces\GenericObjectRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\IColumnResolutionService.cs">
+      <Link>Interfaces\IColumnResolutionService.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\IDialogFacade.cs">
+      <Link>Interfaces\IDialogFacade.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\IDispatcher.cs">
+      <Link>Interfaces\IDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\IHeaderAndContentObject.cs">
+      <Link>Interfaces\IHeaderAndContentObject.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\IManager.cs">
+      <Link>Interfaces\IManager.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\IMessage.cs">
+      <Link>Interfaces\IMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\INavigateAware.cs">
+      <Link>Interfaces\INavigateAware.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\INavigationService.cs">
+      <Link>Interfaces\INavigationService.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\INotifyOnHostEntry.cs">
+      <Link>Interfaces\INotifyOnHostEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\IOptionFileWriterService.cs">
+      <Link>Interfaces\IOptionFileWriterService.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\IRequestWindowPositionEntity.cs">
+      <Link>Interfaces\IRequestWindowPositionEntity.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\ISetable.cs">
+      <Link>Interfaces\ISetable.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\ITheme.cs">
+      <Link>Interfaces\ITheme.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\RequestMethods\IDirectMessageMethod.cs">
+      <Link>Interfaces\RequestMethods\IDirectMessageMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\RequestMethods\IHomeTimelineMethod.cs">
+      <Link>Interfaces\RequestMethods\IHomeTimelineMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\RequestMethods\IMentionsMethod.cs">
+      <Link>Interfaces\RequestMethods\IMentionsMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\RequestMethods\IRequestMethod.cs">
+      <Link>Interfaces\RequestMethods\IRequestMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\RequestMethods\IRetrieveConversationMethod.cs">
+      <Link>Interfaces\RequestMethods\IRetrieveConversationMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\RequestMethods\IRetrieveFavouritesRequestMethod.cs">
+      <Link>Interfaces\RequestMethods\IRetrieveFavouritesRequestMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\RequestMethods\IRetrieveFollowers_Or_Friends_Method.cs">
+      <Link>Interfaces\RequestMethods\IRetrieveFollowers_Or_Friends_Method.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\RequestMethods\IRetrieveTrendsMethod.cs">
+      <Link>Interfaces\RequestMethods\IRetrieveTrendsMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\RequestMethods\IRetrieveTwitterProfile_LargeMethod.cs">
+      <Link>Interfaces\RequestMethods\IRetrieveTwitterProfile_LargeMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\RequestMethods\ITweetSearchMethod.cs">
+      <Link>Interfaces\RequestMethods\ITweetSearchMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\RequestMethods\ITwitterMethod.cs">
+      <Link>Interfaces\RequestMethods\ITwitterMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\RequestMethods\IUserSearchMethod.cs">
+      <Link>Interfaces\RequestMethods\IUserSearchMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Interfaces\RequestMethods\IUserTimlineMethod.cs">
+      <Link>Interfaces\RequestMethods\IUserTimlineMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\ITwitterAccountMethodConsole.cs">
+      <Link>ITwitterAccountMethodConsole.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Manager.cs">
+      <Link>Manager.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\ModelFactoryKeys.Designer.cs">
+      <Link>ModelFactoryKeys.Designer.cs</Link>
+      <DependentUpon>ModelFactoryKeys.resx</DependentUpon>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\NotifiableList.cs">
+      <Link>NotifiableList.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\PictureTray.cs">
+      <Link>PictureTray.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Preferencing\GeneralPreferences.cs">
+      <Link>Preferencing\GeneralPreferences.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Preferencing\Preferences.cs">
+      <Link>Preferencing\Preferences.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Preferencing\UserPreferenceFacade.cs">
+      <Link>Preferencing\UserPreferenceFacade.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Preferencing\UserRepository.cs">
+      <Link>Preferencing\UserRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\PropertyChangedManager.cs">
+      <Link>PropertyChangedManager.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\PropertyChangeReaction.cs">
+      <Link>PropertyChangeReaction.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\RegionNames.cs">
+      <Link>RegionNames.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Resources\ClipboardOperationKeys.Designer.cs">
+      <Link>Resources\ClipboardOperationKeys.Designer.cs</Link>
+      <DependentUpon>ClipboardOperationKeys.resx</DependentUpon>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Resources\ColumnTypeKeys.Designer.cs">
+      <Link>Resources\ColumnTypeKeys.Designer.cs</Link>
+      <DependentUpon>ColumnTypeKeys.resx</DependentUpon>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Resources\CreateColumnEventParameters.Designer.cs">
+      <Link>Resources\CreateColumnEventParameters.Designer.cs</Link>
+      <DependentUpon>CreateColumnEventParameters.resx</DependentUpon>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Resources\InfrastructureResourceLocator.cs">
+      <Link>Resources\InfrastructureResourceLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Resources\ProfileHandlerTypeKeys.Designer.cs">
+      <Link>Resources\ProfileHandlerTypeKeys.Designer.cs</Link>
+      <DependentUpon>ProfileHandlerTypeKeys.resx</DependentUpon>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Services\DialogFacadeImp.cs">
+      <Link>Services\DialogFacadeImp.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Services\DispatcherImp.cs">
+      <Link>Services\DispatcherImp.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Services\FolderNames.cs">
+      <Link>Services\FolderNames.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Services\NavigationServiceImp.cs">
+      <Link>Services\NavigationServiceImp.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Services\OptionFileWriterImp.cs">
+      <Link>Services\OptionFileWriterImp.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Services\PictureServicesRepository.cs">
+      <Link>Services\PictureServicesRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Services\PostMessageServiceRepositoryImp.cs">
+      <Link>Services\PostMessageServiceRepositoryImp.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Services\ServiceNames.cs">
+      <Link>Services\ServiceNames.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Services\TwitterCredentials.cs">
+      <Link>Services\TwitterCredentials.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Services\UserResolutionService.cs">
+      <Link>Services\UserResolutionService.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Services\Utilities.cs">
+      <Link>Services\Utilities.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\Services\ViewNames.cs">
+      <Link>Services\ViewNames.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\SingleMessage.cs">
+      <Link>SingleMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\ThemeViewmodel.cs">
+      <Link>ThemeViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\TwitterToken.cs">
+      <Link>TwitterToken.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\TwitterUser.cs">
+      <Link>TwitterUser.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Common\ViewModels\ViewModelBase.cs">
+      <Link>ViewModels\ViewModelBase.cs</Link>
+    </Compile>
+    <Compile Include="Behaviors\ButtonBehaviors.cs" />
+    <Compile Include="Behaviors\PopupDialogActivationBehavior.cs" />
+    <Compile Include="Behaviors\PopupWrapper.cs" />
+    <Compile Include="DialogTypes\DecisionDialogView.xaml.cs">
+      <DependentUpon>DecisionDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogTypes\LoadingDialogView.xaml.cs">
+      <DependentUpon>LoadingDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogTypes\OkDialog.xaml.cs">
+      <DependentUpon>OkDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogTypes\YesNoDialogView.xaml.cs">
+      <DependentUpon>YesNoDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Events\RequestApplicationCloseEvent.cs" />
+    <Compile Include="Events\UserDeletedEvent.cs" />
+    <Compile Include="Interfaces\IProgressReportable.cs" />
+    <Compile Include="NotificationsWindow.xaml.cs">
+      <DependentUpon>NotificationsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationWindow.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\WindowSize.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="DialogTypes\DecisionDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogTypes\LoadingDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogTypes\OkDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogTypes\YesNoDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NotificationsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\TwaijaComposite.Modules.Common\ModelFactoryKeys.resx">
+      <Link>ModelFactoryKeys.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\TwaijaComposite.Modules.Common\Resources\ClipboardOperationKeys.resx">
+      <Link>Resources\ClipboardOperationKeys.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\TwaijaComposite.Modules.Common\Resources\ColumnTypeKeys.resx">
+      <Link>Resources\ColumnTypeKeys.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\TwaijaComposite.Modules.Common\Resources\CreateColumnEventParameters.resx">
+      <Link>Resources\CreateColumnEventParameters.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\TwaijaComposite.Modules.Common\Resources\ProfileHandlerTypeKeys.resx">
+      <Link>Resources\ProfileHandlerTypeKeys.resx</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DialogTypes\Views\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+      <UserProperties ProjectLinkerExcludeFilter="\\?desktop(\\.*)?$;\\?silverlight(\\.*)?$;\.desktop;\.silverlight;\.xaml;^service references(\\.*)?$;\.clientconfig;^web references(\\.*)?$" ProjectLinkReference="4d1baf90-e409-4424-8e3c-3ad0bfd344d4" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

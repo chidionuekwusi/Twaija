@@ -1,0 +1,335 @@
+﻿<UserControl x:Class="TwaijaComposite.Modules.ColumnsManager.Views.TwitterProfile_LargeViewmodelTemplate"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:common="clr-namespace:TwaijaComposite.Modules.Common;assembly=TwaijaComposite.Modules.Common.Silverlight"
+    xmlns:local="clr-namespace:TwaijaComposite.Modules.ColumnsManager.Views"
+             xmlns:local0="clr-namespace:TwaijaComposite.Modules.ColumnsManager"
+    xmlns:sdk="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+    xmlns:controls="clr-namespace:TwaijaComposite.Modules.Controls;assembly=TwaijaComposite.Modules._.Controls.Silverlight"
+    xmlns:behave="clr-namespace:TwaijaComposite.Modules.Common.Behaviors;assembly=TwaijaComposite.Modules.Common.Silverlight"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    <UserControl.Resources>
+        <local0:ImageConverter x:Key="iConverter"/>
+        <common:BooleanToVisibiltyConverter x:Key="boolToVisible" ></common:BooleanToVisibiltyConverter>
+        <Style x:Key="profileKey" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe WP SemiBold"/>
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style x:Key="profileEntry" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe WP SemiBold"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="2,0,0,0"/>
+        </Style>
+        <local:ProfileStringConverter x:Key="converter"/>
+        <Style x:Key="StateButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#FF727272"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="#FF7E7E7E"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Background">
+                                                <SplineColorKeyFrame KeyTime="0" Value="#75F1F1F1" KeySpline="0.5,0,0.5,1"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                            <ColorAnimation Duration="0" To="#65000000" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="contentPresenter" d:IsOptimized="True"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed"/>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To=".55" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="DisabledVisualElement"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused"/>
+                                    <VisualState x:Name="Unfocused"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border x:Name="Background" BorderBrush="{TemplateBinding BorderBrush}" Margin="0" BorderThickness="{TemplateBinding BorderThickness}" Background="#65000000"/>
+                            <TextBlock Foreground="#75F1F1F1" x:Name="contentPresenter" Text="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" FontFamily="Segoe WP SemiBold" FontSize="11"/>
+                            <Rectangle x:Name="DisabledVisualElement" Fill="#FF3E3E3E" IsHitTestVisible="false" Opacity="0" RadiusY="0" RadiusX="0"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="MinWidth" Value="20"/>
+        </Style>
+        <Style x:Key="CheckBoxStyle1" TargetType="CheckBox">
+            <Setter Property="Background" Value="#FF448DCA"/>
+            <Setter Property="Foreground" Value="#FF000000"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="Padding" Value="4,1,0,0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                        <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                        <GradientStop Color="#FF718597" Offset="0.375"/>
+                        <GradientStop Color="#FF617584" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="16"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver"/>
+                                    <VisualState x:Name="Pressed"/>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To=".55" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="contentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CheckIcon"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CheckIconX" d:IsOptimized="True"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Indeterminate"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused"/>
+                                    <VisualState x:Name="Unfocused"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="ValidationStates">
+                                    <VisualState x:Name="Valid"/>
+                                    <VisualState x:Name="InvalidUnfocused"/>
+                                    <VisualState x:Name="InvalidFocused"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+                                <Path x:Name="CheckIcon" Data="M102.03442,598.79645 L105.22962,597.78918 L106.78825,600.42358 C106.78825,600.42358 108.51028,595.74304 110.21724,593.60419 C112.00967,591.35822 114.89314,591.42316 114.89314,591.42316 C114.89314,591.42316 112.67844,593.42645 111.93174,594.44464 C110.7449,596.06293 107.15683,604.13837 107.15683,604.13837 z" Fill="{TemplateBinding Background}" FlowDirection="LeftToRight" Height="10" Margin="1,1,0,1.5" Opacity="0" Stretch="Fill" Width="10.5"/>
+                                <Path x:Name="CheckIconX" Data="M 2,2.38097L 12.6667,9.61906M 12.3071,1.99998L 2.71909,9.99998" Fill="{TemplateBinding Background}" FlowDirection="LeftToRight" StrokeThickness="2.5" Height="10" Margin="0" Opacity="0" Stretch="Fill" Width="10.5"/>
+                            </Grid>
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Grid.Column="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <RadialGradientBrush x:Key="Brush2" Center="0.294,0.536" GradientOrigin="0.294,0.536" RadiusX="0.345" RadiusY="0.345">
+            <GradientStop Color="#FFA7A1A1" Offset="0"/>
+            <GradientStop Color="Black" Offset="1"/>
+        </RadialGradientBrush>
+        <DataTemplate x:Key="ButtonDataTemplate">
+            <Button Content="{Binding Name}" BorderBrush="Gray"  Width="60" Command="{Binding BindsDirectlyToSource=True}" Height="Auto"  Style="{StaticResource StateButtonStyle}" />
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <StackPanel Orientation="Vertical" >
+        <Grid Margin="8"  VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel VerticalAlignment="Top" Margin="1" Grid.Column="1"  Width="180"  Orientation="Vertical" >
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding ScreenName}"  Foreground="White" FontFamily="Segoe WP Semibold" FontSize="18">
+                	<TextBlock.Effect>
+                		<DropShadowEffect/>
+                	</TextBlock.Effect>
+                    </TextBlock>
+                    <controls:TwoStateButton x:Name="button"  behave:AnimationBehaviors.StoryboardA="SlideLeft" behave:AnimationBehaviors.StoryboardB="SlideRight"  Grid.Row="1" Height="10" Margin="6,1,3,0" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Foreground="{x:Null}">
+                        <controls:TwoStateButton.Resources>
+                            <Storyboard x:Key="SlideLeft" FillBehavior="HoldEnd" >
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="AreaB">
+                                    <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="-350" KeySpline="0.5,0,0.5,1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="AreaA">
+                                    <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="0" KeySpline="0.5,0,0.5,1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="AreaA">
+                                    <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="1" KeySpline="0.5,0,0.5,1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="AreaB">
+                                    <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="SlideRight" FillBehavior="HoldEnd" >
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="AreaB">
+                                    <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="0" KeySpline="0.5,0,0.5,1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="AreaA">
+                                    <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="250" KeySpline="0.5,0,0.5,1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="AreaA">
+                                    <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="AreaB">
+                                    <SplineDoubleKeyFrame KeyTime="0:0:0.7" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </controls:TwoStateButton.Resources>
+                    </controls:TwoStateButton>
+                </StackPanel>
+                <TextBlock Text="{Binding Profile.Name}" FontFamily="Segoe WP Light" FontSize="10.667" Foreground="#FF747373"></TextBlock>
+                <Grid Grid.ColumnSpan="2" Grid.Row="2" Margin="2,0" x:Name="canvas" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Grid x:Name="AreaA" Background="Transparent"   Height="100" VerticalAlignment="Center"  HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="1" Height="100" Style="{StaticResource SlickScrollViewerStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <TextBlock Style="{StaticResource profileKey}" ><Run Text="created:"/></TextBlock>
+                                <TextBlock Style="{StaticResource profileKey}" Grid.Row="1"><Run Text="tweets:"/></TextBlock>
+                                <TextBlock Style="{StaticResource profileKey}" Grid.Row="2"><Run Text="friends:"/></TextBlock>
+                                <TextBlock Style="{StaticResource profileKey}" Grid.Row="3"><Run Text="followers:"/></TextBlock>
+                                <TextBlock Style="{StaticResource profileEntry}" Text="{Binding Profile.CreatedDate}"/>
+                                <TextBlock Style="{StaticResource profileEntry}" Grid.Row="1" Text="{Binding Profile.NumberOfStatuses}"/>
+                                <TextBlock Style="{StaticResource profileEntry}" Grid.Row="2" Text="{Binding Profile.NumberOfFriends}"/>
+                                <TextBlock Style="{StaticResource profileEntry}" Grid.Row="3" Text="{Binding Profile.NumberOfFollowers}"/>
+                            </Grid>
+                        </ScrollViewer>
+
+                    </Grid>
+                    <Grid x:Name="AreaB" Background="Transparent" Opacity="0"  Height="100" VerticalAlignment="Center" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform X="-250"/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="1" Height="100" Style="{StaticResource SlickScrollViewerStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <TextBlock Style="{StaticResource profileKey}" ><Run Text="location:"/></TextBlock>
+                                <TextBlock Style="{StaticResource profileKey}" Grid.Row="1"><Run Text="web:"/></TextBlock>
+                                <TextBlock Style="{StaticResource profileKey}" Grid.Row="2"><Run Text="language:"/></TextBlock>
+                                <TextBlock Style="{StaticResource profileEntry}"  Text="{Binding Profile.Location}"/>
+                                <TextBlock Style="{StaticResource profileEntry}" Grid.Row="1" Text="{Binding Profile.Website}"/>
+                                <TextBlock Style="{StaticResource profileEntry}" Grid.Row="2" Text="{Binding Profile.Language}"/>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+                <StackPanel Orientation="Horizontal">
+                    <ContentControl Content="{Binding RelationshipResolver}">
+                        <ContentControl.ContentTemplate>
+                            <DataTemplate>
+                                <sdk:WrapPanel x:Name="panel" Orientation="horizontal">
+                                    <CheckBox IsEnabled="False" Margin="2" VerticalAlignment="Center" IsChecked="{Binding IsFollowed}" Style="{StaticResource CheckBoxStyle1}" >
+                                        <CheckBox.Background>
+                                            <RadialGradientBrush>
+                                                <GradientStop Color="White" Offset="0"/>
+                                                <GradientStop Color="#FF787878" Offset="1"/>
+                                            </RadialGradientBrush>
+                                        </CheckBox.Background>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path StrokeLineJoin="Round" Data="F1 M 10.4452,0.666672C 9.44522,0.888901 8.44522,1.11113 7.7785,1.86113C 7.11185,2.61113 6.7785,3.8889 7.06485,5.03185C 7.35123,6.17479 8.25726,7.18291 8.66666,8.07494C 9.07605,8.96696 8.98877,9.74297 8.62515,10.4191C 8.26154,11.0951 7.62164,11.6713 6.35992,12.4435C 5.09821,13.2156 3.21466,14.1836 2.133,15.4667C 1.05133,16.7497 0.771545,18.3477 0.666656,19.1467C 0.561707,19.9457 0.631653,19.9457 4.23389,19.9457C 7.83606,19.9457 14.9705,19.9457 18.5727,19.8658C 22.1748,19.7859 22.2448,19.6261 22,18.7872C 21.7552,17.9482 21.1956,16.4301 19.8375,15.2715C 18.4794,14.113 16.3228,13.314 15.0067,12.2376C 13.6906,11.1612 13.215,9.80742 13.3727,8.7216C 13.5303,7.63579 14.3211,6.81792 14.6332,5.71452C 14.9452,4.61113 14.7786,3.22221 14.0008,2.33336C 13.223,1.44444 11.8341,1.05559 10.4452,0.666672 Z "  Margin="0,0,0,0" StrokeThickness="1" Stroke="#FF2B2B2B" Fill="{StaticResource Brush2}"/>
+                                            <TextBlock Margin="-10,0,0,0" Text="Followed" FontFamily="Segoe WP Light" Foreground="White" VerticalAlignment="Bottom" FontSize="8"/>
+                                        </StackPanel>
+                                    </CheckBox>
+                                </sdk:WrapPanel>
+                            </DataTemplate>
+                        </ContentControl.ContentTemplate>
+                    </ContentControl>
+                    <Grid HorizontalAlignment="Left" Visibility="{Binding Profile.Verified,Converter={StaticResource boolToVisible}}">
+                        <Ellipse    x:Name="callout"    Stroke="#FF1F1D1D" Width="21.292"  StrokeThickness="0.25" Height="18" Margin="0"  >
+                            <Ellipse.Fill>
+                                <RadialGradientBrush Center="0.842,0.185" GradientOrigin="0.842,0.185">
+                                    <GradientStop Color="#FF2C4A7C" Offset="1"/>
+                                    <GradientStop Color="#FF68A1FF" Offset="0.249"/>
+                                    <GradientStop Color="#FF436EB2" Offset="0.671"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+
+                        </Ellipse>
+                        <Path  Data="F1 M 2,6.11104L 5.16907,9.99995L 12.6667,1.99995" StrokeThickness="4" Height="10.542" Stretch="Fill" Width="17.215">
+                            <Path.Stroke>
+                                <RadialGradientBrush Center="0.976,0.169" GradientOrigin="0.917,0.233" RadiusY="0.842" RadiusX="0.736">
+                                    <GradientStop Color="#FFB6B6B6" Offset="0.845"/>
+                                    <GradientStop Color="White" Offset="0.268"/>
+                                </RadialGradientBrush>
+                            </Path.Stroke>
+                        </Path>
+                    </Grid>
+                    <!--This is where the Protected Account symbol will be located-->
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Height="150" Width="140" Orientation="Vertical" >
+                <Border BorderBrush="White" BorderThickness="2">
+                    <Image Margin="1"  Height="100" Width="100" Source="{Binding Profile.ProfileImageLocation,Converter={StaticResource iConverter}}"  Stretch="Fill" />
+                </Border>
+                <ListBox Background="Transparent"   BorderBrush="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Commands}" ItemTemplate="{StaticResource ButtonDataTemplate}" Style="{StaticResource SlickListBoxStyle}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel Orientation="Horizontal"></VirtualizingStackPanel>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <ContentPresenter IsHitTestVisible="True" x:Name="ContentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"  />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </StackPanel>
+        </Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="2" Grid.Row="1" Height="60" Style="{StaticResource SlickScrollViewerStyle}">
+            <TextBlock  Margin="4" TextWrapping="Wrap" Text="{Binding Bio}" Foreground="White" FontFamily="Segoe WP SemiBold"/>
+        </ScrollViewer>
+    </StackPanel>
+</UserControl>

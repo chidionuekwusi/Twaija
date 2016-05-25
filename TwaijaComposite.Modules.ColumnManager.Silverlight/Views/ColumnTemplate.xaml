@@ -1,0 +1,207 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:control="clr-namespace:TwaijaComposite.Modules.Controls;assembly=TwaijaComposite.Modules._.Controls.Silverlight"
+    xmlns:common="clr-namespace:TwaijaComposite.Modules.Common;assembly=TwaijaComposite.Modules.Common.Silverlight"
+    xmlns:behave="clr-namespace:TwaijaComposite.Modules.Common.Behaviors;assembly=TwaijaComposite.Modules.Common.Silverlight"
+    xmlns:local="clr-namespace:TwaijaComposite.Modules.ColumnsManager"
+    xmlns:sd="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" xmlns:ee="http://schemas.microsoft.com/expression/2010/effects" 
+  
+    x:Class="TwaijaComposite.Modules.ColumnsManager.Views.ColumnTemplate" 
+    HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch"
+    mc:Ignorable="d" Height="auto" x:Name="ColumnView"
+    d:DesignHeight="300" d:DesignWidth="400">
+    <UserControl.Resources>
+        <common:UIStringConverter x:Key="UIStringConverter"/>
+        <local:ColumnHeaderColorConverter x:Key="headerColorConverter"/>
+    </UserControl.Resources>
+    <UserControl.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform/>
+            <SkewTransform/>
+            <RotateTransform/>
+            <TranslateTransform/>
+        </TransformGroup>
+    </UserControl.RenderTransform>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="217"/>
+            <ColumnDefinition Width="115"/>
+            <!--<ColumnDefinition Width="*"/>-->
+        </Grid.ColumnDefinitions>
+        
+        <Rectangle x:Name="rectangle" Stroke="Black" Margin="1" StrokeThickness="0" Grid.RowSpan="3" Grid.ColumnSpan="2">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.495,0.871" StartPoint="0.492,0.147">
+                    <GradientStop Color="#FF474545"/>
+                    <GradientStop Color="#FF393737" Offset="0.737"/>
+                    <GradientStop Color="#FF393737" Offset="0.371"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Fill="{Binding Header, Converter={StaticResource headerColorConverter}}" Stroke="Black" Margin="1" StrokeThickness="0" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
+        <TextBlock Margin="6" TextWrapping="Wrap"  Text="{Binding Header, ConverterParameter={control:Static Member=common:UIStringConverterType.ColumnHeader}, Converter={StaticResource UIStringConverter}}" FontFamily="Segoe WP Light" FontSize="24"  Foreground="White">
+        </TextBlock>
+        <!--<TextBlock Grid.Column="1" Grid.Row="1"  Foreground="#64000000" Text="{Binding Content.Count}" FontSize="12" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontFamily="Segoe WP Light"></TextBlock>-->
+
+        <Grid  Grid.ColumnSpan="2" Grid.Row="2" Margin="2,0" x:Name="canvas" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid x:Name="AreaA" Background="Transparent"   Height="35" VerticalAlignment="Center"  HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <ListBox   ItemTemplate="{StaticResource PathButtonTemplate15x15}" x:Name="Commands"   ItemsSource="{Binding Commands}" Background="#00000000" BorderThickness="0" ItemContainerStyle="{StaticResource SlickListBoxItemContainerStyle}" >
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                </ListBox>
+            </Grid>
+            <Grid x:Name="AreaB" Background="Transparent" Opacity="0"  Height="35" VerticalAlignment="Center" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <!--<TranslateTransform X="-350"/>-->
+                        <TranslateTransform X="0" Y="100"/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <ContentControl HorizontalContentAlignment="Stretch" Content="{Binding Filter}" />
+            </Grid>
+        </Grid>
+        <control:TwoStateButton Cursor="Hand" x:Name="button"  behave:AnimationBehaviors.StoryboardA="SlideLeft" behave:AnimationBehaviors.StoryboardB="SlideRight"  Grid.Row="1" Height="10" Margin="6,1,3,0" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Foreground="{x:Null}">
+            <control:TwoStateButton.Resources>
+                <Storyboard x:Key="SlideLeft" FillBehavior="HoldEnd" >
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="AreaB">
+                        <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="100" KeySpline="0.5,0,0.5,1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="AreaA">
+                        <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="0" KeySpline="0.5,0,0.5,1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="AreaA">
+                        <SplineDoubleKeyFrame KeyTime="0:0:0.8" Value="1" KeySpline="0.5,0,0.5,1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="AreaB">
+                        <SplineDoubleKeyFrame KeyTime="0:0:0.08" Value="0" KeySpline="0.5,0,0.5,1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="rectangle">
+                        <SplineDoubleKeyFrame KeyTime="0:0:1" Value="1" KeySpline="0,0.5,0.5,1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+                        <SplineColorKeyFrame KeyTime="0:0:1" Value="#FF707070" KeySpline="0,0.5,0.5,1"/>
+                    </ColorAnimationUsingKeyFrames>
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+                        <SplineColorKeyFrame KeyTime="0:0:1" Value="#FF474545" KeySpline="0,0.5,0.5,1"/>
+                    </ColorAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="rectangle">
+                        <SplineDoubleKeyFrame KeyTime="0:0:1" Value="0" KeySpline="0,0.5,0.5,1"/>
+                    </DoubleAnimationUsingKeyFrames>-->
+                </Storyboard>
+                <Storyboard x:Key="SlideRight" FillBehavior="HoldEnd" >
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="AreaB">
+                        <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="0" KeySpline="0.5,0,0.5,1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="AreaA">
+                        <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="100" KeySpline="0.5,0,0.5,1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="AreaA">
+                        <SplineDoubleKeyFrame KeyTime="0:0:0.08" Value="0"/>
+                    </DoubleAnimationUsingKeyFrames>
+
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="AreaB">
+                        <SplineDoubleKeyFrame KeyTime="0:0:0.8" Value="1" KeySpline="0.5,0,0.5,1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="rectangle">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
+                        <SplineDoubleKeyFrame KeyTime="0:0:1" Value="1" KeySpline="0,0.5,0.5,1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+                        <EasingColorKeyFrame KeyTime="0:0:0.6" Value="#FF707070"/>
+                        <SplineColorKeyFrame KeyTime="0:0:1" Value="#FF212121" KeySpline="0,0.5,0.5,1"/>
+                    </ColorAnimationUsingKeyFrames>
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+                        <EasingColorKeyFrame KeyTime="0:0:0.6" Value="#FF474545"/>
+                        <SplineColorKeyFrame KeyTime="0:0:1" Value="#FF0E0D0D" KeySpline="0,0.5,0.5,1"/>
+                    </ColorAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="rectangle">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+                        <SplineDoubleKeyFrame KeyTime="0:0:1" Value="0.08" KeySpline="0,0.5,0.5,1"/>
+                    </DoubleAnimationUsingKeyFrames>-->
+                </Storyboard>
+            </control:TwoStateButton.Resources>
+
+        </control:TwoStateButton>
+        <Button Cursor="Hand" Content="M 0.4159934 9.2109435 C -0.19292639 8.4811955 -0.04704407 8.0638945 1.3091869 6.6559045 L 2.9301671 4.9730846 1.2818166 3.2618317 C -0.2644011 1.6566208 -0.30688076 1.4912598 0.59622582 0.5930159 1.4993323 -0.3052291 1.6655892 -0.2629767 3.2794927 1.2749146 L 5 2.9143902 6.7205073 1.2749146 c 1.613904 -1.5378913 1.78016 -1.5801437 2.6832667 -0.6818987 0.903107 0.8982439 0.860627 1.0636049 -0.6855907 2.6688158 L 7.0698327 4.9730846 8.7181833 6.6843055 c 1.5462177 1.605228 1.5886977 1.77059 0.6855907 2.668836 -0.9031067 0.8982525 -1.0693627 0.8559915 -2.6832667 -0.6819 L 5 7.0317685 3.3988991 8.5574575 C 1.5334137 10.335094 1.3817265 10.368306 0.4159934 9.2109435 z" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Command="{Binding CloseCommand}" Style="{StaticResource CustomPathButtonStyle}" Background="#00000000" BorderBrush="{x:Null}" Margin="2" Height="Auto" Width="Auto" HorizontalContentAlignment="Center" MinWidth="10" MinHeight="10"/>
+        <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Background="{x:Null}" Grid.RowSpan="3" Margin="0" behave:GripBehaviors.ExpansionTarget="{Binding ElementName=mainbox}"   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+             <control:SlideInListBox  x:Name="mainbox" Background="Transparent" NewMessageSize="{Binding NewMessageSize}"  BorderThickness="0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Content}" Style="{StaticResource TransparentListBoxStyle}"   BorderBrush="{x:Null}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RenderTransformOrigin="0.5,0.5" Foreground="Black">
+                <control:SlideInListBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </control:SlideInListBox.RenderTransform>
+                <control:SlideInListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </control:SlideInListBox.ItemsPanel>
+                <control:SlideInListBox.ItemContainerStyle>
+                    <Style  TargetType="ListBoxItem">
+                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                        <Setter Property="VerticalAlignment" Value="Stretch"/>
+                        <Setter Property="Padding" Value="0,0.75"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <Grid Background="#65343434" Margin="{TemplateBinding Padding}">
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal"/>
+                                                <VisualState x:Name="MouseOver">
+                                                    <Storyboard>
+                                                        <DoubleAnimation Duration="0:0:0" To=".2" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Highlight"/>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Disabled"/>
+                                            </VisualStateGroup>
+                                            <VisualStateGroup x:Name="LayoutStates">
+                                                <VisualStateGroup.Transitions>
+                                                </VisualStateGroup.Transitions>
+                                                <VisualState x:Name="BeforeUnloaded"/>
+                                                <VisualState x:Name="BeforeLoaded"/>
+                                                <VisualState x:Name="AfterLoaded"/>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <VisualStateManager.CustomVisualStateManager>
+                                            <ei:ExtendedVisualStateManager/>
+                                        </VisualStateManager.CustomVisualStateManager>
+                                        <Rectangle x:Name="Highlight" Fill="WhiteSmoke" Opacity="0"/>
+                                        <ContentPresenter x:Name="contentPresenter"   ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </control:SlideInListBox.ItemContainerStyle>
+            </control:SlideInListBox>
+        </Grid>
+
+    </Grid>
+</UserControl>

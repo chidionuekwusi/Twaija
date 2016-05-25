@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="TwaijaComposite.Modules.Options.Views.TwitterOptionsView"
+             xmlns:control="clr-namespace:TwaijaComposite.Modules.Controls;assembly=TwaijaComposite.Modules._.Controls.Silverlight"
+    xmlns:common="clr-namespace:TwaijaComposite.Modules.Common;assembly=TwaijaComposite.Modules.Common.Silverlight"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    <UserControl.Resources>
+        <Style BasedOn="{StaticResource SlickComboBoxStyle}" x:Key="combo" TargetType="ComboBox">
+            <Setter Property="Width" Value="300"></Setter>
+            <Setter Property="Height" Value="25"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Left"></Setter>
+            <Setter Property="FontFamily" Value="Segoe UI"></Setter>
+            <Setter Property="Foreground" Value="LightGray"></Setter>
+            <Setter Property="FontSize" Value="12"></Setter>
+        </Style>
+        <Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
+        	<Setter Property="Padding" Value="3"/>
+        	<Setter Property="HorizontalContentAlignment" Value="Left"/>
+        	<Setter Property="VerticalContentAlignment" Value="Top"/>
+        	<Setter Property="Background" Value="Transparent"/>
+        	<Setter Property="BorderThickness" Value="1"/>
+        	<Setter Property="TabNavigation" Value="Local"/>
+        	<Setter Property="Template">
+        		<Setter.Value>
+        			<ControlTemplate TargetType="ListBoxItem">
+        				<Grid Background="{TemplateBinding Background}">
+        					<VisualStateManager.VisualStateGroups>
+        						<VisualStateGroup x:Name="CommonStates">
+        							<VisualState x:Name="Normal"/>
+        							<VisualState x:Name="MouseOver">
+        								<Storyboard>
+        									<DoubleAnimation Duration="0" To=".35" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="fillColor"/>
+        								</Storyboard>
+        							</VisualState>
+        							<VisualState x:Name="Disabled">
+        								<Storyboard>
+        									<DoubleAnimation Duration="0" To=".55" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="contentPresenter"/>
+        								</Storyboard>
+        							</VisualState>
+        						</VisualStateGroup>
+        						<VisualStateGroup x:Name="SelectionStates">
+        							<VisualState x:Name="Unselected"/>
+        							<VisualState x:Name="Selected">
+        								<Storyboard>
+        									<DoubleAnimation Duration="0" To=".75" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="fillColor2"/>
+        								</Storyboard>
+        							</VisualState>
+        						</VisualStateGroup>
+        						<VisualStateGroup x:Name="FocusStates">
+        							<VisualState x:Name="Focused"/>
+        							<VisualState x:Name="Unfocused"/>
+        						</VisualStateGroup>
+        					</VisualStateManager.VisualStateGroups>
+        					<Rectangle x:Name="fillColor" Fill="#80AFAFAF" IsHitTestVisible="False" Opacity="0" RadiusY="1" RadiusX="1"/>
+        					<Rectangle x:Name="fillColor2" Fill="#80FFFFFF" IsHitTestVisible="False" Opacity="0" RadiusY="1" RadiusX="1"/>
+        					<ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}"/>
+        				</Grid>
+        			</ControlTemplate>
+        		</Setter.Value>
+        	</Setter>
+        </Style>
+        <DataTemplate x:Key="UserDataTemplate">
+        	<Grid>
+                <TextBlock Foreground="{StaticResource ResourceKey={control:Static Member=common:InfrastructureResourceLocator.mainforegroundbrushkey}}" Text="{Binding ScreenName}" MaxWidth="150" TextWrapping="Wrap" FontFamily="Segoe WP Light" FontSize="13.333"></TextBlock>
+        		</Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ListBox FontFamily="Segoe UI Light" FontSize="14" Foreground="WhiteSmoke" Height="auto" SelectedIndex="0" SelectedItem="{Binding SelectedTwitterUser,Mode=TwoWay}" HorizontalAlignment="Stretch" Name="mainbox" VerticalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent" ItemsSource="{Binding TwitterUserList}" Width="auto" ItemContainerStyle="{StaticResource ListBoxItemStyle}" ItemTemplate="{StaticResource UserDataTemplate}"  />
+        <Grid Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <!--<Rectangle   Fill="Transparent" RadiusX="3" RadiusY="3"></Rectangle>-->
+            <StackPanel Margin="8">
+                <TextBlock FontFamily="Segoe UI Light" Foreground="{StaticResource ResourceKey={control:Static Member=common:InfrastructureResourceLocator.mainforegroundbrushkey}}"    FontSize="24">Number of Objects to Retrieve Per Request</TextBlock>
+                <TextBlock Margin="0,2,0,0" Foreground="{StaticResource ResourceKey={control:Static Member=common:InfrastructureResourceLocator.mainforegroundbrushkey}}" Style="{StaticResource smalltext}">Timeline</TextBlock>
+                <ComboBox Margin="0,0,0,4" ItemsSource="{Binding PossibleNumberOfObjectsToRetrieve}" SelectedItem="{Binding ElementName=mainbox,Path=SelectedItem.NOOTimeline,Mode=TwoWay}" Style="{StaticResource combo}"></ComboBox>
+                <TextBlock Margin="0,2,0,0" Foreground="{StaticResource ResourceKey={control:Static Member=common:InfrastructureResourceLocator.mainforegroundbrushkey}}"  Style="{StaticResource smalltext}">Mentions</TextBlock>
+                <ComboBox Margin="0,0,0,4"  ItemsSource="{Binding PossibleNumberOfObjectsToRetrieve}" SelectedItem="{Binding ElementName=mainbox,Path=SelectedItem.NOOMentions,Mode=TwoWay}" Style="{StaticResource combo}"></ComboBox>
+                <TextBlock Margin="0,2,0,0" Foreground="{StaticResource ResourceKey={control:Static Member=common:InfrastructureResourceLocator.mainforegroundbrushkey}}" Style="{StaticResource smalltext}">Direct Messages</TextBlock>
+                <ComboBox Margin="0,0,0,4" ItemsSource="{Binding PossibleNumberOfObjectsToRetrieve}" SelectedItem="{Binding ElementName=mainbox,Path=SelectedItem.NOODirectMessages,Mode=TwoWay}" Style="{StaticResource combo}"></ComboBox>
+                <TextBlock Margin="0,2,0,0" Foreground="{StaticResource ResourceKey={control:Static Member=common:InfrastructureResourceLocator.mainforegroundbrushkey}}" Style="{StaticResource smalltext}">Tweet Searches</TextBlock>
+                <ComboBox Margin="0,0,0,4" ItemsSource="{Binding PossibleNumberOfObjectsToRetrieve}" SelectedItem="{Binding ElementName=mainbox,Path=SelectedItem.NOOSearch,Mode=TwoWay}" Style="{StaticResource combo}"></ComboBox>
+                <TextBlock Margin="0,2,0,0" Foreground="{StaticResource ResourceKey={control:Static Member=common:InfrastructureResourceLocator.mainforegroundbrushkey}}" Style="{StaticResource smalltext}">User Timeline</TextBlock>
+                <ComboBox Margin="0,0,0,4" ItemsSource="{Binding PossibleNumberOfObjectsToRetrieve}" SelectedItem="{Binding ElementName=mainbox,Path=SelectedItem.NOOUserTimeline,Mode=TwoWay}" Style="{StaticResource combo}"></ComboBox>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="TwaijaComposite.Modules.Common.DialogTypes.DecisionDialogView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400" 
+    xmlns:sdk="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+    xmlns:local="clr-namespace:TwaijaComposite.Modules.Common">
+    <UserControl.Resources>
+        <DataTemplate DataType="local:TwitterUser">
+            <sdk:WrapPanel x:Name="panel" Orientation="Horizontal">
+                <Path Margin="2,0" Fill="WhiteSmoke" Data="m 3.5 23.039848 c -1.8483002 -0.757416 -1.7801857 -0.906176 0.8980167 -1.96124 2.7622055 -1.088156 2.8090689 -1.206698 1 -2.529522 C 4.3541075 17.785761 3.4840541 16.787448 3.4645646 16.330611 3.4450751 15.873775 2.8667424 14.4875 2.1793808 13.25 1.4211249 11.884864 1.3283111 11 1.9433775 11 2.5944929 11 2.5489715 10.104206 1.8161206 8.4957739 0.20475819 4.9592185 1.3474 4.4335521 5.3154349 6.8859325 9.9455607 9.7475076 12.626398 9.6246864 13.406822 6.5152296 c 0.70714 -2.8174706 4.392671 -4.2079957 7.250037 -2.7353883 1.013728 0.522447 2.369562 0.7602373 3.012965 0.528423 1.218815 -0.4391315 1.23861 2.1166355 0.02579 3.329458 C 23.313025 8.0203084 23 9.5417859 23 11.018783 23 19.228673 11.499848 26.318112 3.5 23.039848 z" Stretch="Fill" UseLayoutRounding="False" Width="15" Height="15"></Path>
+                <TextBlock Text="{Binding ScreenName}" FontFamily="Segoe WP Bold"></TextBlock>
+            </sdk:WrapPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="0.773*"/>
+    		<RowDefinition Height="0.227*"/>
+    	</Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Grid.RowSpan="1" Grid.Row="1">
+            <Button HorizontalAlignment="Stretch"  Command="{Binding Path=CloseCommand}" Margin="0.5,0" Style="{StaticResource TextButtonStyle}" Width="60" Height="30" VerticalAlignment="Bottom">ok</Button>
+            <Button HorizontalAlignment="Stretch"  Command="{Binding Path=AbortCommand}" Margin="0.5,0" Style="{StaticResource TextButtonStyle}" Width="60" Height="30" VerticalAlignment="Bottom">cancel</Button>
+
+        </StackPanel>
+		<StackPanel>
+            <TextBlock Margin="8" TextWrapping="Wrap" Text="{Binding Text}" Foreground="#FFA7A7A7" FontFamily="Segoe UI" FontWeight="Thin" FontSize="14"/>
+		<ListBox ItemsSource="{Binding Options}" SelectedItem="{Binding SelectedOption,Mode=TwoWay}" Background="Black" BorderBrush="LightGray" Foreground="#FFC2C2C2"></ListBox>
+		</StackPanel>
+    </Grid>
+</UserControl>

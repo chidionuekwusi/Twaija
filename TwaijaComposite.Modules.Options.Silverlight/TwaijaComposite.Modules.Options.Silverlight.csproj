@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A7399480-11EE-4A7C-97E9-C8D6CC70FA61}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TwaijaComposite.Modules.Options</RootNamespace>
+    <AssemblyName>TwaijaComposite.Modules.Options.Silverlight</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <TargetFrameworkProfile />
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.1.20402.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight.SL5, Version=4.0.23.35578, Culture=neutral, PublicKeyToken=c114982fcf1a3a2e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Effects" />
+    <Reference Include="Microsoft.Expression.Interactions" />
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\Prism\Silverlight\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity">
+      <HintPath>..\Prism\Silverlight\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.UnityExtensions">
+      <HintPath>..\Prism\Silverlight\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.Unity.Silverlight">
+      <HintPath>..\Prism\Silverlight\Microsoft.Practices.Unity.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Controls, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Interactivity" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="TwaijaComposite.Modules.Common.Silverlight">
+      <HintPath>..\TwaijaComposite.Modules.Common.Silverlight\Bin\Debug\TwaijaComposite.Modules.Common.Silverlight.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\TwaijaComposite.Modules.Options\OptionsManager.cs">
+      <Link>OptionsManager.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Options\OptionsModule.cs">
+      <Link>OptionsModule.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Options\ViewModels\AccountViewmodel.cs">
+      <Link>ViewModels\AccountViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Options\ViewModels\AppearanceViewmodel.cs">
+      <Link>ViewModels\AppearanceViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Options\ViewModels\GeneralOptionsViewModel.cs">
+      <Link>ViewModels\GeneralOptionsViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Options\ViewModels\IAccountViewmodel.cs">
+      <Link>ViewModels\IAccountViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Options\ViewModels\IAppearanceViewmodel.cs">
+      <Link>ViewModels\IAppearanceViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Options\ViewModels\IGeneralViewmodel.cs">
+      <Link>ViewModels\IGeneralViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Options\ViewModels\IHeader.cs">
+      <Link>ViewModels\IHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Options\ViewModels\INotificationsViewmodel.cs">
+      <Link>ViewModels\INotificationsViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Options\ViewModels\IServicesViewmodel.cs">
+      <Link>ViewModels\IServicesViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Options\ViewModels\ITwitterOptionsViewmodel.cs">
+      <Link>ViewModels\ITwitterOptionsViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Options\ViewModels\LayoutViewmodel.cs">
+      <Link>ViewModels\LayoutViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Options\ViewModels\NotificationsViewmodel.cs">
+      <Link>ViewModels\NotificationsViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Options\ViewModels\ServicesViewmodel.cs">
+      <Link>ViewModels\ServicesViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.Options\ViewModels\TwitterOptionsViewmodel.cs">
+      <Link>ViewModels\TwitterOptionsViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\AccountsView.xaml.cs">
+      <DependentUpon>AccountsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppearanceView.xaml.cs">
+      <DependentUpon>AppearanceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GeneralView.xaml.cs">
+      <DependentUpon>GeneralView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Layout.xaml.cs">
+      <DependentUpon>Layout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NotificationsView.xaml.cs">
+      <DependentUpon>NotificationsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServicesView.xaml.cs">
+      <DependentUpon>ServicesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TwitterOptionsView.xaml.cs">
+      <DependentUpon>TwitterOptionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserTemplate.xaml.cs">
+      <DependentUpon>UserTemplate.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TwaijaComposite.Modules..Controls.Silverlight\TwaijaComposite.Modules.Controls.Silverlight.csproj">
+      <Project>{5627705E-8B8E-4FDB-8563-A5711ABFB13C}</Project>
+      <Name>TwaijaComposite.Modules.Controls.Silverlight</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\AccountsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppearanceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GeneralView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Layout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NotificationsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ServicesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TwitterOptionsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="100_1291.JPG" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+      <UserProperties ProjectLinkReference="23dd705d-6dbd-4960-8b1c-45a9bde0979d" ProjectLinkerExcludeFilter="\\?desktop(\\.*)?$;\\?silverlight(\\.*)?$;\.desktop;\.silverlight;\.xaml;^service references(\\.*)?$;\.clientconfig;^web references(\\.*)?$" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

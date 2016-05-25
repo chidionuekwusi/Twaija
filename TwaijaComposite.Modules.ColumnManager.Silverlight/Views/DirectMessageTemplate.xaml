@@ -1,0 +1,145 @@
+﻿<!--x:Class="TwaijaComposite.Modules.ColumnsManager.Views.DirectMessageTemplate"-->
+<UserControl x:Class="TwaijaComposite.Modules.ColumnsManager.Views.DirectMessageTemplate"
+    xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sdk="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+    xmlns:behave="clr-namespace:TwaijaComposite.Modules.ColumnsManager.Behaviors"
+    behave0:AnimationBehaviors.AnimationTriggerStoryboardName="FlashCallout" behave0:AnimationBehaviors.ActionTrigger="{Binding OnHostEntry}"
+    xmlns:behave0="clr-namespace:TwaijaComposite.Modules.Common.Behaviors;assembly=TwaijaComposite.Modules.Common.Silverlight"
+    xmlns:local="clr-namespace:TwaijaComposite.Modules.ColumnsManager"
+    xmlns:customcontrols="clr-namespace:TwaijaComposite.Modules.Controls;assembly=TwaijaComposite.Modules._.Controls.Silverlight"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    <UserControl.Resources>
+        <Storyboard x:Key="SlideInOnNewItem">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="userControl">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="userControl">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-25"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-25"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-25"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:1" Value="0" KeySpline="0.5,0,0.5,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <local:ImageConverter x:Key="iConverter"/>
+        <RectangleGeometry  x:Key="ImageClip" Rect="0,0,35,35" RadiusX="3" RadiusY="3" />
+        <Storyboard x:Key="SlideIn">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="userControl">
+                <SplineDoubleKeyFrame KeyTime="0" Value="-10"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.25" Value="0" KeySpline="0,1,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="userControl">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.25" Value="0.995" KeySpline="0,1,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="FlashCallout" AutoReverse="True" >
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="callout">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:6" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <SolidColorBrush x:Key="ButtonNormalBackground" Color="#00000000"/>
+        <SolidColorBrush x:Key="ButtonNormalBorder" Color="#00707070"/>
+        <Storyboard x:Key="OnMouseEnter">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="popuptrigger">
+                <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="0.995" KeySpline="0,1,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnMouseLeave">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="popuptrigger">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <DataTemplate x:Key="DataTemplateCommand">
+            <Button Command="{Binding BindsDirectlyToSource=True}">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter  />
+                    </ControlTemplate>
+                </Button.Template>
+                <TextBlock Text="{Binding Hint}" Margin="2" TextAlignment="Center" Foreground="LightGray" FontFamily="Segoe WP Light"></TextBlock>
+            </Button>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <UserControl.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform/>
+            <SkewTransform/>
+            <RotateTransform/>
+            <TranslateTransform/>
+        </TransformGroup>
+    </UserControl.RenderTransform>
+
+    <customcontrols:TimerEnabledUserControl HorizontalAlignment="Stretch" FontSize="10" FontFamily="Segoe UI" FontWeight="Thin"  VerticalAlignment="Stretch" x:Name="timerEnabledUserControl" Foreground="LightGray"  DateStringFormat="{Binding DateStringFormat}" InitialDate="{Binding Message.CreatedDate}" >
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="CommonStates">
+                <VisualState x:Name="Normal">
+                    <Storyboard FillBehavior="HoldEnd">
+                        <DoubleAnimation Storyboard.TargetName="pop" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.3"></DoubleAnimation>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="MouseOver">
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="pop" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.3"></DoubleAnimation>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid x:Name="grid"  VerticalAlignment="Stretch"   Background="#10272727">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <sdk:DockPanel x:Name="docker" HorizontalAlignment="Stretch" Grid.Column="1" >
+                <TextBlock sdk:DockPanel.Dock="Left"  FontSize="12" Text="{Binding Message.SenderScreenName}" FontWeight="Thin" FontFamily="Segoe UI" Foreground="WhiteSmoke" VerticalAlignment="Bottom"/>
+                <!--<TextBlock sdk:DockPanel.Dock="Left"   VerticalAlignment="Center"
+                       TextOptions.TextFormattingMode="Ideal" Typography.CapitalSpacing="True" Text="{Binding Message.Name, TargetNullValue={customcontrols:Static Member=sys:String.Empty}}" FontFamily="Segoe WP SemiBold" Foreground="LightGray" FontSize="10"/>-->
+                <customcontrols:PopupCommands Name="pop" HorizontalAlignment="Right" sdk:DockPanel.Dock="Right" />
+                <!--<Button Name="pop" sdk:DockPanel.Dock="Right" Opacity="1"  >pop</Button>-->
+            </sdk:DockPanel>
+            <!--<Rectangle RadiusX="5" RadiusY="5" Fill="Black" HorizontalAlignment="Center" VerticalAlignment="Top" Height="35" Width="35"/>-->
+            <Grid  VerticalAlignment="Stretch" Grid.RowSpan="2">
+
+                <Image Margin="0,5" Source="{Binding Message.SenderProfileImage,Converter={StaticResource iConverter}}" Height="36" Width="36"   HorizontalAlignment="Center" VerticalAlignment="top" />
+                <ed:Callout x:Name="callout" AnchorPoint="1.026,0.48"  CalloutStyle="Oval" FontSize="14.667" HorizontalAlignment="Left"  Stroke="#FF1F1D1D" Width="14.625" Foreground="{x:Null}" StrokeThickness="0.25" Height="12.5" VerticalAlignment="Top" Margin="0" d:LayoutOverrides="GridBox" Opacity="0" >
+                    <ed:Callout.Fill>
+                        <RadialGradientBrush Center="0.842,0.185" GradientOrigin="0.842,0.185">
+                            <GradientStop Color="#FF332D2D" Offset="1"/>
+                            <GradientStop Color="#FFBEBDBD" Offset="0.249"/>
+                            <GradientStop Color="#FF585757" Offset="0.671"/>
+                        </RadialGradientBrush>
+                    </ed:Callout.Fill>
+                    <ed:RegularPolygon Height="7.375" InnerRadius="0.47211" PointCount="5" Stretch="Fill" StrokeThickness="0.2" Width="7.25" Stroke="Black">
+                        <ed:RegularPolygon.Fill>
+                            <RadialGradientBrush Center="0.392,0.671" GradientOrigin="0.333,0.735">
+                                <GradientStop Color="#FF2B4478" Offset="0.271"/>
+                                <GradientStop Color="#FF2D2828" Offset="0.716"/>
+                            </RadialGradientBrush>
+                        </ed:RegularPolygon.Fill>
+                    </ed:RegularPolygon>
+                </ed:Callout>
+            </Grid>
+            <RichTextBox Width="260"    HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Margin="2" Grid.Column="1" FontSize="12"  x:Name="tweettext" behave:TextBlockBehaviours.TweetText="{Binding Message.Text}" IsReadOnly="True" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" VerticalContentAlignment="Top" HorizontalContentAlignment="Stretch"    TextWrapping="Wrap" Foreground="#FFA7A7A7" FontFamily="Segoe UI" FontWeight="Light" TextOptions.TextRenderingMode="Grayscale" Height="90">
+
+            </RichTextBox>
+
+        </Grid>
+    </customcontrols:TimerEnabledUserControl>
+
+</UserControl>

@@ -1,0 +1,21 @@
+﻿<UserControl
+    xmlns:cal="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism"
+    x:Class="TwaijaComposite.Modules.ColumnsManager.Views.Layout"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:common="clr-namespace:TwaijaComposite.Modules.Common;assembly=TwaijaComposite.Modules.Common.Silverlight"
+    mc:Ignorable="d" xmlns:control="clr-namespace:TwaijaComposite.Modules.Controls;assembly=TwaijaComposite.Modules._.Controls.Silverlight"
+    d:DesignHeight="300" d:DesignWidth="400">
+
+    <Grid  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="35"></RowDefinition>
+            <RowDefinition MaxHeight="570" ></RowDefinition>
+        </Grid.RowDefinitions>
+        <ContentControl cal:RegionManager.RegionName="{control:Static  Member=common:RegionNames.ToolBar_WorkareaSpace}" Style="{StaticResource RegionStyle}"></ContentControl>
+        <ContentControl Grid.Row="1" cal:RegionManager.RegionName="{control:Static Member=common:RegionNames.Main_WorkareaSpace}" Style="{StaticResource RegionStyle}">
+        </ContentControl>
+    </Grid>
+</UserControl>

@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="TwaijaComposite.Modules.ColumnsManager.Views.SingleItemColumnTemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+               xmlns:common="clr-namespace:TwaijaComposite.Modules.Common;assembly=TwaijaComposite.Modules.Common"
+             mc:Ignorable="d"  BorderBrush="#25000000"
+ BorderThickness="0.5"             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <common:RandomColorConverter x:Key="colorConverter"></common:RandomColorConverter>
+    </UserControl.Resources>
+
+    <Grid Background="{Binding Header,Converter={StaticResource colorConverter}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Rectangle HorizontalAlignment="Stretch" Grid.RowSpan="2" VerticalAlignment="Stretch">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#4CBBBBBB" Offset="0"/>
+                    <GradientStop Color="#19343434" Offset="0.949"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <ContentControl Content="{Binding Content[0]}" Height="250"></ContentControl>
+        <ListView Grid.Row="1"  ClipToBounds="True" ItemTemplate="{DynamicResource PathButtonTemplate15x15}" x:Name="Commands"   ItemsSource="{Binding Commands}" Background="#00000000" BorderThickness="0" ItemContainerStyle="{DynamicResource SlickListBoxItemStyle}" >
+        <ListView.ItemsPanel>
+        	<ItemsPanelTemplate>
+        		<StackPanel Orientation="Horizontal"></StackPanel>     	
+			</ItemsPanelTemplate>      
+		</ListView.ItemsPanel>	</ListView>
+    </Grid>
+</UserControl>

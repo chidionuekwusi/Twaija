@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4CFDF4FF-33AC-4720-B362-2F4DB143DAE1}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TwaijaComposite</RootNamespace>
+    <AssemblyName>TwaijaComposite.Silverlight</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>TwaijaComposite.Silverlight.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>TwaijaComposite.App</SilverlightAppEntry>
+    <TestPageFileName>TwaijaComposite.SilverlightTestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>true</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.1.20402.0</ExpressionBlendVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Drawing" />
+    <Reference Include="Microsoft.Expression.Effects" />
+    <Reference Include="Microsoft.Expression.Interactions" />
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\Prism\Silverlight\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity">
+      <HintPath>..\Prism\Silverlight\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.UnityExtensions">
+      <HintPath>..\Prism\Silverlight\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.Unity.Silverlight">
+      <HintPath>..\Prism\Silverlight\Microsoft.Practices.Unity.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Interactivity" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BootStrapper.cs" />
+    <Compile Include="ResourceLocator.cs" />
+    <Compile Include="ResourceManager.cs" />
+    <Compile Include="Shell.xaml.cs">
+      <DependentUpon>Shell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShellModule.cs" />
+    <Compile Include="ShellViewmodel.cs" />
+    <Compile Include="SizeWindow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="Resources\MainBrushDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Shell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Templates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\OutOfBrowserSettings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TwaijaComposite.Modules..Controls.Silverlight\TwaijaComposite.Modules.Controls.Silverlight.csproj">
+      <Project>{5627705E-8B8E-4FDB-8563-A5711ABFB13C}</Project>
+      <Name>TwaijaComposite.Modules.Controls.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TwaijaComposite.Modules.ApplicationEngine.Silverlight\TwaijaComposite.Modules.ApplicationEngine.Silverlight.csproj">
+      <Project>{CE60139D-8E04-4212-B4CA-B3BF5AABF3FD}</Project>
+      <Name>TwaijaComposite.Modules.ApplicationEngine.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TwaijaComposite.Modules.Authentication.Silverlight\TwaijaComposite.Modules.Authentication.Silverlight.csproj">
+      <Project>{117B501E-202B-4B81-8E43-D2A90B81983C}</Project>
+      <Name>TwaijaComposite.Modules.Authentication.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TwaijaComposite.Modules.Clipboard.Silverlight\TwaijaComposite.Modules.Clipboard.Silverlight.csproj">
+      <Project>{5E235627-987C-4BF6-BDFB-C24C72650DCC}</Project>
+      <Name>TwaijaComposite.Modules.Clipboard.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TwaijaComposite.Modules.ColumnManager.Silverlight\TwaijaComposite.Modules.ColumnManager.Silverlight.csproj">
+      <Project>{549800D9-0722-4C7F-9105-957D4AB43EB2}</Project>
+      <Name>TwaijaComposite.Modules.ColumnManager.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TwaijaComposite.Modules.Common.Silverlight\TwaijaComposite.Modules.Common.Silverlight.csproj">
+      <Project>{2019E2D8-7138-4AA0-B2EA-CA6DF64B1733}</Project>
+      <Name>TwaijaComposite.Modules.Common.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TwaijaComposite.Modules.Options.Silverlight\TwaijaComposite.Modules.Options.Silverlight.csproj">
+      <Project>{A7399480-11EE-4A7C-97E9-C8D6CC70FA61}</Project>
+      <Name>TwaijaComposite.Modules.Options.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TwaijaComposite.Modules.PictureViewer.Silverlight\TwaijaComposite.Modules.PictureViewer.Silverlight.csproj">
+      <Project>{9B911A59-B839-42A0-B7D5-90C5DD8514B9}</Project>
+      <Name>TwaijaComposite.Modules.PictureViewer.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TwaijaComposite.Modules.ProfileViewer.Silverlight\TwaijaComposite.Modules.ProfileViewer.Silverlight.csproj">
+      <Project>{607779F4-DD40-4A6D-B3C0-60CDBA9E4E76}</Project>
+      <Name>TwaijaComposite.Modules.ProfileViewer.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TwaijaComposite.Modules.RequestAdapter.Silverlight\TwaijaComposite.Modules.RequestAdapter.Silverlight.csproj">
+      <Project>{13F3A9BC-FDCE-40C3-A4BC-C9E2D77DB232}</Project>
+      <Name>TwaijaComposite.Modules.RequestAdapter.Silverlight</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

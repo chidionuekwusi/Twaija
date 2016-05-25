@@ -1,0 +1,25 @@
+﻿<Window x:Class="TwaijaComposite.Shell"  
+    xmlns:behave="clr-namespace:TwaijaComposite.Modules.Common.Behaviors;assembly=TwaijaComposite.Modules.Common"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    WindowStartupLocation="CenterScreen"
+    xmlns:common="clr-namespace:TwaijaComposite.Modules.Common;assembly=TwaijaComposite.Modules.Common"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:cal="http://www.codeplex.com/CompositeWPF"           
+    behave:RegionPopupBehaviors.ProfilePopupRegionStyle="{StaticResource ProfilePopupStyle}"    
+    behave:RegionPopupBehaviors.CreateNotificationsRegionWithName="{x:Static common:RegionNames.NotificationsSpace}"
+    Title="Twaija" Height="750" Width="1205" 
+        behave:RegionPopupBehaviors.CreatePopupRegionWithName="{x:Static common:RegionNames.PopupRegion}"
+        behave:RegionPopupBehaviors.NotificationWindowStyle="{StaticResource PopupStyle}" Icon="Twaija_.ico">
+    <Window.Resources>
+    </Window.Resources>
+    <Grid>
+        <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.7*"></ColumnDefinition>
+            <ColumnDefinition Width="0.3"></ColumnDefinition>
+        </Grid.ColumnDefinitions>-->
+        <ContentControl  cal:RegionManager.RegionName="{x:Static common:RegionNames.MainSpace}" />
+        <!--<dock:DockManager Grid.Column="1" x:Name="manager">
+            </dock:DockManager>-->
+    </Grid>
+</Window>
+<!--behave:RegionPopupBehaviors.CreateProfileRegionWithName="{x:Static common:RegionNames.ProfileSpace}"-->

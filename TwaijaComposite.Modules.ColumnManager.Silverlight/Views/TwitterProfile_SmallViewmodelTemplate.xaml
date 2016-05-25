@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="TwaijaComposite.Modules.ColumnsManager.Views.TwitterProfile_SmallViewmodelTemplate"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sdk="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+    xmlns:controls="clr-namespace:TwaijaComposite.Modules.Controls;assembly=TwaijaComposite.Modules._.Controls.Silverlight"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    <UserControl.Resources>
+        <RectangleGeometry  x:Key="ImageClip" Rect="0,0,85,80" RadiusX="3" RadiusY="3" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Image   Source="{Binding Profile.ProfilePictureLocation}"  Height="85" Width="85" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.RowSpan="2" Margin="4">
+            <Image.Clip>
+                <RectangleGeometry  Rect="0,0,85,80" RadiusX="3" RadiusY="3" />
+            </Image.Clip>
+        </Image>
+        <sdk:WrapPanel Grid.Column="1" Orientation="Vertical">
+            <sdk:DockPanel Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <TextBlock  sdk:DockPanel.Dock="Left" Width="150" Foreground="{StaticResource mainforegroundbrushkey}"  Text="{Binding Profile.ScreenName}" TextWrapping="Wrap" Margin="0" FontFamily="Segoe WP SemiBold" FontSize="16"></TextBlock>
+                <controls:PopupCommands Background="{StaticResource mainbackgroundbrushkey}" HorizontalAlignment="Right" sdk:DockPanel.Dock="Right"></controls:PopupCommands>
+            </sdk:DockPanel>
+            <TextBlock Grid.Column="1" Foreground="{StaticResource mainforegroundbrushkey}" Text="{Binding Profile.Bio}" Width="220" TextWrapping="Wrap" Grid.Row="1" Height="auto" VerticalAlignment="Top" FontFamily="Segoe WP SemiBold"></TextBlock>
+        </sdk:WrapPanel>
+    </Grid>
+</UserControl>

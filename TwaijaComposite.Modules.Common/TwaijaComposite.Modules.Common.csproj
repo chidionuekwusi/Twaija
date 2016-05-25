@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4D1BAF90-E409-4424-8E3C-3AD0BFD344D4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TwaijaComposite.Modules.Common</RootNamespace>
+    <AssemblyName>TwaijaComposite.Modules.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DockingLibrary">
+      <HintPath>..\..\Source\DockingLibrary\DockingLibrary\bin\Debug\DockingLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Prism\Desktop\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Prism\Desktop\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.UnityExtensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Prism\Desktop\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Prism\Desktop\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Prism\Desktop\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AttributeTypes\FollowerPropertyLocatorAttribute.cs" />
+    <Compile Include="AttributeTypes\FriendPropertyLocatorAttribute.cs" />
+    <Compile Include="AttributeTypes\IPropertyLocator.cs" />
+    <Compile Include="AttributeTypes\MethodImplemented.cs" />
+    <Compile Include="AttributeTypes\TextPropertyLocatorAttribute.cs" />
+    <Compile Include="Behaviors\AnimationBehaviors.cs" />
+    <Compile Include="Behaviors\DialogActivationBehavior.cs" />
+    <Compile Include="AttributeTypes\IWindow.cs" />
+    <Compile Include="Behaviors\DockBehaviors.cs" />
+    <Compile Include="Behaviors\ExpansionBehavior.cs" />
+    <Compile Include="Behaviors\NotificationActivationBehavior.cs" />
+    <Compile Include="Behaviors\ProfileActivationBehavior.cs" />
+    <Compile Include="Behaviors\RegionAdapterLocator.cs" />
+    <Compile Include="Behaviors\RegionPopupBehaviors.cs" />
+    <Compile Include="Behaviors\ReturnCommandBehavior.cs" />
+    <Compile Include="Behaviors\ReturnKey.cs" />
+    <Compile Include="Behaviors\WebBrowserSourceUpdatedBehavior.cs" />
+    <Compile Include="Behaviors\WindowDialogActivationBehavior.Desktop.cs" />
+    <Compile Include="Behaviors\WindowWrapper.Desktop.cs" />
+    <Compile Include="ButtonPathConverter.cs" />
+    <Compile Include="Commands\ICommandable.cs" />
+    <Compile Include="Commands\ICommands.cs" />
+    <Compile Include="Commands\OpenConversationThreadCommand.cs" />
+    <Compile Include="Commands\StateBasedCommandFactoryEtc.cs" />
+    <Compile Include="Converters\BooleanToVisibiltyConverter.cs" />
+    <Compile Include="Converters\RandomColorConverter.cs" />
+    <Compile Include="DialogTypes\LoadingDialogViewmodel.cs" />
+    <Compile Include="DialogTypes\Views\LoadingDialogView.xaml.cs">
+      <DependentUpon>LoadingDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\Position.cs" />
+    <Compile Include="Events\ApplicationCloseEvent.cs" />
+    <Compile Include="Events\RequestApplicationCloseEvent.cs" />
+    <Compile Include="Events\ShellRequestEvent.cs" />
+    <Compile Include="Events\UserDeletedEvent.cs" />
+    <Compile Include="Interfaces\INotificationsView.cs" />
+    <Compile Include="Interfaces\IProgressReportable.cs" />
+    <Compile Include="Interfaces\IRequestWindowPositionEntity.cs" />
+    <Compile Include="Interfaces\ITheme.cs" />
+    <Compile Include="ITwitterAccountMethodConsole.cs" />
+    <Compile Include="CommonInfrastructureController.cs" />
+    <Compile Include="PictureTray.cs" />
+    <Compile Include="Resources\ClipboardOperationKeys.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClipboardOperationKeys.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ColumnParser.cs" />
+    <Compile Include="Resources\ColumnTypeKeys.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ColumnTypeKeys.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CreateColumnCommandHelperBase.cs" />
+    <Compile Include="Commands\CreateConversationCommandHelper.cs" />
+    <Compile Include="Commands\CreateDirectMessagesCommandHelper.cs" />
+    <Compile Include="Commands\CreateFavouritesCommandHelper.cs" />
+    <Compile Include="Commands\CreateFollowersCommandHelper.cs" />
+    <Compile Include="Commands\CreateFriendsCommandHelper.cs" />
+    <Compile Include="Commands\CreateHomeTimelineCommand.cs" />
+    <Compile Include="Commands\CreateMentionsCommandHelper.cs" />
+    <Compile Include="Commands\CreateTwitterProfileCommandHelper.cs" />
+    <Compile Include="Commands\CreateUserSearchCommandHelper.cs" />
+    <Compile Include="Commands\Factories\CommandFactories.cs" />
+    <Compile Include="Commands\IconifiedCommand.cs" />
+    <Compile Include="Commands\INetworkCommandFactory.cs" />
+    <Compile Include="Commands\IRelationshipCheckerCommand.cs" />
+    <Compile Include="Commands\OpenTwitterProfileCommandHelper.cs" />
+    <Compile Include="Commands\ProfileCommandHelperBase.cs" />
+    <Compile Include="Commands\TweetSearchCommandHelper.cs" />
+    <Compile Include="Commands\UserTimelineCommandHelper.cs" />
+    <Compile Include="Resources\CreateColumnEventParameters.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateColumnEventParameters.resx</DependentUpon>
+    </Compile>
+    <Compile Include="DataInterfaces\ITwitterProfile_Large.cs" />
+    <Compile Include="DataInterfaces\ITwitterProfile_Small.cs" />
+    <Compile Include="DataInterfaces\ITrend.cs" />
+    <Compile Include="DataInterfaces\ITweetSearchResult.cs" />
+    <Compile Include="DataInterfaces\ITwitterDirectMessage.cs" />
+    <Compile Include="DraggableWindow.xaml.cs">
+      <DependentUpon>DraggableWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\RequestNavigation.cs" />
+    <Compile Include="Enums\TwitterRelationship.cs" />
+    <Compile Include="Events\CopyToClipboardEvent.cs" />
+    <Compile Include="Events\SetClipboardOperationEvent.cs" />
+    <Compile Include="Events\UserResolutionDialogEvent.cs" />
+    <Compile Include="Exceptions\WrongUserTypeException.cs" />
+    <Compile Include="IconLocator.cs" />
+    <Compile Include="Interfaces\Clipboard\IClipboardOperation.cs" />
+    <Compile Include="Commands\ICommandExecutor.cs" />
+    <Compile Include="Commands\ICommandHelper.cs" />
+    <Compile Include="Interfaces\Commands\CommandInterfaces.cs" />
+    <Compile Include="Interfaces\GenericObjectRepository.cs" />
+    <Compile Include="Interfaces\INotifyOnHostEntry.cs" />
+    <Compile Include="Interfaces\RequestMethods\IRequestMethod.cs" />
+    <Compile Include="Interfaces\RequestMethods\IRetrieveConversationMethod.cs" />
+    <Compile Include="Interfaces\RequestMethods\IRetrieveFavouritesRequestMethod.cs" />
+    <Compile Include="Interfaces\RequestMethods\IRetrieveTrendsMethod.cs" />
+    <Compile Include="Interfaces\RequestMethods\IRetrieveTwitterProfile_LargeMethod.cs" />
+    <Compile Include="Interfaces\RequestMethods\ITweetSearchMethod.cs" />
+    <Compile Include="Interfaces\RequestMethods\ITwitterMethod.cs" />
+    <Compile Include="Interfaces\RequestMethods\IDirectMessageMethod.cs" />
+    <Compile Include="Interfaces\RequestMethods\IMentionsMethod.cs" />
+    <Compile Include="Interfaces\Clipboard\IPictureServicesRepository.cs" />
+    <Compile Include="Interfaces\Clipboard\IPostMessageService.cs" />
+    <Compile Include="Interfaces\Clipboard\IPostMessageServiceAware.cs" />
+    <Compile Include="Interfaces\Clipboard\IPostMessageServiceRepository.cs" />
+    <Compile Include="Interfaces\RequestMethods\IRetrieveFollowers_Or_Friends_Method.cs" />
+    <Compile Include="Interfaces\RequestMethods\IUserSearchMethod.cs" />
+    <Compile Include="Interfaces\RequestMethods\IUserTimlineMethod.cs" />
+    <Compile Include="ModelFactoryKeys.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelFactoryKeys.resx</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationsWindow.xaml.cs">
+      <DependentUpon>NotificationsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\InfrastructureResourceLocator.cs" />
+    <Compile Include="Resources\ProfileHandlerTypeKeys.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProfileHandlerTypeKeys.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\PostMessageServiceRepositoryImp.cs" />
+    <Compile Include="PropertyChangedManager.cs" />
+    <Compile Include="PropertyChangeReaction.cs" />
+    <Compile Include="CommonModule.cs" />
+    <Compile Include="DataInterfaces\IMentionEntity.cs" />
+    <Compile Include="DataInterfaces\IUrlEntity.cs" />
+    <Compile Include="DialogTypes\IDecisionDialogViewmodel.cs" />
+    <Compile Include="DialogTypes\IOkDialogViewmodel.cs" />
+    <Compile Include="DialogTypes\IYesNoDialogViewmodel.cs" />
+    <Compile Include="Interfaces\IController.cs" />
+    <Compile Include="AttributeTypes\ScreenNamePropertyLocatorAttribute.cs" />
+    <Compile Include="Services\UserResolutionService.cs" />
+    <Compile Include="SingleMessage.cs" />
+    <Compile Include="AggregateMessage.cs" />
+    <Compile Include="DataInterfaces\IFacebookUser.cs" />
+    <Compile Include="DataInterfaces\ITwitterUser.cs" />
+    <Compile Include="DataInterfaces\IUser.cs" />
+    <Compile Include="DialogTypes\Views\DecisionDialogView.xaml.cs">
+      <DependentUpon>DecisionDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogTypes\DecisionDialogViewmodel.cs" />
+    <Compile Include="DialogTypes\IClosableContent.cs" />
+    <Compile Include="DialogTypes\Views\OkDialog.xaml.cs">
+      <DependentUpon>OkDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogTypes\OkDialogViewmodel.cs" />
+    <Compile Include="DialogTypes\Views\YesNoDialogView.xaml.cs">
+      <DependentUpon>YesNoDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogTypes\YesNoDialogViewmodel.cs" />
+    <Compile Include="Events\ActivateViewEvent.cs" />
+    <Compile Include="Events\CreateColumnEvent.cs" />
+    <Compile Include="Events\OpenProfileEvent.cs" />
+    <Compile Include="Events\ViewRequestedEventArgs.cs" />
+    <Compile Include="Events\NavigatingEvent.cs" />
+    <Compile Include="Events\ViewRequestedEvent.cs" />
+    <Compile Include="Interfaces\IColumnResolutionService.cs" />
+    <Compile Include="Interfaces\IMessage.cs" />
+    <Compile Include="Interfaces\AuthenticationMethods\IAuthenticateMethod.cs" />
+    <Compile Include="Interfaces\IDialogFacade.cs" />
+    <Compile Include="Interfaces\IHeaderAndContentObject.cs" />
+    <Compile Include="Interfaces\RequestMethods\IHomeTimelineMethod.cs" />
+    <Compile Include="Interfaces\INavigateAware.cs" />
+    <Compile Include="Interfaces\INavigationService.cs" />
+    <Compile Include="Interfaces\IOptionFileWriterService.cs" />
+    <Compile Include="Interfaces\Clipboard\IPictureService.cs" />
+    <Compile Include="Interfaces\AuthenticationMethods\IPinBuildMethod.cs" />
+    <Compile Include="Interfaces\AuthenticationMethods\IRequestTokenBuilder.cs" />
+    <Compile Include="Interfaces\ISetable.cs" />
+    <Compile Include="DataInterfaces\ITweet.cs" />
+    <Compile Include="NotifiableList.cs" />
+    <Compile Include="Preferencing\GeneralPreferences.cs" />
+    <Compile Include="Services\PictureServicesRepository.cs" />
+    <Compile Include="Preferencing\Preferences.cs" />
+    <Compile Include="Preferencing\UserPreferenceFacade.cs" />
+    <Compile Include="Preferencing\UserRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegionNames.cs" />
+    <Compile Include="Services\DialogFacadeImp.cs" />
+    <Compile Include="Services\DispatcherImp.cs" />
+    <Compile Include="Services\FolderNames.cs" />
+    <Compile Include="Interfaces\IDispatcher.cs" />
+    <Compile Include="Services\NavigationServiceImp.cs" />
+    <Compile Include="Services\OptionFileWriterImp.cs" />
+    <Compile Include="Services\ServiceNames.cs" />
+    <Compile Include="Services\TwitterCredentials.cs" />
+    <Compile Include="Services\Utilities.cs" />
+    <Compile Include="Services\ViewNames.cs" />
+    <Compile Include="ThemeViewmodel.cs" />
+    <Compile Include="TwitterToken.cs" />
+    <Compile Include="TwitterUser.cs" />
+    <Compile Include="Converters\UIStringConverter.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Behaviors\WebBrowserBehaviours.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ClipboardOperationKeys.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ClipboardOperationKeys.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ColumnTypeKeys.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ColumnTypeKeys.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\CreateColumnEventParameters.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateColumnEventParameters.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModelFactoryKeys.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModelFactoryKeys.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ProfileHandlerTypeKeys.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileHandlerTypeKeys.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="DialogTypes\Views\DecisionDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogTypes\Views\LoadingDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogTypes\Views\OkDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogTypes\Views\YesNoDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <CodeAnalysisDictionary Include="NotificationsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </CodeAnalysisDictionary>
+    <Page Include="DraggableWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

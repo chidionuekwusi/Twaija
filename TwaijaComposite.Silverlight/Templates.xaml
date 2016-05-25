@@ -1,0 +1,49 @@
+﻿<ResourceDictionary 
+    xmlns:column="clr-namespace:TwaijaComposite.Modules.ColumnsManager;assembly=TwaijaComposite.Modules.ColumnManager.Silverlight"
+    xmlns:filter="clr-namespace:TwaijaComposite.Modules.ColumnsManager.Filter;assembly=TwaijaComposite.Modules.ColumnManager.Silverlight"
+    xmlns:viewmodels="clr-namespace:TwaijaComposite.Modules.ColumnsManager.Viewmodels;assembly=TwaijaComposite.Modules.ColumnManager.Silverlight"
+    xmlns:views="clr-namespace:TwaijaComposite.Modules.ColumnsManager.Views;assembly=TwaijaComposite.Modules.ColumnManager.Silverlight"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate DataType="viewmodels:TweetViewmodel">
+        <views:TweetViewmodelTemplate></views:TweetViewmodelTemplate>
+    </DataTemplate>
+    <DataTemplate DataType="viewmodels:DirectMessageViewmodel">
+        <views:DirectMessageTemplate></views:DirectMessageTemplate>
+    </DataTemplate>
+    <DataTemplate DataType="viewmodels:TwitterProfile_LargeViewmodel">
+        <views:TwitterProfile_LargeViewmodelTemplate></views:TwitterProfile_LargeViewmodelTemplate>
+    </DataTemplate>
+    <DataTemplate DataType="viewmodels:TwitterProfile_SmallViewmodel">
+        <views:TwitterProfile_SmallViewmodelTemplate></views:TwitterProfile_SmallViewmodelTemplate>
+    </DataTemplate>
+    <DataTemplate DataType="filter:FilterImp">
+        <views:FilterTemplate></views:FilterTemplate>
+    </DataTemplate>
+    <DataTemplate DataType="filter:ScreenNameCriteria">
+        <Grid HorizontalAlignment="Stretch" Height="25" VerticalAlignment="Stretch" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontFamily="Segoe WP Light">ScreenName:</TextBlock>
+            <TextBox Foreground="White" Grid.Column="1" BorderBrush="Transparent"  Text="{Binding ScreenName,Mode=TwoWay}" HorizontalAlignment="Stretch" Width="auto" Background="#803D3C3C"></TextBox>
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="filter:TextCriteria">
+        <Grid HorizontalAlignment="Stretch" Height="25" VerticalAlignment="Stretch" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontFamily="Segoe WP Light" >Text:</TextBlock>
+            <TextBox Foreground="White" Grid.Column="1" BorderBrush="Transparent"  Text="{Binding Text,Mode=TwoWay}" HorizontalAlignment="Stretch" Width="auto" Background="#803D3C3C" ></TextBox>
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="column:SingleItemColumnImp">
+        <views:SingleItemColumnTemplate></views:SingleItemColumnTemplate>
+    </DataTemplate>
+    <DataTemplate DataType="column:ColumnImp">
+        <views:ColumnTemplate></views:ColumnTemplate>
+    </DataTemplate>
+</ResourceDictionary>

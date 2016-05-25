@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="TwaijaComposite.Modules.ColumnsManager.Views.SingleItemColumnTemplate"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:TwaijaComposite.Modules.ColumnsManager.Views"
+    mc:Ignorable="d" xmlns:common="clr-namespace:TwaijaComposite.Modules.Common;assembly=TwaijaComposite.Modules.Common.Silverlight"
+    d:DesignHeight="300" d:DesignWidth="400">
+    <UserControl.Resources>
+        <local:SingleItemContentConverter x:Key="contentConverter"></local:SingleItemContentConverter>
+        <common:RandomColorConverter x:Key="colorConverter"></common:RandomColorConverter>
+    </UserControl.Resources>
+    <UserControl.Background>
+        <LinearGradientBrush EndPoint="0.959,0.969" StartPoint="0.013,0.012">
+            <GradientStop Color="#FF373737" Offset="0.61"/>
+            <GradientStop Color="#FF686868" Offset="1"/>
+        </LinearGradientBrush>
+    </UserControl.Background>
+    
+    <Grid Width="340">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.959,0.969" StartPoint="0.013,0.012">
+                <GradientStop Color="#FF373737" Offset="0.61"/>
+                <GradientStop Color="#FF686868" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Rectangle Fill="{Binding Header,Converter={StaticResource colorConverter}}" Grid.RowSpan="2"></Rectangle>
+        <ContentControl Content="{Binding Content,Converter={StaticResource contentConverter}}" Height="250"></ContentControl>
+        <ListBox Grid.Row="1"   ItemTemplate="{StaticResource PathButtonTemplate15x15}" x:Name="Commands"   ItemsSource="{Binding Commands}" Background="#00000000" BorderThickness="0" ItemContainerStyle="{StaticResource SlickListBoxItemContainerStyle}" >
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"></StackPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+    </Grid>
+</UserControl>

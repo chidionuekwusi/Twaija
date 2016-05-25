@@ -1,0 +1,530 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{549800D9-0722-4C7F-9105-957D4AB43EB2}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TwaijaComposite.Modules.ColumnsManager</RootNamespace>
+    <AssemblyName>TwaijaComposite.Modules.ColumnManager.Silverlight</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <TargetFrameworkProfile />
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.1.20402.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Drawing">
+      <HintPath>..\..\..\..\..\Program Files\Microsoft SDKs\Expression\Blend\Silverlight\v4.0\Libraries\Microsoft.Expression.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Effects" />
+    <Reference Include="Microsoft.Expression.Interactions" />
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\Prism\Silverlight\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity">
+      <HintPath>..\Prism\Silverlight\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.UnityExtensions">
+      <HintPath>..\Prism\Silverlight\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.Unity.Silverlight">
+      <HintPath>..\Prism\Silverlight\Microsoft.Practices.Unity.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Controls, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Controls.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Interactivity" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="TwaijaComposite.Modules.Common.Silverlight">
+      <HintPath>..\TwaijaComposite.Modules.Common.Silverlight\Bin\Debug\TwaijaComposite.Modules.Common.Silverlight.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Behaviors\ParseTweetBehavior.cs">
+      <Link>Behaviors\ParseTweetBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Behaviors\TextBlockBehaviours.cs">
+      <Link>Behaviors\TextBlockBehaviours.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\ColumnHeaderColorConverter.cs">
+      <Link>ColumnHeaderColorConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\ColumnsManagerModule.cs">
+      <Link>ColumnsManagerModule.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\ColumnBuilderBaseImp.cs">
+      <Link>Column\ColumnBuilderBaseImp.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\ColumnCommands\ColumnCommandBase.cs">
+      <Link>Column\ColumnCommands\ColumnCommandBase.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\ColumnDirector.cs">
+      <Link>Column\ColumnDirector.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\ColumnImp.cs">
+      <Link>Column\ColumnImp.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\ColumnManager.cs">
+      <Link>Column\ColumnManager.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\ColumnResolutionServiceImp.cs">
+      <Link>Column\ColumnResolutionServiceImp.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\ColumnSkeletonFactoryImp.cs">
+      <Link>Column\ColumnSkeletonFactoryImp.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\Factories\ConversationFactory.cs">
+      <Link>Column\Factories\ConversationFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\Factories\DirectMessagesFactory.cs">
+      <Link>Column\Factories\DirectMessagesFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\Factories\FactoryBase.cs">
+      <Link>Column\Factories\FactoryBase.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\Factories\FavouritesFactory.cs">
+      <Link>Column\Factories\FavouritesFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\Factories\FollowersFactory.cs">
+      <Link>Column\Factories\FollowersFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\Factories\FriendsFactory.cs">
+      <Link>Column\Factories\FriendsFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\Factories\HomeTimelineFactory.cs">
+      <Link>Column\Factories\HomeTimelineFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\Factories\MentionsFactory.cs">
+      <Link>Column\Factories\MentionsFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\Factories\TrendsFactory.cs">
+      <Link>Column\Factories\TrendsFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\Factories\TweetSearchFactory.cs">
+      <Link>Column\Factories\TweetSearchFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\Factories\TwitterFactoryHelper.cs">
+      <Link>Column\Factories\TwitterFactoryHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\Factories\TwitterProfileFactory.cs">
+      <Link>Column\Factories\TwitterProfileFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\Factories\UserSearchFactory.cs">
+      <Link>Column\Factories\UserSearchFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\Factories\UserTimelineFactory.cs">
+      <Link>Column\Factories\UserTimelineFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\IColumn.cs">
+      <Link>Column\IColumn.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\IColumnBuilder.cs">
+      <Link>Column\IColumnBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\IColumnPartsFactory.cs">
+      <Link>Column\IColumnPartsFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\IColumnSkeletonFactory.cs">
+      <Link>Column\IColumnSkeletonFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\IDirector.cs">
+      <Link>Column\IDirector.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\IinitializeUserHandler.cs">
+      <Link>Column\IinitializeUserHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Column\SingleItemColumnImp.cs">
+      <Link>Column\SingleItemColumnImp.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Commands\Commandbase.cs">
+      <Link>Commands\Commandbase.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Commands\NetworkAndMiscCommandsFactoryImp.cs">
+      <Link>Commands\NetworkAndMiscCommandsFactoryImp.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Commands\NetworkEnabledCommands\BlockCommandHelper.cs">
+      <Link>Commands\NetworkEnabledCommands\BlockCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Commands\NetworkEnabledCommands\DeleteFavouriteCommandHelper.cs">
+      <Link>Commands\NetworkEnabledCommands\DeleteFavouriteCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Commands\NetworkEnabledCommands\DeleteTweetCommandHelper.cs">
+      <Link>Commands\NetworkEnabledCommands\DeleteTweetCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Commands\NetworkEnabledCommands\FavouriteCommandHelper.cs">
+      <Link>Commands\NetworkEnabledCommands\FavouriteCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Commands\NetworkEnabledCommands\FollowCommandHelper.cs">
+      <Link>Commands\NetworkEnabledCommands\FollowCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Commands\NetworkEnabledCommands\UnBlockCommandHelper.cs">
+      <Link>Commands\NetworkEnabledCommands\UnBlockCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Commands\NetworkEnabledCommands\UnFollowCommandHelper.cs">
+      <Link>Commands\NetworkEnabledCommands\UnFollowCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Commands\ReplyCommandHelper.cs">
+      <Link>Commands\ReplyCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Commands\RetweetCommandHelper.cs">
+      <Link>Commands\RetweetCommandHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Commands\StateBasedCommand.cs">
+      <Link>Commands\StateBasedCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Commands\TwitterCommandBase.cs">
+      <Link>Commands\TwitterCommandBase.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Converter\AggregateMessageConverter.cs">
+      <Link>Converter\AggregateMessageConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Converter\IConverter.cs">
+      <Link>Converter\IConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Converter\ImageConverter.cs">
+      <Link>Converter\ImageConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Converter\SingleMessageConverter.cs">
+      <Link>Converter\SingleMessageConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\DirectMessageViewmodelConverter.cs">
+      <Link>DirectMessageViewmodelConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\DirectMessageViewmodelFactory.cs">
+      <Link>DirectMessageViewmodelFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Enums.cs">
+      <Link>Enums.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Filter\CriteriaBase.cs">
+      <Link>Filter\CriteriaBase.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Filter\FilterImp.cs">
+      <Link>Filter\FilterImp.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Filter\FollowersCriteria.cs">
+      <Link>Filter\FollowersCriteria.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Filter\FriendsCriteria.cs">
+      <Link>Filter\FriendsCriteria.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Filter\IFilter.cs">
+      <Link>Filter\IFilter.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Filter\IFilterCriteria.cs">
+      <Link>Filter\IFilterCriteria.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Filter\ScreenNameCriteria.cs">
+      <Link>Filter\ScreenNameCriteria.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Filter\TextCriteria.cs">
+      <Link>Filter\TextCriteria.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\IModelFactory.cs">
+      <Link>IModelFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Notifications\INotificationsManager.cs">
+      <Link>Notifications\INotificationsManager.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Notifications\INotificationsView.cs">
+      <Link>Notifications\INotificationsView.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Notifications\INotificationsViewmodel.cs">
+      <Link>Notifications\INotificationsViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Notifications\NewNotificationsEvent.cs">
+      <Link>Notifications\NewNotificationsEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Notifications\NotificationsManagerImp.cs">
+      <Link>Notifications\NotificationsManagerImp.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Notifications\NotificationViewmodelImp.cs">
+      <Link>Notifications\NotificationViewmodelImp.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\ActiveState.cs">
+      <Link>Request\ActiveState.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\CompleteRequests\ConversationRequest.cs">
+      <Link>Request\CompleteRequests\ConversationRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\CompleteRequests\DirectMessagesRequest.cs">
+      <Link>Request\CompleteRequests\DirectMessagesRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\CompleteRequests\FavouritesRequest.cs">
+      <Link>Request\CompleteRequests\FavouritesRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\CompleteRequests\GetFollowersRequest.cs">
+      <Link>Request\CompleteRequests\GetFollowersRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\CompleteRequests\GetFriendsRequest.cs">
+      <Link>Request\CompleteRequests\GetFriendsRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\CompleteRequests\HomeTimelineRequest.cs">
+      <Link>Request\CompleteRequests\HomeTimelineRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\CompleteRequests\MentionsRequest.cs">
+      <Link>Request\CompleteRequests\MentionsRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\CompleteRequests\TrendsRequest.cs">
+      <Link>Request\CompleteRequests\TrendsRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\CompleteRequests\TrendsViewmodel.cs">
+      <Link>Request\CompleteRequests\TrendsViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\CompleteRequests\TweetSearchRequest.cs">
+      <Link>Request\CompleteRequests\TweetSearchRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\CompleteRequests\TwitterProfile_LargeRequest.cs">
+      <Link>Request\CompleteRequests\TwitterProfile_LargeRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\CompleteRequests\UserSearchRequest.cs">
+      <Link>Request\CompleteRequests\UserSearchRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\CompleteRequests\UserTimelineRequest.cs">
+      <Link>Request\CompleteRequests\UserTimelineRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\IdleState.cs">
+      <Link>Request\IdleState.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\Interfaces\ILoopRequest.cs">
+      <Link>Request\Interfaces\ILoopRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\Interfaces\INavigationEnabledRequest.cs">
+      <Link>Request\Interfaces\INavigationEnabledRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\Interfaces\IRequest.cs">
+      <Link>Request\Interfaces\IRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\Interfaces\IRequestState.cs">
+      <Link>Request\Interfaces\IRequestState.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\Interfaces\ITimer.cs">
+      <Link>Request\Interfaces\ITimer.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\Interfaces\ITimerBasedRequest.cs">
+      <Link>Request\Interfaces\ITimerBasedRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\Interfaces\ITwitterRequest.cs">
+      <Link>Request\Interfaces\ITwitterRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\LoopBasedRequestTemplate.cs">
+      <Link>Request\LoopBasedRequestTemplate.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\LoopBasedRequestTemplate_Twitter.cs">
+      <Link>Request\LoopBasedRequestTemplate_Twitter.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\NavgiationEnabledTimerBasedRequestTemplate.cs">
+      <Link>Request\NavgiationEnabledTimerBasedRequestTemplate.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\NavgiationEnabledTimerBasedRequestTemplate_Twitter.cs">
+      <Link>Request\NavgiationEnabledTimerBasedRequestTemplate_Twitter.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\NavigationEnabledLoopBasedRequest.cs">
+      <Link>Request\NavigationEnabledLoopBasedRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\NavigationEnabledLoopBasedRequest_Twitter.cs">
+      <Link>Request\NavigationEnabledLoopBasedRequest_Twitter.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\ThreadingTimerAdapter.cs">
+      <Link>Request\ThreadingTimerAdapter.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\TimerBasedRequestTemplate.cs">
+      <Link>Request\TimerBasedRequestTemplate.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Request\TimerBasedRequestTemplate_Twitter.cs">
+      <Link>Request\TimerBasedRequestTemplate_Twitter.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\TweetModelFactoryImp.cs">
+      <Link>TweetModelFactoryImp.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\TwitterProfile_LargeViewmodelFactory.cs">
+      <Link>TwitterProfile_LargeViewmodelFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\TwitterSmallProfileModelFactory.cs">
+      <Link>TwitterSmallProfileModelFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Viewmodels\ColumnsWorkspaceViewmodel.cs">
+      <Link>Viewmodels\ColumnsWorkspaceViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Viewmodels\DirectMessageViewmodel.cs">
+      <Link>Viewmodels\DirectMessageViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Viewmodels\IColumnsWorkspaceViewmodel.cs">
+      <Link>Viewmodels\IColumnsWorkspaceViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Viewmodels\IToolbarViewmodel.cs">
+      <Link>Viewmodels\IToolbarViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Viewmodels\ToolBarViewmodel.cs">
+      <Link>Viewmodels\ToolBarViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Viewmodels\TrendViewmodel.cs">
+      <Link>Viewmodels\TrendViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Viewmodels\TweetViewmodel.cs">
+      <Link>Viewmodels\TweetViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Viewmodels\TwitterProfile_LargeViewmodel.cs">
+      <Link>Viewmodels\TwitterProfile_LargeViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="..\TwaijaComposite.Modules.ColumnsManager\Viewmodels\TwitterProfile_SmallViewmodel.cs">
+      <Link>Viewmodels\TwitterProfile_SmallViewmodel.cs</Link>
+    </Compile>
+    <Compile Include="Notifications\NotificationViewImp.xaml.cs">
+      <DependentUpon>NotificationViewImp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ColumnsWorkspaceView.xaml.cs">
+      <DependentUpon>ColumnsWorkspaceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ColumnTemplate.xaml.cs">
+      <DependentUpon>ColumnTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DirectMessageTemplate.xaml.cs">
+      <DependentUpon>DirectMessageTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FilterTemplate.xaml.cs">
+      <DependentUpon>FilterTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Layout.xaml.cs">
+      <DependentUpon>Layout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SingleItemColumnTemplate.xaml.cs">
+      <DependentUpon>SingleItemColumnTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolBarView.xaml.cs">
+      <DependentUpon>ToolBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TweetNotification.xaml.cs">
+      <DependentUpon>TweetNotification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TweetViewmodelTemplate.xaml.cs">
+      <DependentUpon>TweetViewmodelTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TwitterProfile_LargeViewmodelTemplate.xaml.cs">
+      <DependentUpon>TwitterProfile_LargeViewmodelTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TwitterProfile_SmallViewmodelTemplate.xaml.cs">
+      <DependentUpon>TwitterProfile_SmallViewmodelTemplate.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\TwaijaComposite.Modules.ColumnsManager\bird_48_blue.png">
+      <Link>bird_48_blue.png</Link>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Notifications\NotificationViewImp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ColumnsWorkspaceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ColumnTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DirectMessageTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FilterTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Layout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SingleItemColumnTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ToolBarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TweetNotification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TweetViewmodelTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TwitterProfile_LargeViewmodelTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TwitterProfile_SmallViewmodelTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TwaijaComposite.Modules..Controls.Silverlight\TwaijaComposite.Modules.Controls.Silverlight.csproj">
+      <Project>{5627705E-8B8E-4FDB-8563-A5711ABFB13C}</Project>
+      <Name>TwaijaComposite.Modules.Controls.Silverlight</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+      <UserProperties ProjectLinkReference="2c9dec0d-f007-4f0a-8fe1-3396f8b6b3aa" ProjectLinkerExcludeFilter="\\?desktop(\\.*)?$;\\?silverlight(\\.*)?$;\.desktop;\.silverlight;\.xaml;^service references(\\.*)?$;\.clientconfig;^web references(\\.*)?$" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

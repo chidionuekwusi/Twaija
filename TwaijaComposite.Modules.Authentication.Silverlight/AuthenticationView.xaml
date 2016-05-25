@@ -1,0 +1,347 @@
+﻿<UserControl 
+    x:Class="TwaijaComposite.Modules.Authentication.AuthenticationView"
+    xmlns:common="clr-namespace:TwaijaComposite.Modules.Common;assembly=TwaijaComposite.Modules.Common.Silverlight"
+    xmlns:control="clr-namespace:TwaijaComposite.Modules.Controls;assembly=TwaijaComposite.Modules._.Controls.Silverlight"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:local="clr-namespace:TwaijaComposite.Modules.Authentication"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:behave="clr-namespace:TwaijaComposite.Modules.Common.Behaviors;assembly=TwaijaComposite.Modules.Common.Silverlight"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Blue" 
+    d:DesignHeight="750" d:DesignWidth="1205">
+    <UserControl.Resources>
+        <Style x:Key="CommandPathButtonNavigation" TargetType="Button">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#FF000000"/>
+            <Setter Property="Foreground" Value="{x:Null}"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="main" >
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="contentPresenter"  To="0.25" Duration="00:00:0.2" Storyboard.TargetProperty="Opacity"></DoubleAnimation>
+                                            <!--<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="contentPresenter">
+                                                <SplineColorKeyFrame KeyTime="0:0:0.2" Value="#FF8B8B8B" KeySpline="0.5,0,0.5,1"/>
+                                            </ColorAnimationUsingKeyFrames>-->
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed"/>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="main">
+                                                <DiscreteObjectKeyFrame KeyTime="00:00:00" >
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        Collapsed
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <!--<DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="main" To="0"></DoubleAnimation>-->
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused"/>
+                                    <VisualState x:Name="Unfocused"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Path  Stretch="Fill" x:Name="contentPresenter" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Data="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"  UseLayoutRounding="False" Fill="{StaticResource ResourceKey={control:Static Member=common:InfrastructureResourceLocator.mainbuttonbackgroundbrushkey}}">
+                            </Path>
+                            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" Opacity="0.5"></Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataTemplate DataType="local:PinAuthenticationStrategy">
+            <local:PinAuthView></local:PinAuthView>
+        </DataTemplate>
+        <DataTemplate DataType="local:FacebookAuthenticationStrategy">
+            <Grid>
+                <TextBlock FontSize="22" FontFamily="Segoe SemiLight" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">Coming Soon</TextBlock>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="local:MockAuthenticationStrategy">
+            <local:MockAuthView></local:MockAuthView>
+        </DataTemplate>
+        <local:BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"></local:BooleanToVisibilityConverter>
+        <Style x:Key="CustomListBoxItemStyle1" TargetType="ListBoxItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Grid Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To=".35" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="fillColor"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To=".55" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="contentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected"/>
+                                    <VisualState x:Name="Selected">
+                                        <!--<Storyboard>
+                                            <DoubleAnimation Duration="0" To=".75" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="fillColor2"/>
+                                        </Storyboard>-->
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused">
+                                    </VisualState>
+                                    <VisualState x:Name="Unfocused"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Rectangle x:Name="fillColor" Fill="#FFBADDE9" IsHitTestVisible="False" Opacity="0" RadiusY="10" RadiusX="10"/>
+                            <Rectangle x:Name="fillColor2" Fill="#FFBADDE9" IsHitTestVisible="False" Opacity="0" RadiusY="1" RadiusX="1"/>
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}"/>
+                            </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+       
+        <Storyboard x:Key="SlideAnimations" FillBehavior="HoldEnd">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectedAuthGrid">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="-363"/>
+        		<SplineDoubleKeyFrame KeyTime="0:0:0.84" Value="0" KeySpline="0.2,0.68,0.5,1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="HintGrid">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="-363"/>
+        		<SplineDoubleKeyFrame KeyTime="0:0:1.6" Value="0" KeySpline="0,1,0,1"/>
+        	</DoubleAnimationUsingKeyFrames>
+            <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="HintGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:1.6" Value="1" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SelectedAuthGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.84" Value="1" />
+            </DoubleAnimationUsingKeyFrames>-->
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="AvailableAuthCommands">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="0" />
+        		<SplineDoubleKeyFrame KeyTime="0:0:2.3" Value="1" />
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="Commandshadow">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="100"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:1.238" Value="100"/>
+        		<SplineDoubleKeyFrame KeyTime="0:0:2" Value="0" KeySpline="0.41,0.63,0.49,0.98"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="grid">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:1" Value="363"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="grid1">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<SplineDoubleKeyFrame KeyTime="0:0:1.6" Value="364" KeySpline="0.5,0,0.5,1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="Browserborder">
+        		<SplineDoubleKeyFrame KeyTime="0:0:0.4" Value="0" KeySpline="0.5,0,0.5,1"/>
+        		<SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="-20" KeySpline="0,0,0.5,1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0">
+        			<EasingDoubleKeyFrame.EasingFunction>
+        				<BounceEase EasingMode="EaseOut"/>
+        			</EasingDoubleKeyFrame.EasingFunction>
+        		</EasingDoubleKeyFrame>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnSelectedSocialNetworkChanged">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="textBlock">
+                <EasingDoubleKeyFrame KeyTime="0" Value="50"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="15"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:1" Value="0" KeySpline="0,1,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="textBlock">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:1" Value="1" KeySpline="0,1,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="selectedAuthControl">
+                <EasingDoubleKeyFrame KeyTime="0" Value="50"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="15"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:1" Value="0" KeySpline="0,0.5,0,0.5"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="selectedAuthControl">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:1" Value="1" KeySpline="0,1,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <!--<UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource SlideAnimations}">
+            
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>-->
+    <Grid  x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="155"/>
+            <RowDefinition Height="155"/>
+            <RowDefinition Height="155"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="360"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button Name="boss" Margin="5" BorderBrush="Transparent" VerticalAlignment="Top" Background="Transparent" Width="40" Height="40" HorizontalAlignment="Left" Command="{Binding GoBackCommand}" IsEnabled="{Binding CanGoBack}" Style="{StaticResource CommandPathButtonNavigation}"
+ Content="M 8.2021007 28.361475 C -3.1528233 22.548697 -2.5973294 6.1061016 9.1187893 1.2275206 21.671411 -3.9993793 34.106091 8.3928145 28.861271 20.902547 25.470026 28.991208 16.065272 32.386764 8.2021007 28.361475 z M 23.822473 23.792866 c 3.274628 -3.263439 4.215022 -5.220494 4.215022 -8.771883 0 -3.551389 -0.940394 -5.5084437 -4.215022 -8.7718814 -5.864365 -5.84432839 -11.739546 -5.84432839 -17.6039118 0 -5.86436534 5.8443284 -5.86436534 11.6994354 0 17.5437644 5.8643658 5.844327 11.7395468 5.844327 17.6039118 0 z M 9.6579121 18.956654 C 6.2556324 15.347466 6.2795985 14.237748 9.8316411 10.912177 13.581253 7.4016355 16.939426 7.2185034 13.780805 10.696816 c -2.213315 2.43733 -2.165322 2.470953 3.526995 2.470953 4.303166 0 5.770846 0.471323 5.770846 1.853214 0 1.381893 -1.46768 1.853215 -5.770846 1.853215 -5.692317 0 -5.74031 0.03362 -3.526995 2.470953 3.346173 3.684846 -0.636869 3.309526 -4.1228929 -0.388497 z"
+        />
+        <Grid Opacity="1" Grid.Row="1" Height="150" HorizontalAlignment="Right" Margin="1" Name="SelectedAuthGrid" VerticalAlignment="Top" Width="300" Background="Red">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-363"/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="5" Opacity="0.5" />
+            </Grid.Effect>
+            <ContentControl HorizontalContentAlignment="Stretch" VerticalAlignment="Center" Content="{Binding Selected}" Name="selectedAuthControl" >
+                <ContentControl.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </ContentControl.RenderTransform>
+            </ContentControl>
+        </Grid>
+        <Grid Opacity="1" Height="150" HorizontalAlignment="Right" Margin="1" Name="HintGrid" VerticalAlignment="Top" Width="300" Grid.Row="2" Background="#FF314EF9">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-363"/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="5" Opacity="0.5" />
+            </Grid.Effect>
+            <ScrollViewer VerticalScrollBarVisibility="Auto"  Style="{StaticResource SlickScrollViewerStyle}" Width="300" Height="120" Padding="0" Margin="1,0">
+                <TextBlock x:Name="textBlock"   Foreground="#FF152167" TextWrapping="Wrap"  Margin="0" FontFamily="Segoe WP SemiLight" Padding="3" VerticalAlignment="Top"
+			Text="{Binding Selected.Hint}"     Grid.Row="2" HorizontalAlignment="Center"   RenderTransformOrigin="0.5,0.5" FontSize="16">
+			<TextBlock.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform X="-363"/>
+				</TransformGroup>
+			</TextBlock.RenderTransform>
+                </TextBlock>
+            </ScrollViewer>
+        </Grid>
+        <Grid Opacity="1" Height="150" HorizontalAlignment="Right" Margin="1" Name="images" VerticalAlignment="Top" Width="300" Grid.Row="3" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-363"/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+
+            <Grid x:Name="grid" Grid.Column="1" Margin="2,0,0,0" RenderTransformOrigin="0.5,0.5">
+            	<Grid.RenderTransform>
+            		<CompositeTransform/>
+            	</Grid.RenderTransform>
+                <Image  Stretch="UniformToFill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Source="/TwaijaComposite.Modules.Authentication.Silverlight;component/Images/brownskingirl.jpg">
+                </Image>
+                <Grid.Effect>
+                    <DropShadowEffect BlurRadius="5" Opacity="0.5" />
+                </Grid.Effect>  
+            </Grid>
+            <Grid x:Name="grid1" Margin="0,0,2,0" RenderTransformOrigin="0.5,0.5">
+            	<Grid.RenderTransform>
+            		<CompositeTransform/>
+            	</Grid.RenderTransform>
+                <Grid.Effect>
+                    <DropShadowEffect BlurRadius="5" Opacity="0.5" />
+                </Grid.Effect>
+                <Rectangle x:Name="rectangle"  Fill="#FF171717"></Rectangle>
+                <Path HorizontalAlignment="Center" VerticalAlignment="Center" Height="37" Width="44"  Data="m 285.32204 702.60849 c -3.025 -0.70975 -9.82397 -2.68994 -15.10882 -4.40042 -13.17625 -4.26458 -21.19292 -5.09417 -59.89118 -6.1977 -34.4723 -0.98302 -43.32641 -1.93947 -56.00001 -6.04936 -10.66173 -3.45746 -20.99503 -9.04318 -26.90368 -14.54293 l -5.55674 -5.1722 2.20784 -11.98316 c 1.2143 -6.59074 4.2519 -18.00857 6.7502 -25.37294 2.49831 -7.36438 7.04014 -21.71478 10.09296 -31.88978 3.05282 -10.175 9.10794 -29.3 13.45582 -42.5 7.15841 -21.73264 8.28451 -26.26736 11.91984 -48 l 4.01461 -24 -2.96711 -4 c -1.63191 -2.2 -6.77086 -9.63637 -11.41989 -16.52528 -29.08492 -43.09784 -50.17938 -88.7855 -61.604076 -133.42581 -1.68224 -6.5731 -3.15563 -12.03048 -3.27419 -12.12751 -0.11857 -0.097 -9.21558 -6.10287 -20.21558 -13.3463 l -20 -13.16988 14 0.57738 c 7.7 0.31756 16.025 0.78493 18.5 1.03861 l 4.5 0.46124 -4 -1.93401 c -2.2 -1.0637 -7.375 -3.5034 -11.5 -5.42155 -4.430471 -2.06019 -11.797341 -6.95335 -18 -11.95578 -10.995882 -8.86817 -38.660815 -35.34363 -37.815167 -36.18928 0.269599 -0.2696 12.375802 0.81848 26.902674 2.41795 14.526871 1.59947 29.84573 3.16602 34.041908 3.48123 l 7.629415 0.5731 1.198062 -9.72706 C 92.420364 183.3648 114.9371 144.91224 152.81878 119.5948 c 18.1439 -12.12611 42.07365 -21.825904 73.00326 -29.591494 27.33666 -6.8635 39.02678 -8.42944 63 -8.4391 16.77444 -0.007 21.81525 0.35532 31.2554 2.2451 16.00288 3.20354 27.79849 7.25153 42.90002 14.72236 20.62204 10.201864 37.52912 22.707424 64.84458 47.963204 7.15 6.61086 15.62761 13.78639 18.83914 15.94561 3.21153 2.15922 13.11153 11.44352 22 20.63176 l 16.16086 16.7059 10.5 0.72068 c 12.09172 0.82993 16.71075 2.33757 17.41827 5.68528 2.67623 12.66301 2.66302 17.48985 -0.0782 28.5659 -0.51335 2.07419 -0.2163 2.25012 3.80155 2.25155 9.20489 0.003 14.44176 5.09682 17.32136 16.84724 1.25854 5.13559 2.36762 7.39595 4.36232 8.89062 4.56107 3.41771 9.19395 12.3312 10.23684 19.69532 0.93652 6.61308 0.98618 6.69227 14.64288 23.35043 55.89849 68.18385 82.3705 97.68144 107.62479 119.92561 37.031 32.61719 76.40843 54.74807 114.67022 64.4469 18.8472 4.77751 29.68302 6.10711 50 6.13524 21.19635 0.0294 33.18112 -1.5175 52.25065 -6.74387 20.25889 -5.55235 39.05515 -13.64876 57.74935 -24.8753 10.02836 -6.02238 30.04537 -20.95828 34.94617 -26.07544 1.89539 -1.97906 3.80789 -3.5983 4.25 -3.5983 2.3867 0 -0.84063 21.04953 -4.67633 30.5 -0.44646 1.1 0.92666 -0.025 3.05137 -2.5 2.12472 -2.475 5.67786 -6.075 7.89596 -8 2.218 -1.925 6.2828 -5.80103 9.0328 -8.61339 5.34426 -5.46549 14.30456 -12.43135 19.69956 -15.31475 1.8152 -0.97014 5.4379 -2.99665 8.0504 -4.50337 2.6125 -1.50671 4.75 -2.55025 4.75 -2.31897 0 0.23128 -4.1625 3.50961 -9.25 7.28519 -11.193 8.30663 -33.52716 30.45465 -43.83056 43.46529 -4.13781 5.225 -11.99991 15.74439 -17.47133 23.37643 -14.62896 20.40579 -24.85538 32.82432 -39.62191 48.11514 -51.44704 53.27365 -114.97976 91.41817 -191.32616 114.87064 -39.7004 12.19537 -80.16131 19.59069 -124.15252 22.69222 -24.06713 1.69681 -72.3686 0.7162 -96.17189 -1.95248 -66.26322 -7.42902 -128.75358 -25.2896 -182.04766 -52.03166 -13.60111 -6.8248 -29.48819 -16.34199 -32.62136 -19.54188 -5.65361 -5.77402 -5.60147 -4.92699 0.83564 13.57497 7.34355 21.10731 14.41258 39.62978 22.42206 58.75096 4.24876 10.14315 5.35001 13.75006 4.57972 15 -2.93982 4.77047 -26.05796 7.63681 -38.34399 4.75415 z m 34 -5.7772 c 1.04249 -0.64411 0.73748 -0.72283 -1 -0.25808 -1.375 0.3678 -3.175 1.08577 -4 1.5955 -1.04249 0.64411 -0.73748 0.72283 1 0.25808 1.375 -0.3678 3.175 -1.08577 4 -1.5955 z m -102.73625 -8.53522 c -1.22994 -0.23736 -3.47994 -0.24351 -5 -0.0136 -1.52006 0.22985 -0.51375 0.42406 2.23625 0.43157 2.75 0.008 3.99369 -0.18056 2.76375 -0.41792 z m -32.00121 -1.82441 c -7.83062 -0.7104 -16.15562 -1.60854 -18.50001 -1.99588 -2.3444 -0.38735 -3.99108 -0.4189 -3.6593 -0.0701 1.19409 1.25527 18.58423 3.40017 27.39677 3.37912 8.7057 -0.0208 8.53443 -0.0637 -5.23746 -1.31313 z m 87.24789 -69.33747 c 2.20573 -1.00204 6.47223 -4.08553 9.48111 -6.8522 l 5.47069 -5.03031 -1.66885 -5.21862 -1.66884 -5.21862 2.68773 0.65069 c 1.47825 0.35789 4.3979 1.52923 6.48811 2.60299 l 3.80037 1.95229 11.69963 -4.56912 c 14.05201 -5.48781 32.39306 -13.59119 31.89328 -14.09097 -0.1976 -0.19759 -3.8821 1.07554 -8.18778 2.82919 l -7.82851 3.18844 -5.24772 -5.63786 c -7.57227 -8.13526 -9.36214 -13.61324 -11.00729 -33.68823 -1.8825 -22.97131 -5.91092 -35.19163 -15.35075 -46.56681 -2.27529 -2.74178 -4.42002 -6.09329 -4.76606 -7.44781 -1.17384 -4.59481 1.92065 -14.55772 8.47433 -27.28362 0.2114 -0.4105 -2.46509 0.58776 -5.94775 2.21837 -6.11395 2.86259 -6.42622 3.19267 -9.06296 9.58009 -1.50195 3.63844 -4.57398 12.99018 -6.82673 20.78163 -5.18466 17.93193 -6.17956 31.58345 -3.47947 47.74392 1.97433 11.81672 6.73738 27.15835 11.90254 38.33765 1.92739 4.1716 3.34319 7.58472 3.14622 7.58472 -0.76102 0 -9.44629 -13.78117 -12.07216 -19.15525 l -2.76327 -5.65525 -4.93046 3.39156 c -9.99516 6.87546 -20.43213 7.132 -35.24584 0.86635 -7.81154 -3.30399 -10.25448 -3.85994 -18.5 -4.2101 -7.07543 -0.30047 -11.66935 0.0999 -18 1.56888 -4.675 1.08477 -11.92263 2.76221 -16.10585 3.72765 -4.18321 0.96544 -8.76103 1.46541 -10.17293 1.11104 -3.7228 -0.93436 -8.22216 -5.05861 -10.46568 -9.59316 l -1.95182 -3.94498 -4.35006 14.04283 -4.35006 14.04283 2.44819 1.97176 c 4.4059 3.54848 18.28265 9.77314 26.4482 11.86381 4.56134 1.16786 15.95193 2.6758 26.50001 3.50821 26.42756 2.08553 45.02034 5.6271 57 10.85743 4.61035 2.01288 7.64714 1.94991 12.51043 -0.25942 z m 127.48957 -70.16556 c 14.06642 -9.92701 30.45751 -22.90209 39.41169 -31.19804 l 7.9117 -7.3301 -1.78458 -7.47025 c -3.1754 -13.29227 -8.62606 -29.24985 -13.22787 -38.72645 -5.9693 -12.29273 -12.50657 -19.20101 -21.08046 -22.27685 -3.51522 -1.26107 -8.22988 -3.97474 -10.73185 -6.17706 -4.9106 -4.32249 -9.99067 -13.76106 -11.08293 -20.59168 -0.36922 -2.30901 -0.9828 -4.1982 -1.36351 -4.1982 -0.38071 0 -2.46069 1.50301 -4.62219 3.34003 -7.16902 6.09281 -23.78174 18.08156 -34.67197 25.02141 -10.43735 6.65125 -10.78564 6.99131 -12.28209 11.99196 -4.47085 14.94008 -5.29058 29.3678 -2.10214 36.99881 1.40154 3.35435 8.22455 10.63309 20.36985 21.73039 7.97756 7.28919 11.19972 12.93925 11.23439 19.69952 0.0319 6.21626 1.85859 9.7402 9.87133 19.043 3.93285 4.56604 7.15063 8.98501 7.15063 9.81994 0 1.87358 3.27637 0.009 17 -9.67643 z M 262.82552 519.25 c 2.23031 -10.14232 7.32951 -23.29288 13.9406 -35.95208 3.25453 -6.2319 4.88738 -10.35456 4.19306 -10.58671 -0.70216 -0.23478 0.0902 -2.35611 2.07156 -5.54572 1.76478 -2.84102 3.03078 -5.16549 2.81334 -5.16549 -0.21744 0 -4.13635 0.89992 -8.70869 1.99983 -4.57234 1.09991 -12.13526 2.2997 -16.80649 2.66622 -10.52938 0.82615 -13.50865 3.09757 -14.57146 11.10941 -0.66209 4.99108 -0.70139 5.03729 -4.80148 5.64567 -2.27365 0.33737 -9.39606 1.00326 -15.82757 1.47975 -12.98862 0.96228 -16.69536 2.46492 -21.44645 8.69391 L 201.08466 497 l -9.84651 0 c -9.58765 0 -9.93945 -0.0816 -13.38132 -3.10359 -1.94414 -1.70698 -3.5348 -3.73198 -3.5348 -4.5 0 -0.76803 -0.39113 -1.39641 -0.86917 -1.39641 -1.09103 0 -3.13083 15.56056 -3.13083 23.88347 0 7.3726 0.96005 9.52739 5.22826 11.73457 4.34799 2.24842 13.59726 1.33264 25.77175 -2.55169 11.51213 -3.673 17.17481 -3.81781 25.92104 -0.66287 5.67234 2.04613 18.23217 4.56624 29.57896 5.93497 1.65 0.19904 3.29233 0.42931 3.64962 0.51172 0.35729 0.0824 1.41653 -3.33767 2.35386 -7.60017 z M 519.81864 398.08413 c 6.94525 -17.68877 14.9802 -41.02692 17.68453 -51.36611 1.13691 -4.34661 1.02798 -5.43913 -1.19643 -12 -3.22277 -9.5055 -14.86415 -32.39372 -20.47594 -40.25795 -2.44989 -3.43321 -6.56265 -8.098 -9.13948 -10.36622 -4.97981 -4.3834 -14.88354 -9.69417 -19.89019 -10.6659 -2.97974 -0.57832 -3.06666 -0.47277 -6.37644 7.74287 -1.84553 4.58105 -6.87557 15.26416 -11.17787 23.74025 l -7.82235 15.41106 3.49866 13.08894 c 6.92222 25.8969 5.09344 22.55861 15.63189 28.5349 12.98666 7.36466 19.13169 12.35043 23.75458 19.27327 8.42441 12.61564 10.2336 26.67074 5.01244 38.94028 -1.65 3.87745 -2.97836 7.34028 -2.9519 7.69519 0.13731 1.84219 7.00779 -13.3668 13.4485 -29.77058 z M 260.29772 283.95422 c 27.02449 -6.47823 46.50031 -25.95405 52.97854 -52.97854 2.57223 -10.73027 2.57223 -19.22109 0 -29.95136 -5.0833 -21.20542 -18.68714 -38.46286 -37.48587 -47.55348 -10.72634 -5.18701 -18.42122 -6.93964 -30.46835 -6.93964 -12.04713 0 -19.74201 1.75263 -30.46835 6.93964 -18.79873 9.09062 -32.40257 26.34806 -37.48588 47.55348 -2.57223 10.73027 -2.57223 19.22109 0 29.95136 6.42235 26.79133 25.85999 46.38361 52.51102 52.92876 10.36246 2.54489 19.94493 2.56057 30.41889 0.0498 z M 220.9301 273.47798 C 206.10241 269.40674 189.98347 256.24416 183.60665 243 c -3.7217 -7.72968 -6.32962 -17.30447 -6.16772 -22.64434 0.10546 -3.47826 0.20505 -3.31731 1.01746 1.64434 1.2447 7.60171 5.37733 15.60692 10.91656 21.14615 21.97568 21.97567 59.35036 9.94389 64.91032 -20.89615 4.63939 -25.7338 -19.27757 -49.17234 -44.75533 -43.86007 -8.98672 1.87378 -14.34859 4.65752 -20.15499 10.46392 -5.53923 5.53923 -9.67186 13.54444 -10.91656 21.14615 -0.81241 4.96165 -0.912 5.1226 -1.01746 1.64434 -0.1619 -5.33987 2.44602 -14.91466 6.16772 -22.64434 4.29826 -8.92714 16.8257 -21.51036 25.76073 -25.87543 9.3518 -4.56867 16.11067 -6.09916 26.99456 -6.1127 11.28054 -0.014 18.79994 1.74394 27.88943 6.52034 12.33671 6.48275 22.44871 17.76373 28.22506 31.48795 2.07363 4.92682 2.30639 7.04409 2.30639 20.97984 0 17.68011 -0.8579 20.81153 -9.09711 33.20506 -7.73884 11.64089 -20.50167 20.77256 -33.91597 24.26655 -7.20148 1.87574 -24.01863 1.87922 -30.83964 0.006 z m -26.69561 -53.758 c -5.9909 -4.03727 -7.60885 -10.62659 -3.96611 -16.15255 2.52266 -3.82682 5.6526 -5.4883 10.42131 -5.53199 5.27524 -0.0483 11.63425 6.01992 11.62861 11.09691 C 212.3113 215.58421 206.17901 222 200.01958 222 c -1.32097 0 -3.92427 -1.02601 -5.78509 -2.28002 z M 494.98383 243 c 2.21572 -9.32424 1.29342 -11.0158 -1.09047 -2 -1.23613 4.675 -2.5618 9.625 -2.94595 11 -0.60896 2.17974 -0.47887 2.11569 1.01551 -0.5 0.94267 -1.65 2.30208 -5.475 3.02091 -8.5 z m 14.12947 -9.25 c 0.56578 -2.3375 1.29279 -6.275 1.61558 -8.75 l 0.58688 -4.5 -2.44527 6 c -2.48374 6.09443 -3.2674 11.5 -1.66716 11.5 0.4847 0 1.34419 -1.9125 1.90997 -4.25 z" Stretch="Fill" Fill="White" Margin="0"></Path>
+            </Grid>
+        </Grid>
+        <Border BorderBrush="{x:Null}" BorderThickness="0" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" Height="Auto" HorizontalAlignment="Left" Margin="4,1,60,3.7" Name="Browserborder" VerticalAlignment="Stretch" Width="781" RenderTransformOrigin="0.5,0.5">
+        	<Border.RenderTransform>
+        		<CompositeTransform TranslateY="-250"/>
+        	</Border.RenderTransform>
+            <Border.Background>
+                <ImageBrush ImageSource="/TwaijaComposite.Modules.Authentication.Silverlight;component/Images/420738_large_dc38.jpg" />
+            </Border.Background>
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="5" Opacity="0.5"></DropShadowEffect>
+            </Border.Effect>
+            <WebBrowser ScrollViewer.VerticalScrollBarVisibility="Auto" Opacity="0.5" behave:WebBrowserBehaviours.BindableSource="{Binding Selected.Address}"  behave:WebBrowserBehaviours.Command="{Binding Selected.BrowserNavigationReaction}"   x:Name="Mrb"     Margin="1"  Visibility="{Binding BrowserPopupIsOpen,Converter={StaticResource booleanToVisibilityConverter}}"  >
+                <WebBrowser.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="0" />
+                    </TransformGroup>
+                </WebBrowser.RenderTransform>
+            </WebBrowser>
+        </Border>
+        <Grid Grid.ColumnSpan="2" Grid.Row="4" Height="150" HorizontalAlignment="Stretch" Margin="0" Name="grid4" VerticalAlignment="Bottom" Width="Auto">
+            <Rectangle Height="100" HorizontalAlignment="Stretch"  Margin="-1,0,-1,-1" Name="Commandshadow" Stroke="Black" StrokeThickness="1" VerticalAlignment="Bottom" Width="Auto" Fill="#48000000">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <ListBox x:Name="AvailableAuthCommands" Opacity="0"  Grid.Row="4" Margin="2" VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" ItemsSource="{Binding AuthStrategies}" SelectedItem="{Binding Selected,Mode=TwoWay}"   HorizontalAlignment="Center" Width="auto" Grid.ColumnSpan="2" FontFamily="Segoe WP Light" ItemContainerStyle="{StaticResource CustomListBoxItemStyle1}" >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate >
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Name="panel" Margin="25,0">
+                            <Grid Name="Grid" Height="40" Width="40">
+                                <Ellipse x:Name="Ellipse" HorizontalAlignment="Stretch" Stroke="WhiteSmoke" VerticalAlignment="Stretch" StrokeThickness="2" />
+                                <Path Fill="WhiteSmoke"  Name="Main_Content"  Data="{Binding ThumbnailImage}" VerticalAlignment="Center" HorizontalAlignment="Center"></Path>
+                            </Grid>
+                            <TextBlock FontSize="14" x:Name="_name" Foreground="WhiteSmoke"  FontFamily="Segoe WP Light" Text="{Binding Name}" Margin="2"/>
+                        </StackPanel>
+                        
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </Grid>
+</UserControl>

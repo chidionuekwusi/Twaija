@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="TwaijaComposite.Modules.ProfileViewer.ProfileManagerView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:common="clr-namespace:TwaijaComposite.Modules.Common;assembly=TwaijaComposite.Modules.Common.Silverlight"
+    xmlns:cal="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism"
+    xmlns:ctrl="clr-namespace:TwaijaComposite.Modules.Controls;assembly=TwaijaComposite.Modules._.Controls.Silverlight"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    <UserControl.Resources>
+       
+    </UserControl.Resources>
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Name="boss" BorderBrush="Transparent" Background="Transparent" Width="25" HorizontalAlignment="Left" Command="{Binding GoBackCommand}" Style="{StaticResource CommandPathButtonNavigation}"
+ Content="M 8.2021007 28.361475 C -3.1528233 22.548697 -2.5973294 6.1061016 9.1187893 1.2275206 21.671411 -3.9993793 34.106091 8.3928145 28.861271 20.902547 25.470026 28.991208 16.065272 32.386764 8.2021007 28.361475 z M 23.822473 23.792866 c 3.274628 -3.263439 4.215022 -5.220494 4.215022 -8.771883 0 -3.551389 -0.940394 -5.5084437 -4.215022 -8.7718814 -5.864365 -5.84432839 -11.739546 -5.84432839 -17.6039118 0 -5.86436534 5.8443284 -5.86436534 11.6994354 0 17.5437644 5.8643658 5.844327 11.7395468 5.844327 17.6039118 0 z M 9.6579121 18.956654 C 6.2556324 15.347466 6.2795985 14.237748 9.8316411 10.912177 13.581253 7.4016355 16.939426 7.2185034 13.780805 10.696816 c -2.213315 2.43733 -2.165322 2.470953 3.526995 2.470953 4.303166 0 5.770846 0.471323 5.770846 1.853214 0 1.381893 -1.46768 1.853215 -5.770846 1.853215 -5.692317 0 -5.74031 0.03362 -3.526995 2.470953 3.346173 3.684846 -0.636869 3.309526 -4.1228929 -0.388497 z"
+        />
+        <Button Background="Transparent" BorderBrush="Transparent" Name="boss1" Width="25" HorizontalAlignment="Right" Command="{Binding GoFowardCommand}" Style="{StaticResource CommandPathButtonNavigation}" Content="M 21.890899 28.361475 C 33.245823 22.548697 32.69033 6.1061016 20.974211 1.2275206 8.4215891 -3.9993793 -4.0130909 8.3928145 1.2317291 20.902547 4.6229741 28.991208 14.027728 32.386764 21.890899 28.361475 z M 6.2705271 23.792866 c -3.274628 -3.263439 -4.215022 -5.220494 -4.215022 -8.771883 0 -3.551389 0.940394 -5.5084437 4.215022 -8.7718814 5.8643649 -5.84432839 11.7395459 -5.84432839 17.6039119 0 5.864365 5.8443284 5.864365 11.6994354 0 17.5437644 -5.864366 5.844327 -11.739547 5.844327 -17.6039119 0 z M 20.435088 18.956654 c 3.40228 -3.609188 3.378314 -4.718906 -0.173729 -8.044477 -3.749612 -3.5105415 -7.107785 -3.6936736 -3.949164 -0.215361 2.213315 2.43733 2.165322 2.470953 -3.526995 2.470953 -4.3031659 0 -5.7708459 0.471323 -5.7708459 1.853214 0 1.381893 1.46768 1.853215 5.7708459 1.853215 5.692317 0 5.74031 0.03362 3.526995 2.470953 -3.346173 3.684846 0.636869 3.309526 4.122893 -0.388497 z" />
+        <ContentControl x:Name="contentControl" Grid.Row="1" cal:RegionManager.RegionName="{ctrl:Static Member=common:RegionNames.Main_ProfileSpace}" RenderTransformOrigin="0.5,0.5" Style="{StaticResource RegionStyle}">
+            <ContentControl.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ContentControl.RenderTransform>
+        </ContentControl>
+    </Grid>
+</UserControl>

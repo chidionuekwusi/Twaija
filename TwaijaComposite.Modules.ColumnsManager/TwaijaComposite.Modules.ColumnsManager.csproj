@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2C9DEC0D-F007-4F0A-8FE1-3396F8B6B3AA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TwaijaComposite.Modules.ColumnsManager</RootNamespace>
+    <AssemblyName>TwaijaComposite.Modules.ColumnsManager</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Drawing" />
+    <Reference Include="Microsoft.Expression.Effects" />
+    <Reference Include="Microsoft.Expression.Interactions" />
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\Prism\Desktop\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity">
+      <HintPath>..\Prism\Desktop\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.UnityExtensions">
+      <HintPath>..\Prism\Desktop\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Prism\Desktop\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\Prism\Desktop\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Interactivity" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="telerik.windows.controls, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Behaviors\ParseTweetBehavior.cs" />
+    <Compile Include="Behaviors\TextBlockBehaviours.cs" />
+    <Compile Include="ColumnHeaderColorConverter.cs" />
+    <Compile Include="Column\ColumnBuilderBaseImp.cs" />
+    <Compile Include="Column\ColumnCommands\ColumnCommandBase.cs" />
+    <Compile Include="Column\ColumnResolutionServiceImp.cs" />
+    <Compile Include="Column\ColumnSkeletonFactoryImp.cs" />
+    <Compile Include="Column\Factories\ConversationFactory.cs" />
+    <Compile Include="Column\Factories\DirectMessagesFactory.cs" />
+    <Compile Include="Column\Factories\FactoryBase.cs" />
+    <Compile Include="Column\Factories\FavouritesFactory.cs" />
+    <Compile Include="Column\Factories\FollowersFactory.cs" />
+    <Compile Include="Column\Factories\FriendsFactory.cs" />
+    <Compile Include="Column\Factories\MentionsFactory.cs" />
+    <Compile Include="Column\Factories\TrendsFactory.cs" />
+    <Compile Include="Column\Factories\TweetSearchFactory.cs" />
+    <Compile Include="Column\Factories\TwitterFactoryHelper.cs" />
+    <Compile Include="Column\Factories\TwitterProfileFactory.cs" />
+    <Compile Include="Column\Factories\UserSearchFactory.cs" />
+    <Compile Include="Column\Factories\UserTimelineFactory.cs" />
+    <Compile Include="Column\IColumnPartsFactory.cs" />
+    <Compile Include="Column\Factories\HomeTimelineFactory.cs" />
+    <Compile Include="Column\IColumnSkeletonFactory.cs" />
+    <Compile Include="Column\IDirector.cs" />
+    <Compile Include="Column\IinitializeUserHandler.cs" />
+    <Compile Include="Column\ProxyColumnImp.cs" />
+    <Compile Include="Commands\NetworkAndMiscCommandsFactoryImp.cs" />
+    <Compile Include="Commands\RetweetCommandHelper.cs" />
+    <Compile Include="Commands\StateBasedCommand.cs" />
+    <Compile Include="Commands\TwitterCommandBase.cs" />
+    <Compile Include="Converter\IConverter.cs" />
+    <Compile Include="Converter\ImageConverter.cs" />
+    <Compile Include="DirectMessageViewmodelConverter.cs" />
+    <Compile Include="DirectMessageViewmodelFactory.cs" />
+    <Compile Include="Notifications\DataTemplateSelector.cs" />
+    <Compile Include="Notifications\INotificationsViewmodel.cs" />
+    <Compile Include="Notifications\INotificationsController.cs" />
+    <Compile Include="Notifications\NewNotificationsEvent.cs" />
+    <Compile Include="Notifications\NotificationsControllerImp.cs" />
+    <Compile Include="Notifications\NotificationsViewImp.xaml.cs">
+      <DependentUpon>NotificationsViewImp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Notifications\NotificationViewmodelImp.cs" />
+    <Compile Include="Request\CompleteRequests\ConversationRequest.cs" />
+    <Compile Include="Request\CompleteRequests\DirectMessagesRequest.cs" />
+    <Compile Include="Request\CompleteRequests\FavouritesRequest.cs" />
+    <Compile Include="Request\CompleteRequests\GetFollowersRequest.cs" />
+    <Compile Include="Request\CompleteRequests\GetFriendsRequest.cs" />
+    <Compile Include="Request\CompleteRequests\TrendsRequest.cs" />
+    <Compile Include="Request\CompleteRequests\TrendsViewmodel.cs" />
+    <Compile Include="Request\CompleteRequests\TweetSearchRequest.cs" />
+    <Compile Include="Request\CompleteRequests\TwitterProfile_LargeRequest.cs" />
+    <Compile Include="Request\CompleteRequests\UserSearchRequest.cs" />
+    <Compile Include="Request\CompleteRequests\UserTimelineRequest.cs" />
+    <Compile Include="Request\Interfaces\ILoopRequest.cs" />
+    <Compile Include="Request\Interfaces\INavigationEnabledRequest.cs" />
+    <Compile Include="Request\Interfaces\ITimerBasedRequest.cs" />
+    <Compile Include="Request\Interfaces\ITwitterRequest.cs" />
+    <Compile Include="Request\LoopBasedRequestTemplate.cs" />
+    <Compile Include="Request\LoopBasedRequestTemplate_Twitter.cs" />
+    <Compile Include="Request\CompleteRequests\MentionsRequest.cs" />
+    <Compile Include="Column\SingleItemColumnImp.cs" />
+    <Compile Include="Commands\NetworkEnabledCommands\BlockCommandHelper.cs" />
+    <Compile Include="Commands\Commandbase.cs" />
+    <Compile Include="Commands\NetworkEnabledCommands\DeleteFavouriteCommandHelper.cs" />
+    <Compile Include="Commands\NetworkEnabledCommands\DeleteTweetCommandHelper.cs" />
+    <Compile Include="Commands\NetworkEnabledCommands\FavouriteCommandHelper.cs" />
+    <Compile Include="Commands\NetworkEnabledCommands\FollowCommandHelper.cs" />
+    <Compile Include="Commands\ReplyCommandHelper.cs" />
+    <Compile Include="Commands\NetworkEnabledCommands\UnBlockCommandHelper.cs" />
+    <Compile Include="Commands\NetworkEnabledCommands\UnFollowCommandHelper.cs" />
+    <Compile Include="Converter\AggregateMessageConverter.cs" />
+    <Compile Include="Converter\SingleMessageConverter.cs" />
+    <Compile Include="Filter\CriteriaBase.cs" />
+    <Compile Include="Filter\FilterImp.cs" />
+    <Compile Include="Filter\FollowersCriteria.cs" />
+    <Compile Include="Filter\FriendsCriteria.cs" />
+    <Compile Include="Filter\IFilterCriteria.cs" />
+    <Compile Include="Filter\ScreenNameCriteria.cs" />
+    <Compile Include="Filter\TextCriteria.cs" />
+    <Compile Include="IModelFactory.cs" />
+    <Compile Include="Request\NavgiationEnabledTimerBasedRequestTemplate.cs" />
+    <Compile Include="Request\NavgiationEnabledTimerBasedRequestTemplate_Twitter.cs" />
+    <Compile Include="Request\NavigationEnabledLoopBasedRequest.cs" />
+    <Compile Include="Request\NavigationEnabledLoopBasedRequest_Twitter.cs" />
+    <Compile Include="Request\TimerBasedRequestTemplate_Twitter.cs" />
+    <Compile Include="TweetModelFactoryImp.cs" />
+    <Compile Include="Column\ColumnDirector.cs" />
+    <Compile Include="Column\ColumnImp.cs" />
+    <Compile Include="Column\ColumnsController.cs" />
+    <Compile Include="ColumnsManagerModule.cs" />
+    <Compile Include="Request\CompleteRequests\HomeTimelineRequest.cs" />
+    <Compile Include="Column\IColumn.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Column\IColumnBuilder.cs" />
+    <Compile Include="Request\IdleState.cs" />
+    <Compile Include="Filter\IFilter.cs" />
+    <Compile Include="Request\Interfaces\IRequest.cs" />
+    <Compile Include="Request\Interfaces\IRequestState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request\Interfaces\ITimer.cs" />
+    <Compile Include="Request\ActiveState.cs" />
+    <Compile Include="Request\TimerBasedRequestTemplate.cs" />
+    <Compile Include="Request\ThreadingTimerAdapter.cs" />
+    <Compile Include="TwitterProfile_LargeViewmodelFactory.cs" />
+    <Compile Include="TwitterSmallProfileModelFactory.cs" />
+    <Compile Include="Viewmodels\DirectMessageViewmodel.cs" />
+    <Compile Include="Viewmodels\IColumnsWorkspaceViewmodel.cs" />
+    <Compile Include="Viewmodels\ColumnsWorkspaceViewmodel.cs" />
+    <Compile Include="Viewmodels\IToolbarViewmodel.cs" />
+    <Compile Include="Viewmodels\ToolBarViewmodel.cs" />
+    <Compile Include="Viewmodels\TrendViewmodel.cs" />
+    <Compile Include="Viewmodels\TweetViewmodel.cs" />
+    <Compile Include="Viewmodels\TwitterProfile_LargeViewmodel.cs" />
+    <Compile Include="Viewmodels\TwitterProfile_SmallViewmodel.cs" />
+    <Compile Include="Views\ColumnsWorkspaceView.xaml.cs">
+      <DependentUpon>ColumnsWorkspaceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ColumnTemplate.xaml.cs">
+      <DependentUpon>ColumnTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DirectMessageTemplate.xaml.cs">
+      <DependentUpon>DirectMessageTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EnlargedTweetView.xaml.cs">
+      <DependentUpon>EnlargedTweetView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FilterTemplate.xaml.cs">
+      <DependentUpon>FilterTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Layout.xaml.cs">
+      <DependentUpon>Layout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SingleItemColumnTemplate.xaml.cs">
+      <DependentUpon>SingleItemColumnTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolBarView.xaml.cs">
+      <DependentUpon>ToolBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TweetNotification.xaml.cs">
+      <DependentUpon>TweetNotification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TweetViewmodelTemplate.xaml.cs">
+      <DependentUpon>TweetViewmodelTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TwitterProfile_LargeViewmodelTemplate.xaml.cs">
+      <DependentUpon>TwitterProfile_LargeViewmodelTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TwitterProfile_SmallViewmodelTemplate.xaml.cs">
+      <DependentUpon>TwitterProfile_SmallViewmodelTemplate.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TwaijaComposite.Modules.Common\TwaijaComposite.Modules.Common.csproj">
+      <Project>{4D1BAF90-E409-4424-8E3C-3AD0BFD344D4}</Project>
+      <Name>TwaijaComposite.Modules.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TwaijaComposite.Modules.Controls\TwaijaComposite.Modules.Controls.csproj">
+      <Project>{07C6F3AD-1011-42DD-8D01-0A25139646EB}</Project>
+      <Name>TwaijaComposite.Modules.Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Notifications\NotificationsViewImp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ColumnsWorkspaceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ColumnTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DirectMessageTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EnlargedTweetView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FilterTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Layout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SingleItemColumnTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ToolBarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TweetNotification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TweetViewmodelTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TwitterProfile_LargeViewmodelTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TwitterProfile_SmallViewmodelTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bird_48_blue.png" />
+    <Resource Include="Views\427285_large_64da.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
