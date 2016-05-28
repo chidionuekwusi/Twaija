@@ -34,7 +34,7 @@ namespace TwaijaComposite.RequestAdapterModule
         static IList<ITweet> Convert(TwitterSearchResultCollection collection)
         {
             IList<ITweet> tweets = new List<ITweet>();
-            foreach (TwitterSearchResult result in collection)
+            foreach (var result in collection)
             {
                 tweets.Add(new TweetAdapter(result));
             }
@@ -49,15 +49,15 @@ namespace TwaijaComposite.RequestAdapterModule
             }
             IList<ITweet> tweets = null;
             int currentPage = page++;
-            SearchOptions options=new SearchOptions() { Language=CultureInfo.CurrentCulture.TwoLetterISOLanguageName, NumberPerPage=requestcount, GeoCode=GeoLocation, IncludeEntities=true,Locale="ja"};
+            SearchOptions options=new SearchOptions() { Language=CultureInfo.CurrentCulture.TwoLetterISOLanguageName, Count =requestcount, GeoCode=GeoLocation, IncludeEntities=true,Locale="ja"};
             if (!first)
             {
-                options.SinceDate = DateTime.Now;
+                options.UntilDate = DateTime.Now;
             }
             switch (direction)
             {
                 case Navigation.Forward:
-                    tweets = Convert(TwitterSearch.Search(Query, new SearchOptions() { Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName, NumberPerPage = 50, GeoCode = GeoLocation, IncludeEntities = true,PageNumber=currentPage,Locale="ja" }).ResponseObject);
+                    tweets = Convert(TwitterSearch.Search(Query, new SearchOptions() { Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName, Count = 50, GeoCode = GeoLocation, IncludeEntities = true, Locale="ja" }).ResponseObject);
                     break;
                 case Navigation.None:
                     tweets= Convert(TwitterSearch.Search(Query, options).ResponseObject); 

@@ -23,7 +23,8 @@ namespace TwaijaComposite.Modules.LINQToTwitterAdapter
             {
                 var auth = new PinAuthorizer()
                 {
-                    CredentialStore = new InMemoryCredentialStore() { ConsumerKey = consumerkey, ConsumerSecret = consumerSecret, OAuthToken = requestToken },
+                    CredentialStore = new InMemoryCredentialStore() { ConsumerKey = consumerkey,
+                        ConsumerSecret = consumerSecret, OAuthToken = requestToken },
                     GoToTwitterAuthorization = (s) =>
                     {
                         Console.WriteLine(s);

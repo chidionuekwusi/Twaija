@@ -71,7 +71,7 @@ namespace TwaijaComposite.RequestAdapterModule
        public IList<Modules.Common.ITweet> Refresh(Navigation direction )
         {
             IList<Modules.Common.ITweet> tweets = null;
-            TimelineOptions options = new TimelineOptions() {  IncludeRetweets = true, Count = this.User.NOOTimeline };
+            TimelineOptions options = new TimelineOptions() { IncludeRetweets = true, Count = this.User.NOOTimeline, UseSSL = true };
             TwitterStatusCollection response = null;
             switch (direction)
             {

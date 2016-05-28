@@ -58,28 +58,28 @@ namespace TwaijaComposite.RequestAdapterModule
                 CreateEntities(stat.Entities);
             }
         }
-        public TweetAdapter(TwitterSearchResult result)
-        {
+        //public TweetAdapter(TwitterSearchResult result)
+        //{
             
-            Id = result.Id;
-            StringId = Convert.ToString(result.Id);
-            CreatedDate = result.CreatedDate;
-            Source = ParseSource(result.Source.Replace("&gt;", ">").Replace("&lt;", "<"));
-            InReplyToStatusId = result.InReplyToStatusId;
-            Name = result.FromUserScreenName;
-            ScreenName = result.FromUserScreenName;
-            //InReplyToStatusId = result.ToUserId;
-            InReplyToUserId = result.ToUserId;
-            InReplyToScreenName = result.ToUserScreenName;
-            Text = result.Text;
-            //ScreenName = result.FromUserScreenName;
-            Thumbnail = new Uri(result.ProfileImageLocation);
-            if (result.Entities != null)
-            {
-                CreateEntities(result.Entities);
-            }
+        //    Id = result.Id;
+        //    StringId = Convert.ToString(result.Id);
+        //    CreatedDate = result.CreatedDate;
+        //    Source = ParseSource(result.Source.Replace("&gt;", ">").Replace("&lt;", "<"));
+        //    InReplyToStatusId = result.InReplyToStatusId;
+        //    Name = result.FromUserScreenName;
+        //    ScreenName = result.FromUserScreenName;
+        //    //InReplyToStatusId = result.ToUserId;
+        //    InReplyToUserId = result.ToUserId;
+        //    InReplyToScreenName = result.ToUserScreenName;
+        //    Text = result.Text;
+        //    //ScreenName = result.FromUserScreenName;
+        //    Thumbnail = new Uri(result.ProfileImageLocation);
+        //    if (result.Entities != null)
+        //    {
+        //        CreateEntities(result.Entities);
+        //    }
           
-        }
+        //}
         public decimal Id
         {
             get;

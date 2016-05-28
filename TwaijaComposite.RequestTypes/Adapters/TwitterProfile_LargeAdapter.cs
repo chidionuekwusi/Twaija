@@ -27,10 +27,10 @@ namespace TwaijaComposite.RequestAdapterModule
             NumberOfFriends = user.NumberOfFriends;
             IsContributorsEnabled = user.IsContributorsEnabled;
             Language = user.Language;
-            DoesReceiveNotifications = user.DoesReceiveNotifications;
+          //  DoesReceiveNotifications = user.DoesReceiveNotifications;
             ScreenName = user.ScreenName;
-            IsFollowing = user.IsFollowing;
-            IsFollowedBy = user.IsFollowedBy;
+            //IsFollowing = user.IsFollowing;
+           // IsFollowedBy = user.IsFollowedBy;
             NumberOfFavorites = user.NumberOfFavorites;
             IsProtected = user.IsProtected;
             IsGeoEnabled = user.IsGeoEnabled;
