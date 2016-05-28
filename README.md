@@ -1,4 +1,7 @@
 # Twaija
  Cross-platform Twitter desktop client with local content.
 
-Twitter API needs some work. 
+Some features no longer work
+- Conversations view.
+
+Please feel free to clone.
