@@ -638,26 +638,27 @@
                     </ItemsPanelTemplate>
                 </TreeView.ItemsPanel>
             </TreeView>-->
-                <telerik:RadListBox  Background="Transparent" BorderBrush="Transparent" x:Name="mainbox"  ItemsSource="{Binding Content}" SelectedItem="{Binding SelectedObject,Mode=TwoWay}" MinHeight="395" SelectedIndex="-1" >
-                    <telerik:RadListBox.RenderTransform>
+                
+                <ListBox  Background="Transparent" BorderBrush="Transparent" x:Name="mainbox"  ItemsSource="{Binding Content}" SelectedItem="{Binding SelectedObject,Mode=TwoWay}" MinHeight="395" SelectedIndex="-1" >
+                    <ListBox.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
                             <SkewTransform/>
                             <RotateTransform/>
                             <TranslateTransform/>
                         </TransformGroup>
-                    </telerik:RadListBox.RenderTransform>
+                    </ListBox.RenderTransform>
                     <!--<telerik:RadListBox.ItemContainerStyle>
                         <Style TargetType="telerik:RadListBoxItem">
                             <Setter Property="MinWidth" Value="300"></Setter>
                         </Style>
                     </telerik:RadListBox.ItemContainerStyle>-->
-                        <telerik:RadListBox.ItemsPanel>
+                        <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <telerik:VirtualizingWrapPanel Orientation="Horizontal" ItemWidth="312"></telerik:VirtualizingWrapPanel>
+                            <WrapPanel Orientation="Vertical" ItemWidth="312"></WrapPanel>
                         </ItemsPanelTemplate>
-                    </telerik:RadListBox.ItemsPanel>
-                </telerik:RadListBox>
+                    </ListBox.ItemsPanel>
+                </ListBox>
                 <!--<controls:SlideInListBox SelectedItem="{Binding SelectedObject,Mode=TwoWay}" VirtualizingStackPanel.VirtualizationMode="Standard"   MinHeight="395" SelectedIndex="-1"  x:Name="mainbox" Background="Transparent"   BorderThickness="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Content}" Style="{DynamicResource SlickListBox}" ItemContainerStyle="{DynamicResource SlickListBoxItemStyle}"  BorderBrush="{x:Null}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RenderTransformOrigin="0.5,0.5">
                     <controls:SlideInListBox.RenderTransform>
                         <TransformGroup>
