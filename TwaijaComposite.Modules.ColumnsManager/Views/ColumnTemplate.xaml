@@ -655,7 +655,7 @@
                     </telerik:RadListBox.ItemContainerStyle>-->
                         <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Vertical" ItemWidth="312"></WrapPanel>
+                            <WrapPanel Orientation="Vertical" ItemWidth="305"></WrapPanel>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                 </ListBox>
