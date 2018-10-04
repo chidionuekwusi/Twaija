@@ -70,9 +70,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.Windows.Controls">
-      <HintPath>..\..\..\Downloads\169838_telerik-windows-controls-2009-3-1314\Telerik.Windows.Controls.dll</HintPath>
-    </Reference>
     <Reference Include="UIAutomationProvider" />
     <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />

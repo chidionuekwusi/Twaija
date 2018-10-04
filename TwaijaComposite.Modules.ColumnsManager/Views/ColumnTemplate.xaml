@@ -469,7 +469,7 @@
     	</Grid.RowDefinitions>
     	<Grid.ColumnDefinitions>
     		<ColumnDefinition Width="217"/>
-    		<ColumnDefinition Width="115"/>
+    		<ColumnDefinition Width="130"/>
     		<!--<ColumnDefinition Width="*"/>-->
     	</Grid.ColumnDefinitions>
         <!--<Rectangle HorizontalAlignment="Stretch" Margin="-0.5,0.5,0.5,-0.5" Stroke="#66000000" VerticalAlignment="Stretch" Grid.RowSpan="2" Grid.ColumnSpan="2">
@@ -655,7 +655,7 @@
                     </telerik:RadListBox.ItemContainerStyle>-->
                         <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Vertical" ItemWidth="305"></WrapPanel>
+                            <WrapPanel Orientation="Vertical" ItemWidth="315"></WrapPanel>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                 </ListBox>
